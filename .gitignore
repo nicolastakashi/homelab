@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,linux,windows,visualstudiocode,vim,packer,terraform,ansible,git,go
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,windows,visualstudiocode,vim,packer,terraform,ansible,git,go
+# Created by https://www.toptal.com/developers/gitignore/api/macos,linux,windows,visualstudiocode,vim,packer,terraform,ansible,git,go,packer
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,windows,visualstudiocode,vim,packer,terraform,ansible,git,go,packer
 
 ### Ansible ###
 *.retry
@@ -211,7 +211,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,visualstudiocode,vim,packer,terraform,ansible,git,go
+# End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,visualstudiocode,vim,packer,terraform,ansible,git,go,packer
 
-## Ignoring packer credentials
 packer/credentials.pkr.hcl
