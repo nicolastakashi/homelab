@@ -1,0 +1,11 @@
+[k8s]
+k3s-control-plane.local
+k3s-worker-node-01.local
+k3s-worker-node-02.local
+
+[k8s_control_plane]
+k3s-control-plane.local
+
+[k8s_worker_node]
+k3s-worker-node-01.local
+k3s-worker-node-02.local

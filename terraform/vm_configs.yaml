@@ -1,30 +1,33 @@
 k3s-control-plane:
   description: "kubernetes control-plane"
-  target_node: cabral
+  target_node: cortex
   vmid: 201
-  clone: "ubuntu-server-jammy"
+  clone: "ubuntu-2204-template"
   tags: "k8s,k8s-control-plane"
+  ipconfig0: "ip=dhcp"
   resources:
     cpu: 2
-    memory: 2048
+    memory: 4096
     disk: 20G
 k3s-worker-node-01:
   description: "kubernetes worker-node-01"
-  target_node: cabral
+  target_node: cortex
   vmid: 202
-  clone: "ubuntu-server-jammy"
+  clone: "ubuntu-2204-template"
   tags: "k8s,k8s-worker-node"
+  ipconfig0: "ip=dhcp"
   resources:
     cpu: 2
-    memory: 2048
+    memory: 4096
     disk: 20G
 k3s-worker-node-02:
   description: "kubernetes worker-node-02"
-  target_node: cabral
+  target_node: cortex
   vmid: 203
-  clone: "ubuntu-server-jammy"
+  clone: "ubuntu-2204-template"
   tags: "k8s,k8s-worker-node"
+  ipconfig0: "ip=dhcp"
   resources:
     cpu: 2
-    memory: 2048
+    memory: 4096
     disk: 20G

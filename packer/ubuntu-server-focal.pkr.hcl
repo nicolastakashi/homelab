@@ -1,6 +1,6 @@
-# Ubuntu Server jammy
+# Ubuntu Server Focal
 # ---
-# Packer Template to create an Ubuntu Server (jammy) on Proxmox
+# Packer Template to create an Ubuntu Server (Focal) on Proxmox
 
 # Variable Definitions
 variable "proxmox_api_url" {
@@ -16,28 +16,18 @@ variable "proxmox_api_token_secret" {
     sensitive = true
 }
 
-packer {
-  required_plugins {
-    proxmox = {
-      version = "1.1.2"
-      source = "github.com/hashicorp/proxmox"
-    }
-  }
-}
-
-# Resource Definiation for the VM Template
 source "proxmox-iso" "ubuntu-server-jammy" {
- 
+
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
     username = "${var.proxmox_api_token_id}"
     token = "${var.proxmox_api_token_secret}"
     # (Optional) Skip TLS Verification
     insecure_skip_tls_verify = true
-    
+
     # VM General Settings
-    node = "cabral"
-    vm_id = "900"
+    node = "cortex"
+    vm_id = "901"
     vm_name = "ubuntu-server-jammy"
     template_description = "Ubuntu Server jammy Image"
 
@@ -65,7 +55,7 @@ source "proxmox-iso" "ubuntu-server-jammy" {
 
     # VM CPU Settings
     cores = "1"
-    
+
     # VM Memory Settings
     memory = "1024" 
 
@@ -99,12 +89,12 @@ source "proxmox-iso" "ubuntu-server-jammy" {
     # http_port_min = 8802
     # http_port_max = 8802
 
-    ssh_username = "ntakashi"
+    ssh_username = "automation"
     # (Option 1) Add your Password here
     # ssh_password = "your-password"
     # - or -
     # (Option 2) Add your Private SSH KEY file here
-    ssh_private_key_file = "~/.ssh/ntakashi_rsa"
+    ssh_private_key_file = "~/.ssh/id_rsa"
 
     # Raise the timeout, when installation takes longer
     ssh_timeout = "20m"

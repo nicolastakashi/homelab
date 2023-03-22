@@ -19,10 +19,10 @@ autoinstall:
     swap:
       size: 0
   user-data:
-    package_upgrade: true
+    package_upgrade: false
     timezone: Europe/Lisbon
     users:
-      - name: ntakashi
+      - name: automation
         groups: [adm, sudo]
         lock-passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
@@ -30,4 +30,4 @@ autoinstall:
         # passwd: your-password
         # - or -
         ssh_authorized_keys:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCZlbfRZXri0i3GMV5bhYdxglwTfzfYGHrCrasZGsiaIIqpKn+0AKjHltRbs8xHQjxSpqBDWQdWDKfxsCsVmB2OEQKjyLG+7ypmM1p2cXWdZMpphALylxaiStdQYszEee2eeWi2geSLcSb7ZKs0qNh3nDuyEV0NxNAXg65G6RvAAP4uzFPCMMN8lAUSYWwRtg6ZOeIIVfzuJAE0251i/XcceM6Gc3asvXPCFyOb3ipY0s7FNXcrr+Gou1DHFOq7LSMHO4sFpkNcVmNS7NXP7Tu85MhBSPQZAjHaPe0+gLov34hY/hxf9W7nbl47I6LaDL7U6YSLDbxvGhqc1W4JIVo10QMVZ5XifxPw8g1e003UJpyLpFhoopNv97n8tOp+1MGrtZvrNd+XeRd5PDxj89O6lM0kqR4kdy7atb7ANtJlEfMKmnl+CZR4++ceFGw90SlyEB+aCpCt212j1Ja8TGcT9wpMYK40LODnAbRuE9vE2kUVQGXNTuiIZyPQhAGaUj4Cl0ymRFE+lNf+itXAxgeKMoR07P6LkWL2shyuDNTVHGydTp5iywa/Tx8Rhdg9NAW65wBgNf3O7zdb73DQ2fJRYJJ3nzRuo/x1igOnxmD+UZ//fQcADYGuZM7Mu0vDv/AjSBwzbQ1lQRvWvPoYAYoNW1Z1hT8rs68zoN95ra76nw== ntakashi
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC55vFwPH7mZmFn1azhQmR6z4B5JZ0SPj6Vw77D/9icExtrVjhxWQ8FLuSTAQPUzr7AFfKypDkh17TjmqWuloypLqoGhF+zzRAvWcSIgFqwMrwlUyqj+IabFOlx+o0ZLzymNnw0BkTN76NqKW33epqBndKbtV9b9FEILpOmxPoUiMwot2LbEFzeqwhymDoaVPg3nt1UE2wwHQ7oDnOoCHeu5KkclLwPba/WeuDNmEOdkZgQBiLxMflBIlYDN2p7hcd+fnTRbD/O5tXZkEGZzdFA6/CR1nzp7xQTglbLW6EGiyYQLGmWAwjTnVzIlHEwHYdV8jhiKo8CT9mnsjIpDr03 root@cortex

@@ -14,7 +14,7 @@ resource "proxmox_vm_qemu" "vm_provision" {
   agent = 1
   cores = each.value.resources.cpu
   memory = each.value.resources.memory
-  ipconfig0 = "ip=dhcp"
+  ipconfig0 = each.value.ipconfig0
   os_type = "ubuntu"
   scsihw = "virtio-scsi-pci"
   tags = each.value.tags
@@ -25,14 +25,13 @@ resource "proxmox_vm_qemu" "vm_provision" {
   }
 
   disk {
-    type = "virtio"
+    type = "scsi"
     storage = "local-lvm"
-    backup  = true
-    cache   = "none"
     file    = "vm-${each.value.vmid}-disk-0"
-    format  = "raw"
     size = each.value.resources.disk
     volume  = "local-lvm:vm-${each.value.vmid}-disk-0"
+    discard = "on"
+    ssd = 1
   }
 
   lifecycle {
