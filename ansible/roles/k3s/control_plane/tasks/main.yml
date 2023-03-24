@@ -13,7 +13,7 @@
     warn: false  # The ansible systemd module does not support reset-failed
 
 - name: Get host IP address
-  ansible.builtin.shell: dig +short {{ master_ip }}
+  ansible.builtin.shell: dig +short {{ master_ip }} | head -n1
   register: dns_result
 
 - name: Copy K3s service file
@@ -77,7 +77,7 @@
 
 - name: Replace https://localhost:6443 by https://master-ip:6443
   command: >-
-    echo k3s kubectl config set-cluster default --server=https://{{ dns_result.stdout }}:6443 --kubeconfig ~{{ ansible_user }}/.kube/config
+    k3s kubectl config set-cluster default --server=https://{{ dns_result.stdout }}:6443 --kubeconfig ~{{ ansible_user }}/.kube/config
   changed_when: true
 
 - name: Create kubectl symlink
