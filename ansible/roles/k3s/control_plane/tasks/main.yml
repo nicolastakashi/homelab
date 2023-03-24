@@ -18,7 +18,7 @@
 
 - name: Store Master NodeIP
   set_fact:
-    host_ip: "{{ dns_result }}"
+    host_ip: "{{ dns_result.stdout }}"
 
 - name: Copy K3s service file
   register: k3s_service
