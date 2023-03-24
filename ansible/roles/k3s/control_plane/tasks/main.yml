@@ -1,0 +1,7 @@
+---
+- name: Get host IP address
+  ansible.builtin.shell: dig +short {{ master_ip }}
+  register: dns_result
+
+- name: Set environment variable
+  ansible.builtin.shell: echo "export HOST_IP={{ dns_result.stdout }}" >> /etc/environment
