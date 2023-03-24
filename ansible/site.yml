@@ -10,3 +10,8 @@
   become: yes
   roles:
     - role: k3s/control_plane
+
+- hosts: k3s_worker_node
+  become: yes
+  roles:
+    - role: k3s/worker_node

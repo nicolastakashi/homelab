@@ -16,6 +16,10 @@
   ansible.builtin.shell: dig +short {{ master_ip }} | head -n1
   register: dns_result
 
+- name: Store Master NodeIP
+  set_fact:
+    host_ip: "{{ dns_result }}"
+
 - name: Copy K3s service file
   register: k3s_service
   template:
