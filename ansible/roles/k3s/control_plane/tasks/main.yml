@@ -13,7 +13,7 @@
     warn: false  # The ansible systemd module does not support reset-failed
 
 - name: Get host IP address
-  ansible.builtin.shell: dig +short {{ master_ip }} | head -n1
+  ansible.builtin.shell: dig +short {{ master_dns }} | head -n1
   register: dns_result
 
 - name: Store Master NodeIP
