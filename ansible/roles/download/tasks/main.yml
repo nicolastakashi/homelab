@@ -2,6 +2,7 @@
 - name: Download k3s binary x64
   get_url:
     url: https://github.com/k3s-io/k3s/releases/download/{{ k3s_version }}/k3s
+    validate_certs: false
     checksum: sha256:https://github.com/k3s-io/k3s/releases/download/{{ k3s_version }}/sha256sum-amd64.txt
     dest: /usr/local/bin/k3s
     owner: root
@@ -12,6 +13,7 @@
 - name: Download k3s binary arm64
   get_url:
     url: https://github.com/k3s-io/k3s/releases/download/{{ k3s_version }}/k3s-arm64
+    validate_certs: false
     checksum: sha256:https://github.com/k3s-io/k3s/releases/download/{{ k3s_version }}/sha256sum-arm64.txt
     dest: /usr/local/bin/k3s
     owner: root
@@ -25,6 +27,7 @@
 - name: Download k3s binary armhf
   get_url:
     url: https://github.com/k3s-io/k3s/releases/download/{{ k3s_version }}/k3s-armhf
+    validate_certs: false
     checksum: sha256:https://github.com/k3s-io/k3s/releases/download/{{ k3s_version }}/sha256sum-arm.txt
     dest: /usr/local/bin/k3s
     owner: root
