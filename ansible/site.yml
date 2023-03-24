@@ -6,7 +6,7 @@
     - role: prereq
     - role: download
 
-- hosts: k8s_control_plane
+- hosts: k3s_control_plane
   become: yes
   roles:
     - role: k3s/control_plane
