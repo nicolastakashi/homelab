@@ -5,4 +5,11 @@ systemd_dir: /etc/systemd/system
 master_dns: "{{ hostvars[groups['k3s_control_plane'][0]]['ansible_host'] | default(groups['k3s_control_plane'][0]) }}"
 extra_server_args: 
   --disable traefik
+  --disable-network-policy
 extra_agent_args: ""
+
+helm_version: 'v3.11.2'
+helm_platform: linux
+helm_arch: amd64
+helm_repo_path: "https://get.helm.sh"
+helm_bin_path: /usr/local/bin/helm

@@ -9,6 +9,7 @@
 - hosts: k3s_control_plane
   become: yes
   roles:
+    - role: helm
     - role: k3s/control_plane
 
 - hosts: k3s_worker_node
