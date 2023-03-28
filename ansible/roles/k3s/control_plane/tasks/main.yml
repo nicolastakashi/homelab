@@ -102,7 +102,7 @@
       command:
         cmd: k3s kubectl get nodes -l "node-role.kubernetes.io/master=true" -o=jsonpath="{.items[*].metadata.name}"
       register: nodes
-      until: nodes.rc == 0 and (nodes.stdout.split() | length) == (groups['master'] | length)
+      until: nodes.rc == 0 and (nodes.stdout.split() | length) == (groups['k3s_control_plane'] | length)
       retries: "{{ retry_count | default(20) }}"
       delay: 10
       changed_when: false
