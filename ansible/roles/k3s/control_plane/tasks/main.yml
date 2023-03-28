@@ -99,3 +99,10 @@
 - name: adding cilium repo
   command: helm repo add cilium https://helm.cilium.io/
   changed_when: true
+
+- name: install cilium
+  command: >-
+    helm install cilium cilium/cilium \
+    --namespace cilium-system \
+    --set operator.replicas=1 \
+    --create-namespace
