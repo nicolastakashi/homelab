@@ -1,4 +1,7 @@
 ---
+dependencies:
+  - role: helm
+
 - name: Clean previous runs of k3s.service
   systemd:
     name: k3s.service
