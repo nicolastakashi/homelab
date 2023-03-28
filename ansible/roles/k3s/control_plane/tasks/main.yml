@@ -95,3 +95,7 @@
     src: /usr/local/bin/k3s
     dest: /usr/local/bin/crictl
     state: link
+
+- name: adding cilium repo
+  command: helm repo add cilium https://helm.cilium.io/
+  changed_when: true
