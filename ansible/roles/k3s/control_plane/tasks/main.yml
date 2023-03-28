@@ -96,6 +96,17 @@
     dest: /usr/local/bin/crictl
     state: link
 
+- name: Verification master node
+  block:
+    - name: Verify that all nodes actually joined (check k3s-init.service if this fails)
+      command:
+        cmd: k3s kubectl get nodes -l "node-role.kubernetes.io/master=true" -o=jsonpath="{.items[*].metadata.name}"
+      register: nodes
+      until: nodes.rc == 0 and (nodes.stdout.split() | length) == (groups['master'] | length)
+      retries: "{{ retry_count | default(20) }}"
+      delay: 10
+      changed_when: false
+
 - name: adding cilium repo
   command: helm repo add cilium https://helm.cilium.io/
   changed_when: true
