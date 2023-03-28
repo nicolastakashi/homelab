@@ -117,5 +117,4 @@
     helm upgrade -i cilium cilium/cilium \
     --namespace cilium-system \
     --set operator.replicas=1 \
-    --create-namespace \
-    --kubeconfig=~{{ ansible_user }}/.kube/config
+    --create-namespace
