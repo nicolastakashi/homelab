@@ -1,6 +1,6 @@
 - name: Copy Git Repo Secret
-  template:
-    src: "homelabrepo.yaml"
+  copy:
+    src: "{{ role_path }}/files/homelabrepo.yaml"
     dest: "/tmp/homelabrepo.yaml"
     owner: root
     group: root
