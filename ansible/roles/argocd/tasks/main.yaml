@@ -1,7 +1,28 @@
 - name: Copy Git Repo Secret
+  changed_when: true
   copy:
     src: "{{ role_path }}/files/homelabrepo.yaml"
     dest: "/tmp/homelabrepo.yaml"
     owner: root
     group: root
     mode: 0755
+
+- name: adding argo repo
+  command: helm repo add argo https://argoproj.github.io/argo-helm
+  changed_when: true
+
+- name: install argocd
+  changed_when: true
+  command: >-
+    helm upgrade -i argocd argo/argo-cd \
+    --namespace argocd-system \
+    --create-namespace \
+    --kubeconfig ~{{ ansible_user }}/.kube/config
+
+- name: create argo repo secret
+  changed_when: true
+  command: kubectl --kubeconfig ~{{ ansible_user }}/.kube/config apply -f /tmp/homelabrepo.yaml
+
+- name: delete homelab repo file
+  changed_when: true
+  command: rm -rf /tmp/homelabrepo.yaml
