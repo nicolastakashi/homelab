@@ -1,12 +1,6 @@
-- name: Loading bashrc
-  shell: source ~{{ ansible_user }}/.bashrc  && echo $GIT_TOKEN
-  args: 
-    executable: /bin/bash
-  register: git_token
-
 - name: Basic usage
   ansible.builtin.debug:
-    msg: "{{ git_token.stdout }}"
+    msg: "'{{ lookup('ansible.builtin.env', 'GIT_TOKEN') }}' is the HOME environment variable."
     
 - name: Copy Git Repo Secret
   template:
