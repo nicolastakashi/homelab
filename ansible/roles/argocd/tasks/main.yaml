@@ -3,7 +3,11 @@
   args: 
     executable: /bin/bash
   register: git_token
-  
+
+- name: Basic usage
+  ansible.builtin.debug:
+    msg: "'{{ git_token.stdout }}'"
+    
 - name: Copy Git Repo Secret
   template:
     src: "homelabsecret.j2"
