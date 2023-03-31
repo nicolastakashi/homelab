@@ -1,11 +1,7 @@
-- name: Basic usage
-  ansible.builtin.debug:
-    msg: "'{{ lookup('ansible.builtin.env', 'GIT_TOKEN') }}' is the HOME environment variable."
-    
 - name: Copy Git Repo Secret
   template:
-    src: "homelabsecret.j2"
-    dest: "/tmp/homelabsecret.yaml"
+    src: "homelabrepo.yaml"
+    dest: "/tmp/homelabrepo.yaml"
     owner: root
     group: root
     mode: 0755
