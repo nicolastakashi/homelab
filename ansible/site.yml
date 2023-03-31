@@ -11,6 +11,7 @@
   roles:
     - role: helm
     - role: k3s/control_plane
+    - role: argocd
 
 - hosts: k3s_worker_node
   become: yes

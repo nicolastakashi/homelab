@@ -1,0 +1,7 @@
+- name: Copy Git Repo Secret
+  template:
+    src: "homelabsecret.j2"
+    dest: "/tmp/homelabsecret.yaml"
+    owner: root
+    group: root
+    mode: 0755
