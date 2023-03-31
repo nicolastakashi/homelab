@@ -1,12 +1,12 @@
 - name: Loading bashrc
-  shell: . ~/.bashrc  && echo $GIT_TOKEN
+  shell: source ~{{ ansible_user }}/.bashrc  && echo $GIT_TOKEN
   args: 
     executable: /bin/bash
   register: git_token
 
 - name: Basic usage
   ansible.builtin.debug:
-    msg: "'{{ git_token.stdout }}'"
+    msg: "{{ git_token.stdout }}"
     
 - name: Copy Git Repo Secret
   template:
