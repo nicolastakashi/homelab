@@ -5,7 +5,6 @@ systemd_dir: /etc/systemd/system
 master_dns: "{{ hostvars[groups['k3s_control_plane'][0]]['ansible_host'] | default(groups['k3s_control_plane'][0]) }}"
 extra_server_args: 
   --disable traefik
-  --flannel-backend=none
   --disable-network-policy
 extra_agent_args: ""
 
