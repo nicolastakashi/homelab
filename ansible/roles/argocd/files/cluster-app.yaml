@@ -21,7 +21,7 @@ spec:
       valueFiles:
         - values.yaml
     repoURL: https://github.com/nicolastakashi/homelab.git
-    path: ./apps/cluster
+    path: ./argo/apps/cluster
     targetRevision: HEAD
   syncPolicy:
     automated:
