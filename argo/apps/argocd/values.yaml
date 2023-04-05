@@ -11,7 +11,7 @@ argocd:
     targetRevision: argo-cd-5.28.0
   values:
     global:
-      revisionHistoryLimit: 1
+      revisionHistoryLimit: 0
       logging:
         format: json
         level: warn
