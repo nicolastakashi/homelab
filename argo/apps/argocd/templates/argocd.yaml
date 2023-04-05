@@ -5,7 +5,7 @@ metadata:
   name: {{ .Values.namespace.values.namespace.name }}-app
   namespace: {{ .Values.namespace.values.namespace.name }}
   annotations:
-    argocd.argoproj.io/sync-wave: {{ .Values.waves.application | quote }}
+    argocd.argoproj.io/sync-wave: "600"
 spec:
   destination:
     namespace: {{ .Values.namespace.values.namespace.name  }}
