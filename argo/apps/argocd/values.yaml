@@ -4,3 +4,8 @@ namespace:
   values:
     namespace:
       name: argocd-system
+
+argocd:
+  source:
+    url: https://github.com/argoproj/argo-helm.git
+    targetRevision: argo-cd-5.28.0

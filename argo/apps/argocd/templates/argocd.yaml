@@ -1,0 +1,30 @@
+{{- if .Values.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.namespace.values.namespace.name }}-app
+  namespace: {{ .Values.namespace.values.namespace.name }}
+  annotations:
+    argocd.argoproj.io/sync-wave: {{ .Values.waves.application | quote }}
+spec:
+  destination:
+    namespace: {{ .Values.namespace.values.namespace.name  }}
+    server: https://kubernetes.default.svc
+  project: apps-project
+  source:
+    helm:
+      releaseName: {{ .Values.namespace.values.namespace.name }}
+      {{- with .Values.argocd.values }}
+      values: |
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    repoURL: {{ .Values.argocd.source.url }}
+    targetRevision: {{ .Values.argocd.source.targetRevision }}
+    path: ./charts/argo-cd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: -1
+{{- end -}}
