@@ -32,15 +32,6 @@
   changed_when: true
   command: kubectl --kubeconfig ~{{ ansible_user }}/.kube/config apply -f /tmp/homelabrepo.yaml
 
-- name: update password
-  changed_when: true
-  command: >-
-    kubectl --kubeconfig ~{{ ansible_user }}/.kube/config -n argocd-system patch secret argocd-secret \                                                                       ✔  homelab ⎈ ▓▒░
-    -p '{"stringData": {
-      "admin.password": "$2a$12$JhuqMolJSiFp5upUraEwfew1D1jg8Qw12FiKjLI1McC7rWZXNLqZG",
-      "admin.passwordMtime": "'$(date +%FT%T%Z)'"
-    }}'
-
 - name: create cluster app
   changed_when: true
   command: kubectl --kubeconfig ~{{ ansible_user }}/.kube/config apply -f /tmp/cluster-app.yaml
