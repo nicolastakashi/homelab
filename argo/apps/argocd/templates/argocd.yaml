@@ -13,7 +13,7 @@ spec:
   project: apps-project
   source:
     helm:
-      releaseName: {{ .Values.namespace.values.namespace.name }}
+      releaseName: "argocd"
       {{- with .Values.argocd.values }}
       values: |
         {{- toYaml . | nindent 8 }}
