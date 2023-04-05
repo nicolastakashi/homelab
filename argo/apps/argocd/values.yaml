@@ -3,4 +3,4 @@ enabled: true
 namespace:
   values:
     namespace:
-      name: argocd
+      name: argocd-system
