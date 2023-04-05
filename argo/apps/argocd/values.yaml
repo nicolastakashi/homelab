@@ -10,5 +10,7 @@ argocd:
     url: https://github.com/argoproj/argo-helm.git
     targetRevision: argo-cd-5.28.0
   values:
+    global:
+      revisionHistoryLimit: 1
     dex:
       enabled: false
