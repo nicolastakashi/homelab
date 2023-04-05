@@ -12,5 +12,8 @@ argocd:
   values:
     global:
       revisionHistoryLimit: 1
+      logging:
+        format: json
+        level: warn
     dex:
       enabled: false
