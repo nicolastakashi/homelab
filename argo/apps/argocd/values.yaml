@@ -1,0 +1,6 @@
+enabled: true
+
+namespace:
+  values:
+    namespace:
+      name: argocd
