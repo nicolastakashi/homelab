@@ -6,6 +6,15 @@
     owner: root
     group: root
     mode: 0755
+  
+- name: Copy cluster app
+  changed_when: true
+  copy:
+    src: "{{ role_path }}/files/cluster-app.yaml"
+    dest: "/tmp/cluster-app.yaml"
+    owner: root
+    group: root
+    mode: 0755
 
 - name: adding argo repo
   command: helm repo add argo https://argoproj.github.io/argo-helm
@@ -23,6 +32,26 @@
   changed_when: true
   command: kubectl --kubeconfig ~{{ ansible_user }}/.kube/config apply -f /tmp/homelabrepo.yaml
 
-- name: delete homelab repo file
+- name: update password
   changed_when: true
-  command: rm -rf /tmp/homelabrepo.yaml
+  command: >-
+    kubectl --kubeconfig ~{{ ansible_user }}/.kube/config -n argocd-system patch secret argocd-secret \                                                                       ✔  homelab ⎈ ▓▒░
+    -p '{"stringData": {
+      "admin.password": "$2a$12$JhuqMolJSiFp5upUraEwfew1D1jg8Qw12FiKjLI1McC7rWZXNLqZG",
+      "admin.passwordMtime": "'$(date +%FT%T%Z)'"
+    }}'
+
+- name: create cluster app
+  changed_when: true
+  command: kubectl --kubeconfig ~{{ ansible_user }}/.kube/config apply -f /tmp/cluster-app.yaml
+
+
+- name: delete homelab repo file
+  ansible.builtin.file:
+    path: /tmp/homelabrepo.yaml
+    state: absent
+
+- name: delete cluster app file
+  ansible.builtin.file:
+    path: /tmp/cluster-app.yaml
+    state: absent
