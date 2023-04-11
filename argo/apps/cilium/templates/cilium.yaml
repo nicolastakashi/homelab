@@ -1,0 +1,30 @@
+{{- if .Values.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.namespace.values.namespace.name }}-app
+  namespace: {{ .Values.namespace.values.namespace.name }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "600"
+spec:
+  destination:
+    namespace: {{ .Values.namespace.values.namespace.name  }}
+    server: https://kubernetes.default.svc
+  project: apps-project
+  source:
+    helm:
+      releaseName: "cilium"
+      {{- with .Values.cilium.values }}
+      values: |
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    repoURL: {{ .Values.cilium.source.url }}
+    targetRevision: {{ .Values.cilium.source.targetRevision }}
+    path: ./install/kubernetes/cilium
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: -1
+{{- end -}}

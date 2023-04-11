@@ -1,0 +1,14 @@
+enabled: true
+
+namespace:
+  values:
+    namespace:
+      name: cilium-system
+
+cilium:
+  source:
+    url: https://github.com/cilium/cilium.git
+    targetRevision: v1.13
+  values:
+    operator:
+      replicas: 1
