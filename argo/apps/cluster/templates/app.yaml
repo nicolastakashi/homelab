@@ -13,7 +13,7 @@ spec:
   project: apps-project
   source:
     helm:
-      releaseName: argocd
+      releaseName: {{ .source.releaseName }}
       valueFiles: 
         - values.yaml
     repoURL: {{ .source.url }}
