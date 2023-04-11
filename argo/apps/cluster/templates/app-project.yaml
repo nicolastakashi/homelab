@@ -18,5 +18,9 @@ spec:
   - group: '*'
     kind: '*'
   destinations:
-    - namespace: '*'
+    - namespace: argocd-system
+      server: https://kubernetes.default.svc
+    - namespace: cilium-system
+      server: https://kubernetes.default.svc
+    - namespace: kube-system
       server: https://kubernetes.default.svc
