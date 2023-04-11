@@ -1,13 +1,11 @@
 apps:
   - name: argocd
-    namespace: argocd-system
     source:
       targetRevision: HEAD
       url: https://github.com/nicolastakashi/homelab.git
       path: ./argo/apps/argocd
-  # - name: cilium
-  #   namespace: cilium-system
-  #   source:
-  #     targetRevision: HEAD
-  #     url: https://github.com/nicolastakashi/homelab.git
-  #     path: ./argo/apps/cilium
+  - name: cilium
+    source:
+      targetRevision: HEAD
+      url: https://github.com/nicolastakashi/homelab.git
+      path: ./argo/apps/cilium

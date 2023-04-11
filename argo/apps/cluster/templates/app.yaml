@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ .name }}-master-app
-  namespace: {{ .namespace }}
+  namespace: "argocd-system"
   annotations:
     argocd.argoproj.io/sync-wave: "200"
 spec:
