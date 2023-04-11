@@ -14,13 +14,6 @@ spec:
   source:
     helm:
       releaseName: argocd
-      parameters:
-        - name: source.targetRevision
-          value: {{ .source.targetRevision }}
-        - name: source.url
-          value: {{ .source.url }}
-        - name: argocd.namespace
-          value: {{ .namespace }}
       valueFiles: 
         - values.yaml
     repoURL: {{ .source.url }}
