@@ -1,34 +1,35 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: cluster-app
+  name: cluster-addons
   namespace: argocd-system
 spec:
-  destination:
-    namespace: argocd-system
-    server: https://kubernetes.default.svc
-  project: default
-  source:
-    helm:
-      releaseName: cluster-app
-      parameters:
-        - name: source.targetRevision
-          value: HEAD
-        - name: source.repoURL
-          value: https://github.com/nicolastakashi/homelab.git
-        - name: argocd.namespace
-          value: argocd-system
-      valueFiles:
-        - values.yaml
-    repoURL: https://github.com/nicolastakashi/homelab.git
-    path: ./argo/apps/cluster
-    targetRevision: HEAD
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    retry:
-      limit: -1
-      backoff:
-        duration: 15s
-        factor: 1
+  generators:
+    - git:
+        repoURL: https://github.com/nicolastakashi/homelab.git
+        revision: main
+        directories:
+          - path: argo/apps/*
+  template:
+    metadata:
+      name: "leader-app-{{path.basename}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/nicolastakashi/homelab.git
+        targetRevision: main
+        path: "{{path}}"
+        helm:
+          releaseName: "{{path.basename}}"
+          values: |
+            namespace:
+              name: {{path.basename}}
+            source:
+              url: https://github.com/nicolastakashi/homelab.git
+              targetRevision: main
+              path: argo/apps/{{path}}
+          valueFiles:
+            - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{path.basename}}"
