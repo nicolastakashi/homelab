@@ -10,7 +10,7 @@ spec:
   destination:
     namespace: {{ .Values.namespace.values.namespace.name  }}
     server: https://kubernetes.default.svc
-  project: apps-project
+  project: default
   source:
     helm:
       releaseName: "cilium"
