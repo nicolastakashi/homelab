@@ -12,7 +12,7 @@ spec:
           - path: argo/apps/*
   template:
     metadata:
-      name: "leader-app-{{path.basename}}"
+      name: "{{path.basename}}-app"
     spec:
       project: default
       source:
