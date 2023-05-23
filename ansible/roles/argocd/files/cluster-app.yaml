@@ -30,6 +30,15 @@ spec:
               path: argo/apps/{{path}}
           valueFiles:
             - values.yaml
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        retry:
+          limit: -1
+          backoff:
+            duration: 15s
+            factor: 1
       destination:
         server: https://kubernetes.default.svc
         namespace: "{{path.basename}}"

@@ -17,3 +17,12 @@ argocd:
         level: warn
     dex:
       enabled: false
+    server:
+      extraArgs:
+        - --insecure
+
+      ingress:
+        enabled: true
+        ingressClassName: "nginx"
+        hosts:
+          - argocd.ntakashi.com
