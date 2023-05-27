@@ -1,0 +1,4 @@
+namespace:
+  values:
+    namespace:
+      name: cloudflare

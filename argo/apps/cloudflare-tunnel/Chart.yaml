@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: v2.2.2
+name: cloudflare-tunnel
+description: A Helm chart for cloudflare-tunnel, a declarative, GitOps continuous delivery tool for Kubernetes.
+type: application
+version: 0.1.0
