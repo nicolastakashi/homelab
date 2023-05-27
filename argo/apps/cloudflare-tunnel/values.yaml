@@ -1,7 +1,7 @@
 namespace:
   values:
     namespace:
-      name: cloudflare
+      name: cloudflare-tunnel
 
 # Default values for cloudflare-tunnel.
 
