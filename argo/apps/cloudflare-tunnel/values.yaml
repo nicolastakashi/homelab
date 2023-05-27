@@ -2,3 +2,9 @@ namespace:
   values:
     namespace:
       name: cloudflare
+
+tunnel:
+  source:
+    url: https://github.com/cloudflare/argo-tunnel-examples.git
+    targetRevision: master
+  values: {}
