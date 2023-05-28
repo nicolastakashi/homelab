@@ -4,7 +4,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "cloudflare-tunnel.fullname" . }}
-  namespace: {{ .Values.namespace.values.namespace.name }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "cloudflare-tunnel.labels" . | nindent 4 }}
 spec:
