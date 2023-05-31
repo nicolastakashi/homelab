@@ -3,7 +3,7 @@ namespace:
     namespace:
       name: observability
 
-prometheus-operator-crds:
+prometheusOperatorCrds:
   source:
     url: https://github.com/prometheus-community/helm-charts.git
     targetRevision: prometheus-operator-crds-4.0.0
