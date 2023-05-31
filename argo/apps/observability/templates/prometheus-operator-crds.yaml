@@ -4,7 +4,7 @@ metadata:
   name: 'prometheus-operator-crds'
   namespace: "argocd-system"
   annotations:
-    argocd.argoproj.io/sync-wave: "600"
+    argocd.argoproj.io/sync-wave: "500"
 spec:
   destination:
     namespace: {{ .Values.namespace.values.namespace.name  }}
