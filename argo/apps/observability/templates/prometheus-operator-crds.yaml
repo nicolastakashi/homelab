@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.namespace.values.namespace.name }}
+  namespace: "argocd-system"
+  annotations:
+    argocd.argoproj.io/sync-wave: "600"
+spec:
+  destination:
+    namespace: {{ .Values.namespace.values.namespace.name  }}
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      releaseName: "prometheus-operator-crds"
+      {{- with .Values.prometheus-operator-crds.values }}
+      values: |
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    repoURL: {{ .Values.prometheus-operator-crds.source.url }}
+    targetRevision: {{ .Values.prometheus-operator-crds.source.targetRevision }}
+    path: ./charts/prometheus-operator-crds
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: -1
