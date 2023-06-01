@@ -17,7 +17,19 @@ argocd:
         level: warn
     dex:
       enabled: false
+
+    controller:
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+
     server:
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+
       extraArgs:
         - --insecure
 
