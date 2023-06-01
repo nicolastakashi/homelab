@@ -15,4 +15,8 @@ grafana:
   source:
     url: https://github.com/grafana/helm-charts.git
     targetRevision: grafana-6.57.0
-  values: {}
+  values:
+    ingress:
+      enabled: true
+      hosts:
+        - grafana.ntakashi.com
