@@ -753,7 +753,7 @@ prometheus:
 
     ## Log format for Prometheus be configured in
     ##
-    logFormat: logfmt
+    logFormat: json
 
     ## Prefix used to register routes, overriding externalUrl route.
     ## Useful for proxies that rewrite URLs.
