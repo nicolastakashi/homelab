@@ -10,3 +10,9 @@ prometheusOperatorCrds:
   values:
     annotations:
       argocd.argoproj.io/sync-options: ServerSideApply=true
+
+grafana:
+  source:
+    url: https://github.com/grafana/helm-charts.git
+    targetRevision: grafana-6.57.0
+  values: {}
