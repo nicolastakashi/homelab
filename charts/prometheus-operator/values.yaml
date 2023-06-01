@@ -216,7 +216,7 @@ prometheusOperator:
 
   ## Define Log Format
   # Use logfmt (default) or json logging
-  # logFormat: logfmt
+  logFormat: json
 
   ## Decrease log verbosity to errors only
   # logLevel: error
