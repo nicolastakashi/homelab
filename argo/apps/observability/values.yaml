@@ -18,5 +18,6 @@ grafana:
   values:
     ingress:
       enabled: true
+      ingressClassName: "nginx"
       hosts:
         - grafana.ntakashi.com
