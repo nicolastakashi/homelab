@@ -17,7 +17,7 @@ maintainers:
     email: miroslav.hadzhiev@gmail.com
   - name: QuentinBisson
     email: quentin.bisson@gmail.com
-name: prometheus-operator
+name: prometheus
 sources:
   - https://github.com/prometheus-community/helm-charts
   - https://github.com/prometheus-operator/kube-prometheus
