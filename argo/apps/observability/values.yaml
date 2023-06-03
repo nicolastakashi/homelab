@@ -27,6 +27,7 @@ grafana:
             isDefault: true
             jsonData:
               timeInterval: 30s
+              defaultEditor: "code"
     persistence:
       type: pvc
       enabled: true
