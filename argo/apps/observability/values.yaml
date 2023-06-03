@@ -16,6 +16,7 @@ grafana:
     url: https://github.com/grafana/helm-charts.git
     targetRevision: grafana-6.57.0
   values:
+    revisionHistoryLimit: 1
     datasources:
       datasources.yaml:
         apiVersion: 1
@@ -26,8 +27,11 @@ grafana:
             access: proxy
             isDefault: true
             jsonData:
+              queryTimeout: 120s
               timeInterval: 30s
               defaultEditor: "code"
+              prometheusType: "Prometheus"
+              prometheusVersion: "2.44.0"
     persistence:
       type: pvc
       enabled: true
