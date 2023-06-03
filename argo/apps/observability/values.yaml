@@ -16,6 +16,15 @@ grafana:
     url: https://github.com/grafana/helm-charts.git
     targetRevision: grafana-6.57.0
   values:
+    persistence:
+      type: pvc
+      enabled: true
+      storageClassName: local-path
+      accessModes:
+        - ReadWriteOnce
+      size: 5Gi
+      finalizers:
+        - kubernetes.io/pvc-protection
     ingress:
       enabled: true
       ingressClassName: "nginx"
