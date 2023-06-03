@@ -16,15 +16,15 @@ grafana:
     url: https://github.com/grafana/helm-charts.git
     targetRevision: grafana-6.57.0
   values:
-  datasources:
-    datasources.yaml:
-      apiVersion: 1
-      datasources:
-        - name: Prometheus
-          type: prometheus
-          url: http://prometheus-prometheus.observability.svc.cluster.local:9090
-          access: proxy
-          isDefault: true
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            url: http://prometheus-prometheus.observability.svc.cluster.local:9090
+            access: proxy
+            isDefault: true
     persistence:
       type: pvc
       enabled: true
