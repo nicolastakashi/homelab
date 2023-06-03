@@ -25,7 +25,7 @@ grafana:
             url: http://prometheus-prometheus.observability.svc.cluster.local:9090
             access: proxy
             isDefault: true
-            scrapeInterval: "30s"
+            scrape_intervall: "30s"
     persistence:
       type: pvc
       enabled: true
