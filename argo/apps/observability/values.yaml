@@ -31,7 +31,7 @@ grafana:
               timeInterval: 30s
               defaultEditor: "code"
               prometheusType: "Prometheus"
-              prometheusVersion: "v2.44.0"
+              prometheusVersion: "2.40.1"
     persistence:
       type: pvc
       enabled: true

@@ -16,6 +16,15 @@ variable "proxmox_api_token_secret" {
     sensitive = true
 }
 
+packer {
+  required_plugins {
+    proxmox = {
+      version = " >= 1.1.3"
+      source  = "github.com/hashicorp/proxmox"
+    }
+  }
+}
+
 source "proxmox-iso" "ubuntu-server-jammy" {
 
     # Proxmox Connection Settings
@@ -26,7 +35,7 @@ source "proxmox-iso" "ubuntu-server-jammy" {
     insecure_skip_tls_verify = true
 
     # VM General Settings
-    node = "cortex"
+    node = "cotex"
     vm_id = "901"
     vm_name = "ubuntu-server-jammy"
     template_description = "Ubuntu Server jammy Image"
