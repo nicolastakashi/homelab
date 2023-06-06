@@ -17,8 +17,8 @@ k3s-worker-node-01:
   tags: "k8s,k8s-worker-node"
   ipconfig0: "ip=dhcp"
   resources:
-    cpu: 2
-    memory: 4096
+    cpu: 4
+    memory: 8192
     disk: 20G
 k3s-worker-node-02:
   description: "kubernetes worker-node-02"
@@ -28,6 +28,6 @@ k3s-worker-node-02:
   tags: "k8s,k8s-worker-node"
   ipconfig0: "ip=dhcp"
   resources:
-    cpu: 2
-    memory: 4096
+    cpu: 4
+    memory: 8192
     disk: 20G
