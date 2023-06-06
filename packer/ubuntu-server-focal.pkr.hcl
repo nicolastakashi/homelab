@@ -25,7 +25,7 @@ packer {
   }
 }
 
-source "proxmox-iso" "ubuntu-server-jammy" {
+source "proxmox" "ubuntu-server-jammy" {
 
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
@@ -113,7 +113,7 @@ source "proxmox-iso" "ubuntu-server-jammy" {
 build {
 
     name = "ubuntu-server-jammy"
-    sources = ["source.proxmox-iso.ubuntu-server-jammy"]
+    sources = ["source.proxmox.ubuntu-server-jammy"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
@@ -126,6 +126,7 @@ build {
             "sudo apt -y autoclean",
             "sudo cloud-init clean",
             "sudo rm -f /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg",
+            "sudo rm -f /etc/netplan/00-installer-config.yaml",
             "sudo sync"
         ]
     }
