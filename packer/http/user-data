@@ -11,6 +11,7 @@ autoinstall:
     ssh_quiet_keygen: true
     allow_public_ssh_keys: true
   packages:
+    - avahi-daemon
     - qemu-guest-agent
     - sudo
   storage:

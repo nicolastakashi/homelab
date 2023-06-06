@@ -2,7 +2,7 @@ k3s-control-plane:
   description: "kubernetes control-plane"
   target_node: cortex
   vmid: 201
-  clone: "ubuntu-2204-template"
+  clone: "ubuntu-server-jammy"
   tags: "k8s,k8s-control-plane"
   ipconfig0: "ip=dhcp"
   resources:
@@ -13,7 +13,7 @@ k3s-worker-node-01:
   description: "kubernetes worker-node-01"
   target_node: cortex
   vmid: 202
-  clone: "ubuntu-2204-template"
+  clone: "ubuntu-server-jammy"
   tags: "k8s,k8s-worker-node"
   ipconfig0: "ip=dhcp"
   resources:
@@ -24,7 +24,7 @@ k3s-worker-node-02:
   description: "kubernetes worker-node-02"
   target_node: cortex
   vmid: 203
-  clone: "ubuntu-2204-template"
+  clone: "ubuntu-server-jammy"
   tags: "k8s,k8s-worker-node"
   ipconfig0: "ip=dhcp"
   resources:
