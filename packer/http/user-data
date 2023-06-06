@@ -30,4 +30,4 @@ autoinstall:
         # passwd: your-password
         # - or -
         ssh_authorized_keys:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC55vFwPH7mZmFn1azhQmR6z4B5JZ0SPj6Vw77D/9icExtrVjhxWQ8FLuSTAQPUzr7AFfKypDkh17TjmqWuloypLqoGhF+zzRAvWcSIgFqwMrwlUyqj+IabFOlx+o0ZLzymNnw0BkTN76NqKW33epqBndKbtV9b9FEILpOmxPoUiMwot2LbEFzeqwhymDoaVPg3nt1UE2wwHQ7oDnOoCHeu5KkclLwPba/WeuDNmEOdkZgQBiLxMflBIlYDN2p7hcd+fnTRbD/O5tXZkEGZzdFA6/CR1nzp7xQTglbLW6EGiyYQLGmWAwjTnVzIlHEwHYdV8jhiKo8CT9mnsjIpDr03 root@cortex
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD4QYmbZqAaSmJ76dFieVpJ9OC/3ehSVvKjhG4xOytZgCBzm/JNQJ3/AlEU434mgECFcWGcvpTOjvF8CJqNQIl0Y44HkuDH/2Epf/aTzVIbquFOAlBT9Wax2F6K0+H70OsTvNyR/AGzHJJCwVtAZwfw2MVeOwOpCs+jl2/k2/8ykCvZNZS3/UhBI3SjkuDmZkxiOd+IgDzyZJERntz+AihJk0OoRUjy0x1aL2TkkPSqS36UCcmFIBzpg9OMSkYChGQL4wgYCF1Pu1eIeOY80BU6+iCTCd8yPWk+ncQeO0HMhQT/MZbdJP22if7R4WiJN7bvMPBornATyt7bsgIIayq3 root@cotex
