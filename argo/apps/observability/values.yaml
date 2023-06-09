@@ -52,5 +52,6 @@ openTelemetryOperator:
     url: https://github.com/open-telemetry/opentelemetry-helm-charts.git
     targetRevision: opentelemetry-operator-0.31.0
   values:
-    certManager:
-      enabled: true
+    admissionWebhooks:
+      certManager:
+        enabled: true
