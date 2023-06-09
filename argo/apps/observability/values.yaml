@@ -46,3 +46,9 @@ grafana:
       ingressClassName: "nginx"
       hosts:
         - grafana.ntakashi.com
+
+openTelemetryOperator:
+  source:
+    url: https://github.com/open-telemetry/opentelemetry-helm-charts.git
+    targetRevision: opentelemetry-operator-0.31.0
+  values: {}
