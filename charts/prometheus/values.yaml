@@ -976,7 +976,9 @@ prometheus:
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#thanosspec
     ##
     thanos:
-      {}
+      objectStorageConfig:
+        name: thanos-storage-config
+        key: config.yaml
       # secretProviderClass:
       #   provider: gcp
       #   parameters:
