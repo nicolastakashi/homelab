@@ -12,14 +12,15 @@ spec:
   project: default
   source:
     helm:
-      releaseName: "grafana"
+      releaseName: thanos
       {{- with .Values.thanos.values }}
       values: |
         {{- toYaml . | nindent 8 }}
       {{- end }}
-    repoURL: {{ .Values.thanos.source.url }}
-    targetRevision: {{ .Values.thanos.source.targetRevision }}
-    path: ./bitnami/thanos
+    repoURL: oci://registry-1.docker.io/bitnamicharts
+    chart: thanos
+    targetRevision: 12.11.1
+    # path: ./bitnami/thanos
   syncPolicy:
     automated:
       prune: true
