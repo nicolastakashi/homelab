@@ -55,3 +55,16 @@ openTelemetryOperator:
     admissionWebhooks:
       certManager:
         enabled: false
+
+thanos:
+  source:
+    url: registry-1.docker.io/bitnamicharts
+    targetRevision: 12.11.1
+  values:
+    existingObjstoreSecret: thanos-storage-config
+
+    queryFrontend:
+      enabled: false
+
+    query:
+      logFormat: json

@@ -35,7 +35,7 @@ source "proxmox" "ubuntu-server-jammy" {
     insecure_skip_tls_verify = true
 
     # VM General Settings
-    node = "cotex"
+    node = "pve"
     vm_id = "901"
     vm_name = "ubuntu-server-jammy"
     template_description = "Ubuntu Server jammy Image"
@@ -45,8 +45,8 @@ source "proxmox" "ubuntu-server-jammy" {
     # iso_file = "local:iso/ubuntu-22.04-live-server-amd64.iso"
     # - or -
     # (Option 2) Download ISO
-    iso_url = "http://releases.ubuntu.com/22.04.2/ubuntu-22.04.2-live-server-amd64.iso"
-    iso_checksum = "5e38b55d57d94ff029719342357325ed3bda38fa80054f9330dc789cd2d43931"
+    iso_url = "https://releases.ubuntu.com/releases/jammy/ubuntu-22.04.3-live-server-amd64.iso"
+    iso_checksum = "a4acfda10b18da50e2ec50ccaf860d7f20b389df8765611142305c0e911d16fd"
     iso_storage_pool = "local"
     unmount_iso = true
 
@@ -98,7 +98,7 @@ source "proxmox" "ubuntu-server-jammy" {
     # http_port_min = 8802
     # http_port_max = 8802
 
-    ssh_username = "automation"
+    ssh_username = "root"
     # (Option 1) Add your Password here
     # ssh_password = "your-password"
     # - or -

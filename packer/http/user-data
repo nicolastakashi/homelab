@@ -23,7 +23,7 @@ autoinstall:
     package_upgrade: false
     timezone: Europe/Lisbon
     users:
-      - name: automation
+      - name: root
         groups: [adm, sudo]
         lock-passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
@@ -31,4 +31,4 @@ autoinstall:
         # passwd: your-password
         # - or -
         ssh_authorized_keys:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD4QYmbZqAaSmJ76dFieVpJ9OC/3ehSVvKjhG4xOytZgCBzm/JNQJ3/AlEU434mgECFcWGcvpTOjvF8CJqNQIl0Y44HkuDH/2Epf/aTzVIbquFOAlBT9Wax2F6K0+H70OsTvNyR/AGzHJJCwVtAZwfw2MVeOwOpCs+jl2/k2/8ykCvZNZS3/UhBI3SjkuDmZkxiOd+IgDzyZJERntz+AihJk0OoRUjy0x1aL2TkkPSqS36UCcmFIBzpg9OMSkYChGQL4wgYCF1Pu1eIeOY80BU6+iCTCd8yPWk+ncQeO0HMhQT/MZbdJP22if7R4WiJN7bvMPBornATyt7bsgIIayq3 root@cotex
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOhZWEYTL85VGvMrofyZ8BZtSw3YHnK3kPyfwGsnmBUuH/Q1luM7CLt9c15al5c/bPFP2YsB8aQX6SAh3LBCBY3uHKyB1/nj8vm6TB35AdqafrDTScxv/8STvB7+FZUdNqNzNPTOB5I2Qiot1jzPExfufraTlSccgpJAVsJmh7OAcn4bCp0CrndNC2+IFwt11WXNGhNXgN1tc5WLVHFbM09Hqj8SwyTNmkNa75NGgn8Zpypy0r/iwZ12veK/YmctBX6GCma0olTc1o354rGJRRTvbdV2LxSAGm4rcpPg6Pui3rIX5t7AkXOli2DLKK6cY6KTYNO14QyOW+61rzfDud root@pve

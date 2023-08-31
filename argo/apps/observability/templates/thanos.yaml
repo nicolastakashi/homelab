@@ -17,10 +17,9 @@ spec:
       values: |
         {{- toYaml . | nindent 8 }}
       {{- end }}
-    repoURL: registry-1.docker.io/bitnamicharts
+    repoURL: {{ .Values.thanos.source.url }}
     chart: thanos
-    targetRevision: 12.11.1
-    # path: ./bitnami/thanos
+    targetRevision: {{ .Values.thanos.source.targetRevision }}
   syncPolicy:
     automated:
       prune: true

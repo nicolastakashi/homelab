@@ -1,0 +1,14 @@
+enabled: true
+
+namespace:
+  values:
+    namespace:
+      name: certmanager
+
+certmanager:
+  source:
+    url: https://charts.jetstack.io
+    targetRevision: 1.12.3
+
+  values:
+    installCRDs: true
