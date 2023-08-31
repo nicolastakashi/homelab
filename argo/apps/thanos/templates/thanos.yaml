@@ -17,7 +17,7 @@ spec:
       values: |
         {{- toYaml . | nindent 8 }}
       {{- end }}
-    repoURL: oci://registry-1.docker.io/bitnamicharts
+    repoURL: registry-1.docker.io/bitnamicharts
     chart: thanos
     targetRevision: 12.11.1
     # path: ./bitnami/thanos
