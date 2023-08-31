@@ -9,5 +9,5 @@ thanos:
     targetRevision: main
   values:
     existingObjstoreSecret: thanos-storage-config
-    queryFrontEnd:
+    queryFrontend:
       enabled: false
