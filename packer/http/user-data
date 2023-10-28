@@ -7,7 +7,7 @@ autoinstall:
   ssh:
     install-server: true
     allow-pw: true
-    disable_root: false
+    disable_root: true
     ssh_quiet_keygen: true
     allow_public_ssh_keys: true
   packages:
@@ -23,7 +23,7 @@ autoinstall:
     package_upgrade: false
     timezone: Europe/Lisbon
     users:
-      - name: root
+      - name: automation
         groups: [adm, sudo]
         lock-passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
