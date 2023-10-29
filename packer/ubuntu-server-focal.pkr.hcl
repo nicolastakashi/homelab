@@ -98,7 +98,7 @@ source "proxmox" "ubuntu-server-jammy" {
     # http_port_min = 8802
     # http_port_max = 8802
 
-    ssh_username = "root"
+    ssh_username = "automation"
     # (Option 1) Add your Password here
     # ssh_password = "your-password"
     # - or -
