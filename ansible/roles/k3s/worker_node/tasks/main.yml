@@ -9,7 +9,7 @@
 
 - name: Display all variables/facts known for a host
   ansible.builtin.debug:
-    var: hostvars
+    var: hostvars[groups['k3s_control_plane']
 
 - name: Enable and check K3s service
   systemd:
