@@ -8,11 +8,11 @@ namespace:
 cilium:
   source:
     url: https://github.com/cilium/cilium.git
-    targetRevision: v1.13
+    targetRevision: v1.14
   values:
     image:
-      tag: "v1.13.2"
+      tag: "v1.14.3"
     operator:
       replicas: 1
       image:
-        tag: "v1.13.2"
+        tag: "v1.14.3"
