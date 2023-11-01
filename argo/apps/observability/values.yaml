@@ -14,7 +14,7 @@ prometheusOperatorCrds:
 grafana:
   source:
     url: https://github.com/grafana/helm-charts.git
-    targetRevision: grafana-6.57.0
+    targetRevision: grafana-7.0.2
   values:
     revisionHistoryLimit: 0
     datasources:
