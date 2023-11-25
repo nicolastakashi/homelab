@@ -24,3 +24,17 @@ thanos:
       tsdbRetention: 3h
 
       replicaCount: 1
+
+      extraFlags:
+        - --hash-func=SHA256
+        - --receive.grpc-compression=snappy
+        - --receive.hashrings-algorithm=ketama
+
+    compactor:
+      enabled: true
+      retentionResolutionRaw: 15d
+      retentionResolution5m: 30d
+      retentionResolution1h: 60d
+
+      extraFlags:
+        - --hash-func=SHA256
