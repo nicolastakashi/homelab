@@ -15,3 +15,12 @@ thanos:
 
     query:
       logFormat: json
+
+    receive:
+      enabled: true
+
+      logFormat: json
+
+      tsdbRetention: 3h
+
+      replicaCount: 1
