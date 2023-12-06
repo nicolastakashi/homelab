@@ -1,0 +1,13 @@
+namespace:
+  values:
+    namespace:
+      name: observability
+
+openTelemetryOperator:
+  source:
+    url: https://github.com/open-telemetry/opentelemetry-helm-charts.git
+    targetRevision: opentelemetry-operator-0.43.1
+  values:
+    admissionWebhooks:
+      certManager:
+        enabled: false
