@@ -24,7 +24,7 @@ spec:
 
     service:
       pipelines:
-        traces:
+        metrics:
           receivers: [prometheus]
           processors: []
           exporters: [debug]
