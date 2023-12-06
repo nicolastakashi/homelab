@@ -2,7 +2,7 @@ apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
 metadata:
   name: simplest
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Values.namespace.values.namespace.name }}
 spec:
   config: |
     receivers:
