@@ -38,3 +38,13 @@ argocd:
         ingressClassName: "nginx"
         hosts:
           - argocd.ntakashi.com
+
+    configs:
+      cm:
+      resource.exclusions: |
+        - apiGroups:
+          - cilium.io
+          kinds:
+          - CiliumIdentity
+          clusters:
+          - "*"
