@@ -41,10 +41,10 @@ argocd:
 
     configs:
       cm:
-      resource.exclusions: |
-        - apiGroups:
-          - cilium.io
-          kinds:
-          - CiliumIdentity
-          clusters:
-          - "*"
+        resource.exclusions: |
+          - apiGroups:
+            - cilium.io
+            kinds:
+            - CiliumIdentity
+            clusters:
+            - "*"
