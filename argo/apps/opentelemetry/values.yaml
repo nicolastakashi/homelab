@@ -1,7 +1,7 @@
 namespace:
   values:
     namespace:
-      name: observability
+      name: opentelemetry
 
 openTelemetryOperator:
   source:
