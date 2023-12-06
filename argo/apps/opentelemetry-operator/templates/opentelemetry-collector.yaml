@@ -1,28 +1,23 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
 metadata:
-  name: 'opentelemetry-operator'
-  namespace: "argocd-system"
-  annotations:
-    argocd.argoproj.io/sync-wave: "500"
+  name: simplest
+  namespace: {{ .Release.Namespace }}
 spec:
-  destination:
-    namespace: {{ .Values.namespace.values.namespace.name  }}
-    server: https://kubernetes.default.svc
-  project: default
-  source:
-    helm:
-      releaseName: "opentelemetry-operator"
-      {{- with .Values.openTelemetryOperator.values }}
-      values: |
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-    repoURL: {{ .Values.openTelemetryOperator.source.url }}
-    targetRevision: {{ .Values.openTelemetryOperator.source.targetRevision }}
-    path: ./charts/opentelemetry-operator
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    retry:
-      limit: -1
+  config: |
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+          http:
+    processors:
+
+    exporters:
+      debug:
+
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: []
+          exporters: [debug]
