@@ -10,4 +10,4 @@ openTelemetryOperator:
   values:
     admissionWebhooks:
       certManager:
-        enabled: false
+        enabled: true
