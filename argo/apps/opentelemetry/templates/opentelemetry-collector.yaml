@@ -8,6 +8,8 @@ spec:
   targetAllocator:
     enabled: true
     serviceAccount: opentelemetry-collector-stateful-targetallocator
+    prometheusCR:
+      enabled: true
   config: |
     receivers:
       prometheus:
