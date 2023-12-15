@@ -20,6 +20,9 @@ spec:
             static_configs:
             - targets: [ '0.0.0.0:8888' ]
 
+    extensions:
+      zpages:
+
     processors:
 
     exporters:
