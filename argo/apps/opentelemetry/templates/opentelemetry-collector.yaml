@@ -28,7 +28,7 @@ spec:
     exporters:
       debug:
       prometheusremotewrite:
-        endpoint: "https://thanos-receive.observability.svc.cluster.local:19291/api/v1/push"
+        endpoint: "http://thanos-receive.observability.svc.cluster.local:19291/api/v1/push"
         tls:
           insecure: true
 
