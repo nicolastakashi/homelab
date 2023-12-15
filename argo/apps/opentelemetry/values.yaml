@@ -8,8 +8,9 @@ openTelemetryOperator:
     url: https://github.com/open-telemetry/opentelemetry-helm-charts.git
     targetRevision: opentelemetry-operator-0.43.1
   values:
-    serviceMonitor:
-      enabled: true
+    manager:
+      serviceMonitor:
+        enabled: true
     admissionWebhooks:
       certManager:
         enabled: true
