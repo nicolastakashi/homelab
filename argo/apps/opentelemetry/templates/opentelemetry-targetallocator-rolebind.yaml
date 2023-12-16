@@ -9,8 +9,8 @@ roleRef:
   name: opentelemetry-targetallocator-role
 subjects:
 - kind: ServiceAccount
-  name: opentelemetry-collector-stateful-targetallocator
+  name: opentelemetry-metrics-collector-targetallocator
   namespace: {{ .Values.namespace.values.namespace.name }}
 - kind: ServiceAccount
-  name: opentelemetry-collector-stateful-collector
+  name: opentelemetry-metrics-collector-collector
   namespace: {{ .Values.namespace.values.namespace.name }}
