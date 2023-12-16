@@ -11,3 +11,6 @@ subjects:
 - kind: ServiceAccount
   name: opentelemetry-collector-stateful-targetallocator
   namespace: {{ .Values.namespace.values.namespace.name }}
+- kind: ServiceAccount
+  name: opentelemetry-collector-stateful
+  namespace: {{ .Values.namespace.values.namespace.name }}
