@@ -35,6 +35,8 @@ spec:
     service:
       pipelines:
         metrics:
-          receivers: [prometheus]
+          receivers: 
+            - prometheus
           processors: []
-          exporters: [debug, prometheusremotewrite]
+          exporters:
+            - prometheusremotewrite
