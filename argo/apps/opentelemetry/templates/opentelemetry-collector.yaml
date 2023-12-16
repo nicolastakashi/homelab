@@ -7,7 +7,7 @@ spec:
   mode: statefulset
   targetAllocator:
     enabled: true
-    serviceAccount: opentelemetry-collector-stateful-targetallocator
+    serviceAccount: opentelemetry-metrics-collector-targetallocator
     prometheusCR:
       enabled: true
   config: |
