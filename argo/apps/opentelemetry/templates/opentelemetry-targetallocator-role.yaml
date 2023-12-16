@@ -29,6 +29,7 @@ rules:
   - pods
   verbs:
   - list
+  - delete
 - apiGroups:
   - ""
   resources:
@@ -37,6 +38,9 @@ rules:
   - endpoints
   verbs:
   - get
+  - create
+  - update
+  - delete
 - apiGroups:
   - ""
   resources:
