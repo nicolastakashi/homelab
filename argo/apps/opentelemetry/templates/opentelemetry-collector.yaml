@@ -21,7 +21,11 @@ spec:
             - targets: [ '0.0.0.0:8888' ]
 
     extensions:
+      health_check:
       zpages:
+        endpoint: localhost:55679
+      pprof:
+        endpoint: localhost:1777
 
     processors:
 
@@ -35,7 +39,13 @@ spec:
     service:
       telemetry:
         logs:
-          level: "debug"
+          level: "info"
+        metrics:
+          address: ${MY_POD_IP}:8888
+      extensions:
+        - zpages
+        - pprof
+        - health_check
       pipelines:
         metrics:
           receivers: 
