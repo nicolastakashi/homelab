@@ -18,6 +18,7 @@ thanos:
 
     receive:
       enabled: true
+      mode: dual-mode
 
       logFormat: json
 
