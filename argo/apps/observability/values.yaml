@@ -17,6 +17,8 @@ grafana:
     targetRevision: grafana-7.0.2
   values:
     revisionHistoryLimit: 0
+    plugins:
+      - grafana-googlesheets-datasource
     datasources:
       datasources.yaml:
         apiVersion: 1
