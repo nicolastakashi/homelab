@@ -25,7 +25,7 @@ grafana:
         datasources:
           - name: Prometheus
             type: prometheus
-            url: http://prometheus-prometheus.observability.svc.cluster.local:9090
+            url: http://thanos-query.observability.svc.cluster.local:9090
             access: proxy
             isDefault: true
             jsonData:
