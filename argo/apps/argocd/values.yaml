@@ -8,7 +8,7 @@ namespace:
 argocd:
   source:
     url: https://github.com/argoproj/argo-helm.git
-    targetRevision: argo-cd-5.50.0
+    targetRevision: argo-cd-6.1.0
   values:
     global:
       revisionHistoryLimit: 0
