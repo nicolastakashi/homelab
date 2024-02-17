@@ -36,8 +36,7 @@ argocd:
       ingress:
         enabled: true
         ingressClassName: "nginx"
-        hosts:
-          - argocd.ntakashi.com
+        hostname: "argocd.ntakashi.com"
 
     configs:
       cm:
