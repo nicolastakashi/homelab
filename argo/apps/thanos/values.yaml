@@ -6,7 +6,7 @@ namespace:
 thanos:
   source:
     url: registry-1.docker.io/bitnamicharts
-    targetRevision: 13.1.0
+    targetRevision: 13.0.0
   values:
     existingObjstoreSecret: thanos-storage-config
 
