@@ -10,6 +10,13 @@ spec:
     serviceAccount: opentelemetry-metrics-collector-targetallocator
     prometheusCR:
       enabled: true
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "200m"
   config: |
     receivers:
       prometheus:
