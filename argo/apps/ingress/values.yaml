@@ -8,5 +8,5 @@ namespace:
 ingress:
   source:
     url: https://github.com/kubernetes/ingress-nginx.git
-    targetRevision: helm-chart-4.8.3
+    targetRevision: helm-chart-4.9.1
   values: {}
