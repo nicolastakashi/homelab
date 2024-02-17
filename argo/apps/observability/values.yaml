@@ -6,7 +6,7 @@ namespace:
 prometheusOperatorCrds:
   source:
     url: https://github.com/prometheus-community/helm-charts.git
-    targetRevision: prometheus-operator-crds-6.0.0
+    targetRevision: prometheus-operator-crds-9.0.1
   values:
     annotations:
       argocd.argoproj.io/sync-options: ServerSideApply=true
@@ -14,7 +14,7 @@ prometheusOperatorCrds:
 grafana:
   source:
     url: https://github.com/grafana/helm-charts.git
-    targetRevision: grafana-7.0.2
+    targetRevision: grafana-7.3.0
   values:
     revisionHistoryLimit: 0
     plugins:

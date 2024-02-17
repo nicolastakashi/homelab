@@ -6,7 +6,7 @@ namespace:
 openTelemetryOperator:
   source:
     url: https://github.com/open-telemetry/opentelemetry-helm-charts.git
-    targetRevision: opentelemetry-operator-0.43.1
+    targetRevision: opentelemetry-operator-0.47.0
   values:
     manager:
       serviceMonitor:
