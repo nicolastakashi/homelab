@@ -35,6 +35,10 @@ spec:
         endpoint: localhost:1777
 
     processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_mib: 350
+        spike_limit_mib: 70
 
     exporters:
       debug:
@@ -57,6 +61,6 @@ spec:
         metrics:
           receivers: 
             - prometheus
-          processors: []
+          processors: [memory_limiter]
           exporters:
             - prometheusremotewrite
