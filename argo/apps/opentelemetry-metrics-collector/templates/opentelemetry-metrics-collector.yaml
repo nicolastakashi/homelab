@@ -10,6 +10,11 @@ spec:
     serviceAccount: opentelemetry-metrics-collector-targetallocator
     prometheusCR:
       enabled: true
+  ports:
+    - port: 4317
+      appProtocol: grpc
+      name: otlp-grpc
+      targetPort: 4317
   resources:
     requests:
       memory: "256Mi"
