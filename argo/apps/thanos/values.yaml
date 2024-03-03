@@ -26,7 +26,6 @@ thanos:
         - --query.auto-downsampling
         - --query.default-step=30s
         - --query.metadata.default-time-range=5m
-        - --store.limits.request-samples=3000000
         - --store.limits.request-series=500000
         - --store.response-timeout=1m59s
 
@@ -37,7 +36,6 @@ thanos:
         - --grpc-grace-period=20s
         - --http-grace-period=20s
         - --store.enable-index-header-lazy-reader
-        - --store.limits.request-samples=3000000
         - --store.limits.request-series=500000
 
     receive:
