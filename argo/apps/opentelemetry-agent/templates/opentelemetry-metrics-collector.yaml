@@ -37,7 +37,7 @@ spec:
     exporters:
       debug:
       otlp:
-        endpoint: otelcol2:4317
+        endpoint: opentelemetry-metrics-collector-collector.opentelemetry-agent.svc.cluster.local:4317
         tls:
           insecure: true
 
@@ -57,4 +57,4 @@ spec:
             - hostmetrics
           processors: [memory_limiter, batch]
           exporters:
-            - debug
+            - otlp
