@@ -17,7 +17,7 @@ spec:
       hostmetrics:
         collection_interval: 30s
         scrapers:
-          - cpu
+          cpu
 
 
     extensions:
