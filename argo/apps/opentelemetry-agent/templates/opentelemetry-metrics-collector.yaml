@@ -5,8 +5,6 @@ metadata:
   namespace: {{ .Values.namespace.values.namespace.name }}
 spec:
   mode: daemonset
-  targetAllocator:
-    enabled: true
   resources:
     requests:
       memory: "256Mi"
