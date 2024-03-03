@@ -37,7 +37,7 @@ spec:
     exporters:
       debug:
       otlp:
-        endpoint: opentelemetry-metrics-collector-collector-headless.svc.cluster.local
+        endpoint: opentelemetry-metrics-collector-collector-headless.opentelemetry-agent.svc.cluster.local
         tls:
           insecure: true
 
