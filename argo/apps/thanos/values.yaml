@@ -29,6 +29,10 @@ thanos:
         - --store.limits.request-series=500000
         - --store.response-timeout=1m59s
 
+    storegateway:
+      enabled: true
+      logFormat: json
+
     receive:
       enabled: true
 
