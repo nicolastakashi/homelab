@@ -6,7 +6,7 @@ namespace:
 thanos:
   source:
     url: registry-1.docker.io/bitnamicharts
-    targetRevision: 13.0.0
+    targetRevision: 13.3.0
   values:
     existingObjstoreSecret: thanos-storage-config
 
@@ -15,6 +15,14 @@ thanos:
 
     query:
       logFormat: json
+      extraFlags:
+        - --grpc-grace-period=20s
+        - --http-grace-period=20s
+        - --query.auto-downsampling
+        - --query.default-step=30s
+        - --query.metadata.default-time-range=5m
+        - --store.limits.request-series=500000
+        - --store.response-timeout=1m59s
 
     receive:
       enabled: true
