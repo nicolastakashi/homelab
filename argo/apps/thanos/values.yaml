@@ -9,6 +9,11 @@ thanos:
     targetRevision: 13.3.0
   values:
     existingObjstoreSecret: thanos-storage-config
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        interval: 30s
 
     queryFrontend:
       enabled: false
