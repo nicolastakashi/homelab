@@ -1,0 +1,58 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: opentelemetry-agent
+  namespace: {{ .Values.namespace.values.namespace.name }}
+spec:
+  mode: daemonset
+  targetAllocator:
+    enabled: true
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "200m"
+  config: |
+    receivers:
+      hostmetrics:
+        collection_interval: 30s
+        scrapers:
+          - cpu
+
+
+    extensions:
+      health_check:
+      zpages:
+        endpoint: localhost:55679
+      pprof:
+        endpoint: localhost:1777
+
+    processors:
+      batch:
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 80
+        spike_limit_percentage: 20
+
+    exporters:
+      debug:
+
+    service:
+      telemetry:
+        logs:
+          level: "info"
+        metrics:
+          address: ${MY_POD_IP}:8888
+      extensions: 
+        - zpages
+        - pprof
+        - health_check
+      pipelines:
+        metrics:
+          receivers: 
+            - hostmetrics
+          processors: [memory_limiter, batch]
+          exporters:
+            - debug
