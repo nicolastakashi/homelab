@@ -1,7 +1,0 @@
-kind: ClusterRole
-metadata:
-  name: opentelemetry-agent-collector-custom
-rules:
-  - apiGroups: [""]
-    resources: ["nodes"]
-    verbs: ["get", "list"]
