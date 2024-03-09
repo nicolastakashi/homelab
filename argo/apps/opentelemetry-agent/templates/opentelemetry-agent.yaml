@@ -13,13 +13,10 @@ spec:
       memory: "512Mi"
       cpu: "200m"
   env:
-    - name: NODE_IP
+    - name: K8S_NODE_NAME
       valueFrom:
         fieldRef:
-          apiVersion: v1
-          fieldPath: status.hostIP
-    - name : OTEL_RESOURCE_ATTRIBUTES
-      value: "host.ip=${NODE_IP}"
+          fieldPath: spec.nodeName
   config: |
     receivers:
       hostmetrics:
@@ -43,15 +40,9 @@ spec:
         limit_percentage: 80
         spike_limit_percentage: 20
       resourcedetection/env:
-        detectors: [env]
+        detectors: [k8snode]
         timeout: 2s
         override: false
-        system:
-          resource_attributes:
-              host.id:
-                enabled: true
-              host.name:
-                enabled: true
 
     exporters:
       debug:
