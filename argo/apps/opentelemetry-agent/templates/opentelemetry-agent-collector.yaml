@@ -40,9 +40,17 @@ spec:
         limit_percentage: 80
         spike_limit_percentage: 20
       resourcedetection/env:
-        detectors: [k8snode]
+        detectors: [system]
         timeout: 2s
         override: false
+        system:
+          resource_attributes:
+            host.name:
+              enabled: true
+            host.id:
+              enabled: true
+            os.type:
+              enabled: false
 
     exporters:
       debug:
