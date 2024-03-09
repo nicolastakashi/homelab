@@ -13,17 +13,10 @@ spec:
       memory: "512Mi"
       cpu: "200m"
   env:
-    - name: NODE_NAME
+    - name: K8S_NODE_NAME
       valueFrom:
         fieldRef:
           fieldPath: spec.nodeName
-    - name: NODE_IP
-      valueFrom:
-        fieldRef:
-          apiVersion: v1
-          fieldPath: status.hostIP
-    - name: OTEL_RESOURCE_ATTRIBUTES
-      value: "host.name=${NODE_NAME},host.ip=${NODE_IP}"
   config: |
     receivers:
       hostmetrics:
@@ -93,8 +86,8 @@ spec:
         check_interval: 1s
         limit_percentage: 80
         spike_limit_percentage: 20
-      resourcedetection/env:
-        detectors: [system]
+      resourcedetection/k8s:
+        detectors: [k8snode]
         timeout: 2s
         override: false
         
@@ -125,7 +118,7 @@ spec:
             - hostmetrics
           processors: 
             - memory_limiter
-            - resourcedetection/env
+            - resourcedetection/k8s
             - batch
           exporters:
             - prometheusremotewrite
