@@ -13,10 +13,17 @@ spec:
       memory: "512Mi"
       cpu: "200m"
   env:
-    - name: K8S_NODE_NAME
+    - name: NODE_NAME
       valueFrom:
         fieldRef:
           fieldPath: spec.nodeName
+    - name: NODE_IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.hostIP
+    - name: OTEL_RESOURCE_ATTRIBUTES
+      value: "host.name=${NODE_NAME},host.ip=${NODE_IP}"
   config: |
     receivers:
       hostmetrics:
@@ -49,8 +56,6 @@ spec:
               enabled: true
             host.id:
               enabled: true
-            os.type:
-              enabled: false
 
     exporters:
       debug:
