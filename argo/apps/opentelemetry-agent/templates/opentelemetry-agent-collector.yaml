@@ -29,8 +29,55 @@ spec:
       hostmetrics:
         collection_interval: 30s
         scrapers:
-          cpu:
           load:
+          network:
+          cpu:
+            metrics:
+              system.cpu.utilization:
+                enabled: true
+          memory:
+            metrics:
+              system.memory.utilization:
+                enabled: true
+          disk:
+            filesystem:
+              exclude_mount_points:
+                mount_points:
+                  - /dev/*
+                  - /proc/*
+                  - /sys/*
+                  - /run/k3s/containerd/*
+                  - /run/containerd/runc/*
+                  - /var/lib/docker/*
+                  - /var/lib/kubelet/*
+                  - /snap/*
+                match_type: regexp
+              exclude_fs_types:
+                fs_types:
+                  - autofs
+                  - binfmt_misc
+                  - bpf
+                  - cgroup2
+                  - configfs
+                  - debugfs
+                  - devpts
+                  - devtmpfs
+                  - fusectl
+                  - hugetlbfs
+                  - iso9660
+                  - mqueue
+                  - nsfs
+                  - overlay
+                  - proc
+                  - procfs
+                  - pstore
+                  - rpc_pipefs
+                  - securityfs
+                  - selinuxfs
+                  - squashfs
+                  - sysfs
+                  - tracefs
+                match_type: strict
 
 
     extensions:
