@@ -49,6 +49,8 @@ spec:
       prometheusremotewrite:
         endpoint: "http://thanos-receive.observability.svc.cluster.local:19291/api/v1/receive"
         send_metadata: true
+        resource_to_telemetry_conversion:
+          enabled: true
         tls:
           insecure: true
 
