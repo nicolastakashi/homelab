@@ -50,12 +50,7 @@ spec:
         detectors: [system]
         timeout: 2s
         override: false
-        system:
-          resource_attributes:
-            host.name:
-              enabled: true
-            host.id:
-              enabled: true
+        
 
     exporters:
       debug:
