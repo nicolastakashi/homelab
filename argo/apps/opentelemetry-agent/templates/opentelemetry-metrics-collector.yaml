@@ -46,11 +46,12 @@ spec:
         detectors: [env]
         timeout: 2s
         override: false
-        resource_attributes:
-            host.id:
-              enabled: true
-            host.name:
-              enabled: true
+        system:
+          resource_attributes:
+              host.id:
+                enabled: true
+              host.name:
+                enabled: true
 
     exporters:
       debug:
