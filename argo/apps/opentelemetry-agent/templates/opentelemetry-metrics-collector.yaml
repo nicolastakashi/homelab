@@ -42,16 +42,6 @@ spec:
         check_interval: 1s
         limit_percentage: 80
         spike_limit_percentage: 20
-      resourcedetection/env:
-        detectors: [env]
-        timeout: 2s
-        override: false
-        system:
-          resource_attributes:
-              host.id:
-                enabled: true
-              host.name:
-                enabled: true
 
     exporters:
       debug:
@@ -77,7 +67,6 @@ spec:
             - hostmetrics
           processors: 
             - memory_limiter
-            - resourcedetection/env
             - batch
           exporters:
             - prometheusremotewrite
