@@ -17,6 +17,9 @@ spec:
       valueFrom:
         fieldRef:
           fieldPath: spec.nodeName
+  tolerations:
+    - key: node-role.kubernetes.io/master
+      effect: NoSchedule
   config: |
     receivers:
       hostmetrics:
@@ -31,6 +34,8 @@ spec:
                 enabled: true
           memory:
             metrics:
+              system.memory.limit:
+                enabled: true
               system.memory.utilization:
                 enabled: true
           filesystem:
