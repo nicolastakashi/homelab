@@ -63,10 +63,10 @@ source "proxmox" "ubuntu-server-jammy" {
     }
 
     # VM CPU Settings
-    cores = "1"
+    cores = "2"
 
     # VM Memory Settings
-    memory = "1024" 
+    memory = "2048" 
 
     # VM Network Settings
     network_adapters {
@@ -106,7 +106,7 @@ source "proxmox" "ubuntu-server-jammy" {
     ssh_private_key_file = "~/.ssh/id_rsa"
 
     # Raise the timeout, when installation takes longer
-    ssh_timeout = "20m"
+    ssh_timeout = "60m"
 }
 
 # Build Definition to create the VM Template

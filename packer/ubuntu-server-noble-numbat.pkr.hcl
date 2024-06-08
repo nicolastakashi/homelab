@@ -49,10 +49,10 @@ source "proxmox-iso" "ubuntu-server-noble-numbat" {
     }
 
     # VM CPU Settings
-    cores = "1"
+    cores = "2"
     
     # VM Memory Settings
-    memory = "1024" 
+    memory = "2048" 
 
     # VM Network Settings
     network_adapters {
@@ -99,7 +99,7 @@ source "proxmox-iso" "ubuntu-server-noble-numbat" {
 build {
 
     name = "ubuntu-server-noble-numbat"
-    sources = ["source.ubuntu-server-noble-numbat"]
+    sources = ["proxmox-iso.ubuntu-server-noble-numbat"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
