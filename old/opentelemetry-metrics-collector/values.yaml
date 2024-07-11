@@ -1,4 +1,0 @@
-namespace:
-  values:
-    namespace:
-      name: opentelemetry-metrics-collector
