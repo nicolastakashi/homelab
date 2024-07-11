@@ -22,6 +22,8 @@ spec:
     targetRevision: {{ .Values.ingress.source.targetRevision }}
     path: ./charts/ingress-nginx
   syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true

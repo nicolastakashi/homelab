@@ -21,6 +21,8 @@ spec:
     targetRevision: HEAD
     path: ./charts/cloudflare-tunnel
   syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true

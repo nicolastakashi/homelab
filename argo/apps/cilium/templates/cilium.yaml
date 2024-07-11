@@ -22,6 +22,8 @@ spec:
     targetRevision: {{ .Values.cilium.source.targetRevision }}
     path: ./install/kubernetes/cilium
   syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true

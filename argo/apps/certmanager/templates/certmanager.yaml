@@ -23,6 +23,8 @@ spec:
     chart: cert-manager
     # path: ./charts/ingress-nginx
   syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
