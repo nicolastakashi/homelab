@@ -7,7 +7,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/nicolastakashi/homelab.git
-        revision: main
+        revision: HEAD
         directories:
           - path: argo/apps/*
   template:
@@ -17,8 +17,8 @@ spec:
       project: default
       source:
         repoURL: https://github.com/nicolastakashi/homelab.git
-        targetRevision: main
-        path: "{{path}}"
+        targetRevision: HEAD
+        path: "{{.path}}"
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
