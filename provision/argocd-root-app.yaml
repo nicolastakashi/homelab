@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: cluster-addons
-  namespace: argocd-system
+  namespace: argocd
 spec:
   generators:
     - git:
@@ -18,7 +18,7 @@ spec:
       source:
         repoURL: https://github.com/nicolastakashi/homelab.git
         targetRevision: HEAD
-        path: "{{.path}}"
+        path: "{{path}}"
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
