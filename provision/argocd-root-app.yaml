@@ -18,7 +18,7 @@ spec:
       source:
         repoURL: https://github.com/nicolastakashi/homelab.git
         targetRevision: HEAD
-        path: "{{.path.path}}"
+        path: "{{.path}}"
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
