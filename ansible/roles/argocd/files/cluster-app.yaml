@@ -12,24 +12,13 @@ spec:
           - path: argo/apps/*
   template:
     metadata:
-      name: "{{path.basename}}-app"
+      name: "{{path.basename}}"
     spec:
       project: default
       source:
         repoURL: https://github.com/nicolastakashi/homelab.git
         targetRevision: main
         path: "{{path}}"
-        helm:
-          releaseName: "{{path.basename}}"
-          values: |
-            namespace:
-              name: {{path.basename}}
-            source:
-              url: https://github.com/nicolastakashi/homelab.git
-              targetRevision: main
-              path: argo/apps/{{path}}
-          valueFiles:
-            - values.yaml
       syncPolicy:
         syncOptions:
           - CreateNamespace=true

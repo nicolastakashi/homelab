@@ -60,7 +60,7 @@ resource "null_resource" "update_argocd_password" {
       printf "\Updating argocd password...\n"
       kubectl -n ${helm_release.argocd.namespace} patch secret argocd-secret \
         -p '{"stringData": {
-          "admin.password": "$2a$12$DaJ5F1L5KF8kU.FPKFNvcubXnE6CxMamk0hIdJgsU9g5VnFKtUvB.",
+          "admin.password": "$2a$12$yiYXJp7v4/KuHhLKuZVV8ejRR/3FF44n/xc5VE33rErNizfrEC/c2",
           "admin.passwordMtime": "'$(date +%FT%T%Z)'"
         }}'
     EOF
