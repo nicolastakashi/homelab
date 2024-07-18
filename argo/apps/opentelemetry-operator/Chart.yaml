@@ -1,0 +1,5 @@
+apiVersion: v2
+name: opentelemetry-operator
+description: A Helm chart for OpenTelemetry Operator.
+type: application
+version: 0.1.0
