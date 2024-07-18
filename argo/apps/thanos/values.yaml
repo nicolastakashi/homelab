@@ -16,4 +16,6 @@ thanos:
 
   receive:
     enabled: true
+    logFormat: json
+    logLevel: warn
     tsdbRetention: 4h
