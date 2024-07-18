@@ -1,1 +1,8 @@
-thanos: {}
+thanos:
+  query:
+    logFormat: json
+    logLevel: warn
+
+  queryFrontend:
+    logFormat: json
+    logLevel: warn
