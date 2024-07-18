@@ -1,8 +1,10 @@
 thanos:
   query:
+    revisionHistoryLimit: 0
     logFormat: json
     logLevel: warn
 
   queryFrontend:
+    revisionHistoryLimit: 0
     logFormat: json
     logLevel: warn
