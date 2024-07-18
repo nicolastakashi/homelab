@@ -4,6 +4,6 @@ description: A Helm chart for OpenTelemetry Operator.
 type: application
 version: 0.1.0
 dependencies:
-  - name: opentelemetry-collector
+  - name: opentelemetry-operator
     version: 0.64.3
     repository: https://open-telemetry.github.io/opentelemetry-helm-charts
