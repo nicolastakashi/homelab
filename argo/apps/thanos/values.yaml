@@ -1,4 +1,9 @@
 thanos:
+  objstoreConfig: |
+    type: FILESYSTEM
+    config:
+      directory: "/srv/thanos"
+
   query:
     revisionHistoryLimit: 0
     logFormat: json
@@ -8,3 +13,7 @@ thanos:
     revisionHistoryLimit: 0
     logFormat: json
     logLevel: warn
+
+  receive:
+    enabled: true
+    tsdbRetention: 4h
