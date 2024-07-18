@@ -1,1 +1,15 @@
 grafana:
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: Prometheus
+          type: prometheus
+          url: http://thanos-query-frontend.thanos.svc.cluster.local:9090
+          access: proxy
+          isDefault: true
+          jsonData:
+            timeout: 60s
+            timeInterval: 15s
+            prometheusVersion: 2.53.0
+            prometheusType: Thanos
