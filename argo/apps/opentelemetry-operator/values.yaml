@@ -1,6 +1,6 @@
 opentelemetry-operator:
   manager:
     collectorImage:
-      repository: otel/opentelemetry-collector-k8s
+      repository: otel/opentelemetry-collector-contrib
     targetAllocatorImage:
       repository: otel/target-allocator

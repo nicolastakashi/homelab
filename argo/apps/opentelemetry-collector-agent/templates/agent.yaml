@@ -117,7 +117,7 @@ spec:
         logs:
           level: "info"
         metrics:
-          address: 0.0.0.0:8888
+          address: ${MY_POD_IP}:8888
       extensions: 
         - zpages
         - pprof
