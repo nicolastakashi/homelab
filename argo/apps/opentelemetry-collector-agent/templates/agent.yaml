@@ -109,9 +109,6 @@ spec:
       debug:
       prometheusremotewrite:
         endpoint: "http://thanos-receive.thanos.svc.cluster.local:19291/api/v1/receive"
-        send_metadata: true
-        resource_to_telemetry_conversion:
-          enabled: false
         tls:
           insecure: true
 
@@ -120,7 +117,7 @@ spec:
         logs:
           level: "info"
         metrics:
-          address: ${MY_POD_IP}:8888
+          address: 0.0.0.0:8888
       extensions: 
         - zpages
         - pprof
