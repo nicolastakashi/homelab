@@ -104,7 +104,7 @@ spec:
         endpoint: "http://thanos-receive.thanos.svc.cluster.local:19291/api/v1/receive"
         send_metadata: true
         resource_to_telemetry_conversion:
-          enabled: true
+          enabled: false
         tls:
           insecure: true
 
