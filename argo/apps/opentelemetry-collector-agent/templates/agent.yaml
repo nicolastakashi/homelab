@@ -96,6 +96,13 @@ spec:
         detectors: [k8snode]
         timeout: 2s
         override: false
+      transform:
+        metric_statements:
+          - context: datapoint
+            statements:
+            - set(attributes["namespace"], resource.attributes["k8s.namespace.name"])
+            - set(attributes["container"], resource.attributes["k8s.container.name"])
+            - set(attributes["pod"], resource.attributes["k8s.pod.name"])
         
 
     exporters:
@@ -125,6 +132,7 @@ spec:
           processors: 
             - memory_limiter
             - resourcedetection/k8s
+            - transform
             - batch
           exporters:
             - prometheusremotewrite
