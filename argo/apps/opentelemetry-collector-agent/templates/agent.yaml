@@ -115,8 +115,7 @@ spec:
     service:
       telemetry:
         logs:
-          level: "info"
-          format: "json"
+          level: "warn"
         metrics:
           address: ${MY_POD_IP}:8888
       extensions: 
