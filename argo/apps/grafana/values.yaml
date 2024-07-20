@@ -25,7 +25,8 @@ grafana:
           jsonData:
             timeout: 60s
             timeInterval: 15s
-            prometheusVersion: 2.52.0
+            thanosVersion: 0.31.0
+            prometheusVersion: 0.31.0
             prometheusType: Thanos
             queryTimeout: 120s
             defaultEditor: "code"
