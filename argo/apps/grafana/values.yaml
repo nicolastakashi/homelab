@@ -1,4 +1,18 @@
 grafana:
+  ingress:
+    enabled: true
+    ingressClassName: "nginx"
+    hosts:
+      - grafana.ntakashi.com
+  persistence:
+    type: pvc
+    enabled: true
+    storageClassName: local-path
+    accessModes:
+      - ReadWriteOnce
+    size: 2Gi
+    finalizers:
+      - kubernetes.io/pvc-protection
   datasources:
     datasources.yaml:
       apiVersion: 1
@@ -11,5 +25,7 @@ grafana:
           jsonData:
             timeout: 60s
             timeInterval: 15s
-            prometheusVersion: 2.53.0
+            prometheusVersion: 2.52.0
             prometheusType: Thanos
+            queryTimeout: 120s
+            defaultEditor: "code"
