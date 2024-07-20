@@ -1,4 +1,4 @@
-argocd:
+argo-cd:
   global:
     revisionHistoryLimit: 0
     logging:
