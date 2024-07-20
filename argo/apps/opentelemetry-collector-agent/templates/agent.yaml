@@ -27,6 +27,11 @@ spec:
         fieldRef:
           apiVersion: v1
           fieldPath: status.podIP
+    - name: KUBE_NODE_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.nodeName
   config: |
     receivers:
       hostmetrics:
