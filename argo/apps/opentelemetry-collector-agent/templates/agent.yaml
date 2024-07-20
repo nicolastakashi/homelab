@@ -12,11 +12,6 @@ spec:
     limits:
       memory: "512Mi"
       cpu: "200m"
-  env:
-    - name: K8S_NODE_NAME
-      valueFrom:
-        fieldRef:
-          fieldPath: spec.nodeName
   tolerations:
     - key: "node-role.kubernetes.io/master"
       operator: "Exists"
@@ -27,10 +22,9 @@ spec:
         fieldRef:
           apiVersion: v1
           fieldPath: status.podIP
-    - name: KUBE_NODE_NAME
+    - name: K8S_NODE_NAME
       valueFrom:
         fieldRef:
-          apiVersion: v1
           fieldPath: spec.nodeName
   config: |
     receivers:
