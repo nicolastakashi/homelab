@@ -7,24 +7,24 @@ spec:
   mode: daemonset
   resources:
     requests:
-      memory: "256Mi"
       cpu: "100m"
+      memory: "256Mi"
     limits:
-      memory: "512Mi"
       cpu: "200m"
+      memory: "512Mi"
   tolerations:
     - key: "node-role.kubernetes.io/master"
       operator: "Exists"
       effect: "NoSchedule"
   volumeMounts:
-    - name: hostfs
-      mountPath: /hostfs
-      readOnly: true
+    - mountPath: /hostfs
       mountPropagation: HostToContainer
+      name: hostfs
+      readOnly: true
   volumes:
-    - name: hostfs
-      hostPath:
+    - hostPath:
         path: /
+      name: hostfs
   env:
     - name: MY_POD_IP
       valueFrom:
@@ -45,24 +45,7 @@ spec:
             metrics:
               system.cpu.utilization:
                 enabled: true
-          memory:
-            metrics:
-              system.memory.limit:
-                enabled: true
-              system.memory.utilization:
-                enabled: true
           filesystem:
-            exclude_mount_points:
-              mount_points:
-                - /dev/*
-                - /proc/*
-                - /sys/*
-                - /run/k3s/containerd/*
-                - /run/containerd/runc/*
-                - /var/lib/docker/*
-                - /var/lib/kubelet/*
-                - /snap/*
-              match_type: regexp
             exclude_fs_types:
               fs_types:
                 - autofs
@@ -89,13 +72,29 @@ spec:
                 - sysfs
                 - tracefs
               match_type: strict
+            exclude_mount_points:
+              match_type: regexp
+              mount_points:
+                - /dev/*
+                - /proc/*
+                - /sys/*
+                - /run/k3s/containerd/*
+                - /run/containerd/runc/*
+                - /var/lib/docker/*
+                - /var/lib/kubelet/*
+                - /snap/*
+          memory:
+            metrics:
+              system.memory.limit:
+                enabled: true
+              system.memory.utilization:
+                enabled: true
     extensions:
-      health_check:
-      zpages:
-        endpoint: localhost:55679
+      health_check: {}
       pprof:
         endpoint: localhost:1777
-
+      zpages:
+        endpoint: localhost:55679
     processors:
       batch: {}
       memory_limiter:
@@ -110,10 +109,10 @@ spec:
         metric_statements:
           - context: datapoint
             statements:
-            - set(attributes["node"], resource.attributes["k8s.node.name"])
-            - set(attributes["namespace"], resource.attributes["k8s.namespace.name"])
-            - set(attributes["container"], resource.attributes["k8s.container.name"])
-            - set(attributes["pod"], resource.attributes["k8s.pod.name"])
+              - set(attributes["container"], resource.attributes["k8s.container.name"])
+              - set(attributes["namespace"], resource.attributes["k8s.namespace.name"])
+              - set(attributes["node"], resource.attributes["k8s.node.name"])
+              - set(attributes["pod"], resource.attributes["k8s.pod.name"])
     exporters:
       debug:
         verbosity: detailed
@@ -127,18 +126,18 @@ spec:
           level: "warn"
         metrics:
           address: ${MY_POD_IP}:8888
-      extensions: 
-        - zpages
-        - pprof
+      extensions:
         - health_check
+        - pprof
+        - zpages
       pipelines:
         metrics:
-          receivers: 
+          receivers:
             - hostmetrics
-          processors: 
+          processors:
+            - batch
             - memory_limiter
             - resourcedetection/k8s
             - transform
-            - batch
           exporters:
             - prometheusremotewrite
