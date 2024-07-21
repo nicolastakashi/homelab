@@ -35,7 +35,7 @@ spec:
       valueFrom:
         fieldRef:
           fieldPath: spec.nodeName
-  config: |-
+  config: |
     receivers:
       hostmetrics:
         collection_interval: 30s
@@ -97,7 +97,7 @@ spec:
         endpoint: localhost:1777
 
     processors:
-      batch:
+      batch: {}
       memory_limiter:
         check_interval: 1s
         limit_percentage: 80
