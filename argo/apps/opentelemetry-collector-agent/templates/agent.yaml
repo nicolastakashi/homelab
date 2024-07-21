@@ -41,9 +41,6 @@ spec:
         collection_interval: 30s
         root_path: /hostfs
         scrapers:
-          load: null
-          network:
-          disk:
           cpu:
             metrics:
               system.cpu.utilization:
