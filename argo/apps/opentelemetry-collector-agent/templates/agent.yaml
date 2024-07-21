@@ -16,6 +16,15 @@ spec:
     - key: "node-role.kubernetes.io/master"
       operator: "Exists"
       effect: "NoSchedule"
+  volumeMounts:
+    - name: hostfs
+      mountPath: /hostfs
+      readOnly: true
+      mountPropagation: HostToContainer
+  volumes:
+    - name: hostfs
+      hostPath:
+        path: /
   env:
     - name: MY_POD_IP
       valueFrom:
@@ -30,8 +39,9 @@ spec:
     receivers:
       hostmetrics:
         collection_interval: 30s
+        root_path: /hostfs
         scrapers:
-          load:
+          load: null
           network:
           disk:
           cpu:
