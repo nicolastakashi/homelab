@@ -92,8 +92,6 @@ spec:
                 - sysfs
                 - tracefs
               match_type: strict
-
-
     extensions:
       health_check:
       zpages:
@@ -119,8 +117,6 @@ spec:
             - set(attributes["namespace"], resource.attributes["k8s.namespace.name"])
             - set(attributes["container"], resource.attributes["k8s.container.name"])
             - set(attributes["pod"], resource.attributes["k8s.pod.name"])
-        
-
     exporters:
       debug:
         verbosity: detailed
@@ -128,7 +124,6 @@ spec:
         endpoint: "http://thanos-receive.thanos.svc.cluster.local:19291/api/v1/receive"
         tls:
           insecure: true
-
     service:
       telemetry:
         logs:
