@@ -98,6 +98,7 @@ spec:
                 enabled: true
               system.memory.utilization:
                 enabled: true
+          network:
     extensions:
       health_check: {}
       pprof:
