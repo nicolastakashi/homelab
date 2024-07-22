@@ -110,15 +110,15 @@ spec:
       k8sattributes:
         filter:
           node_from_env_var: K8S_NODE_NAME
-         pod_association:
-          - sources:
-              - from: resource_attribute
-                name: k8s.pod.ip
-          - sources:
-              - from: resource_attribute
-                name: k8s.pod.uid
-          - sources:
-              - from: connection
+        pod_association:
+        - sources:
+            - from: resource_attribute
+              name: k8s.pod.ip
+        - sources:
+            - from: resource_attribute
+              name: k8s.pod.uid
+        - sources:
+            - from: connection
       memory_limiter:
         check_interval: 1s
         limit_percentage: 80
