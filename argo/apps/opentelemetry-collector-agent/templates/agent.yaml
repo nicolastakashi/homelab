@@ -40,10 +40,19 @@ spec:
       hostmetrics:
         collection_interval: 30s
         root_path: /hostfs
+        normalizeProcessCPUUtilization: true
         scrapers:
           cpu:
             metrics:
               system.cpu.utilization:
+                enabled: true
+          load:
+            metrics:
+              system.cpu.load_average.1m:
+                enabled: true
+              system.cpu.load_average.5m:
+                enabled: true
+              system.cpu.load_average.15m:
                 enabled: true
           filesystem:
             exclude_fs_types:
