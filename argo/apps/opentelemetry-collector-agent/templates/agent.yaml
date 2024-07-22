@@ -107,6 +107,9 @@ spec:
         endpoint: localhost:55679
     processors:
       batch: {}
+      k8sattributes:
+        filter:
+          node_from_env_var: K8S_NODE_NAME
       memory_limiter:
         check_interval: 1s
         limit_percentage: 80
@@ -141,6 +144,16 @@ spec:
         - pprof
         - zpages
       pipelines:
+        metrics/debug:
+          receivers:
+            - hostmetrics
+          processors:
+            - batch
+            - memory_limiter
+            - resourcedetection/k8s
+            - transform
+          exporters:
+            - debug
         metrics:
           receivers:
             - hostmetrics
