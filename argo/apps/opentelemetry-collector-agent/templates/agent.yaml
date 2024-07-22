@@ -136,7 +136,7 @@ spec:
     service:
       telemetry:
         logs:
-          level: "warn"
+          level: "info"
         metrics:
           address: ${MY_POD_IP}:8888
       extensions:
