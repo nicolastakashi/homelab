@@ -42,59 +42,66 @@ spec:
         auth_type: "serviceAccount"
         endpoint: "https://${env:K8S_NODE_NAME}:10250"
         insecure_skip_verify: true
-        metrics:
-          k8s.node.cpu.time:
-            enabled: false
-          k8s.node.cpu.utilization:
-            enabled: false
-          k8s.node.filesystem.available:
-            enabled: false
-          k8s.node.filesystem.capacity:
-            enabled: false
-          k8s.node.filesystem.usage:
-            enabled: false
-          k8s.node.memory.available:
-            enabled: false
-          k8s.node.memory.major_page_faults:
-            enabled: false
-          k8s.node.memory.page_faults:
-            enabled: false
-          k8s.node.memory.rss:
-            enabled: false
-          k8s.node.memory.usage:
-            enabled: false
-          k8s.node.memory.working_set:
-            enabled: false
-          k8s.node.network.errors:
-            enabled: false
-          k8s.node.network.io:
-            enabled: false
-          k8s.pod.cpu.utilization:
-            enabled: false
-          container.cpu.utilization:
-            enabled: false
-          k8s.pod.cpu.time:
-            enabled: false
-          k8s.pod.filesystem.available:
-            enabled: false
-          k8s.pod.filesystem.capacity:
-            enabled: false
-          k8s.pod.filesystem.usage:
-            enabled: false
-          k8s.pod.memory.available:
-            enabled: false
-          k8s.pod.memory.major_page_faults:
-            enabled: false
-          k8s.pod.memory.page_faults:
-            enabled: false
-          k8s.pod.memory.rss:
-            enabled: false
-          k8s.pod.memory.usage:
-            enabled: false
-          k8s.pod.memory.working_set:
-            enabled: false
-         
-          
+        extra_metadata_labels:
+          - k8s.volume.type
+          - k8s.volume.name
+        k8s_api_config:
+          auth_type: serviceAccount
+        metric_groups:
+          - pod
+          - container
+          - volume
+        # metrics:
+        #   k8s.node.cpu.time:
+        #     enabled: false
+        #   k8s.node.cpu.utilization:
+        #     enabled: false
+        #   k8s.node.filesystem.available:
+        #     enabled: false
+        #   k8s.node.filesystem.capacity:
+        #     enabled: false
+        #   k8s.node.filesystem.usage:
+        #     enabled: false
+        #   k8s.node.memory.available:
+        #     enabled: false
+        #   k8s.node.memory.major_page_faults:
+        #     enabled: false
+        #   k8s.node.memory.page_faults:
+        #     enabled: false
+        #   k8s.node.memory.rss:
+        #     enabled: false
+        #   k8s.node.memory.usage:
+        #     enabled: false
+        #   k8s.node.memory.working_set:
+        #     enabled: false
+        #   k8s.node.network.errors:
+        #     enabled: false
+        #   k8s.node.network.io:
+        #     enabled: false
+        #   k8s.pod.cpu.utilization:
+        #     enabled: false
+        #   container.cpu.utilization:
+        #     enabled: false
+        #   k8s.pod.cpu.time:
+        #     enabled: false
+        #   k8s.pod.filesystem.available:
+        #     enabled: false
+        #   k8s.pod.filesystem.capacity:
+        #     enabled: false
+        #   k8s.pod.filesystem.usage:
+        #     enabled: false
+        #   k8s.pod.memory.available:
+        #     enabled: false
+        #   k8s.pod.memory.major_page_faults:
+        #     enabled: false
+        #   k8s.pod.memory.page_faults:
+        #     enabled: false
+        #   k8s.pod.memory.rss:
+        #     enabled: false
+        #   k8s.pod.memory.usage:
+        #     enabled: false
+        #   k8s.pod.memory.working_set:
+        #     enabled: false
       hostmetrics:
         collection_interval: 30s
         root_path: /hostfs
@@ -204,8 +211,9 @@ spec:
               - set(attributes["namespace"], resource.attributes["k8s.namespace.name"])
               - set(attributes["node"], resource.attributes["k8s.node.name"])
               - set(attributes["pod"], resource.attributes["k8s.pod.name"])
-              - set(attributes["fs_type"], resource.attributes["fs.type"]) where metric.name == "container.filesystem.usage"
-              - set(attributes["partition"], resource.attributes["partition"]) where metric.name == "container.filesystem.usage"
+              - set(attributes["fs_type"], resource.attributes["fs.type"])
+              - set(attributes["partition"], resource.attributes["partition"])
+              - set(attributes["name"], resource.attributes["k8s.volume.name"])
     exporters:
       debug:
         verbosity: detailed
