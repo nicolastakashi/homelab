@@ -69,6 +69,10 @@ spec:
             enabled: false
           k8s.node.network.io:
             enabled: false
+          k8s.pod.cpu.utilization:
+            enabled: false
+          container.cpu.utilization:
+            enabled: false
       hostmetrics:
         collection_interval: 30s
         root_path: /hostfs
