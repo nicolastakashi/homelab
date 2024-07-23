@@ -108,17 +108,28 @@ spec:
     processors:
       batch: {}
       k8sattributes:
+        extract:
+          metadata:
+          - k8s.namespace.name
+          - k8s.replicaset.name
+          - k8s.statefulset.name
+          - k8s.daemonset.name
+          - k8s.cronjob.name
+          - k8s.job.name
+          - k8s.pod.name
+          - k8s.node.name
         filter:
           node_from_env_var: K8S_NODE_NAME
+        passthrough: false
         pod_association:
         - sources:
-            - from: resource_attribute
-              name: k8s.pod.ip
+          - from: resource_attribute
+            name: k8s.pod.ip
         - sources:
-            - from: resource_attribute
-              name: k8s.pod.uid
+          - from: resource_attribute
+            name: k8s.pod.uid
         - sources:
-            - from: connection
+          - from: connection
       memory_limiter:
         check_interval: 1s
         limit_percentage: 80
@@ -153,16 +164,6 @@ spec:
         - pprof
         - zpages
       pipelines:
-        metrics/debug:
-          receivers:
-            - hostmetrics
-          processors:
-            - batch
-            - memory_limiter
-            - resourcedetection/k8s
-            - transform
-          exporters:
-            - debug
         metrics:
           receivers:
             - hostmetrics
