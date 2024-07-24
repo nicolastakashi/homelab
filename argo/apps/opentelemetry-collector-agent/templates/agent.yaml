@@ -42,14 +42,9 @@ spec:
         auth_type: "serviceAccount"
         endpoint: "https://${env:K8S_NODE_NAME}:10250"
         insecure_skip_verify: true
-        extra_metadata_labels:
-          - k8s.volume.type
-        k8s_api_config:
-          auth_type: serviceAccount
         metric_groups:
           - pod
           - container
-          - volume
         # metrics:
         #   k8s.node.cpu.time:
         #     enabled: false
@@ -210,10 +205,6 @@ spec:
               - set(attributes["namespace"], resource.attributes["k8s.namespace.name"])
               - set(attributes["node"], resource.attributes["k8s.node.name"])
               - set(attributes["pod"], resource.attributes["k8s.pod.name"])
-              - set(attributes["fs_type"], resource.attributes["fs.type"])
-              - set(attributes["partition"], resource.attributes["partition"])
-              - set(attributes["name"], resource.attributes["k8s.volume.name"])
-              - set(attributes["type"], resource.attributes["k8s.volume.type"])
     exporters:
       debug:
         verbosity: detailed
