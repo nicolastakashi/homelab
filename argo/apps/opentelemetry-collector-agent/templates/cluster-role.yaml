@@ -15,3 +15,6 @@ rules:
 - apiGroups: [""]
   resources: ["nodes/stats"]
   verbs: ["get"]
+ - apiGroups: [""]
+  resources: ["nodes/proxy"]
+  verbs: ["get"]
