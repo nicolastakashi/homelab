@@ -213,6 +213,7 @@ spec:
               - set(attributes["fs_type"], resource.attributes["fs.type"])
               - set(attributes["partition"], resource.attributes["partition"])
               - set(attributes["name"], resource.attributes["k8s.volume.name"])
+              - set(attributes["type"], resource.attributes["k8s.volume.type"])
     exporters:
       debug:
         verbosity: detailed
