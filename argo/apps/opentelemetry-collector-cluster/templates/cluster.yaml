@@ -41,6 +41,8 @@ spec:
         allocatable_types_to_report:
         - cpu
         - memory
+        - storage
+        - ephemeral-storage
         collection_interval: '30s'
         metrics:
           k8s.pod.status_reason:
