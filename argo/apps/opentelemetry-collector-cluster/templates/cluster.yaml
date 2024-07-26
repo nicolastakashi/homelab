@@ -4,7 +4,7 @@ metadata:
   name: opentelemetry-collector-cluster
   namespace: {{ .Release.Namespace }}
 spec:
-  mode: daemonset
+  mode: deployment
   resources:
     requests:
       cpu: "100m"
