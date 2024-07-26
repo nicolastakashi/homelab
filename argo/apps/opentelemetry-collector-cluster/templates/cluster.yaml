@@ -119,12 +119,11 @@ spec:
       pipelines:
         metrics:
           receivers:
-            - hostmetrics
-            - kubeletstats
+            - k8s_cluster
           processors:
             - memory_limiter
-            - k8sattributes
             - resourcedetection/k8s
+            - k8sattributes
             - transform
             - batch
           exporters:
