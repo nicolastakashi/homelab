@@ -206,13 +206,13 @@ spec:
       pipelines:
         metrics:
           receivers:
-            - hostmetrics
+            # - hostmetrics
             - kubeletstats
           processors:
             - memory_limiter
-            - k8sattributes
             - resourcedetection/k8s
-            # - transform
+            - k8sattributes
+            - transform
             - batch
           exporters:
-            - prometheusremotewrite
+            - debug
