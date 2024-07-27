@@ -31,11 +31,11 @@ spec:
       prometheus:
         config:
           scrape_configs:
-          - job_name: 'opentelemetry-collector-metrics'
+          - job_name: opentelemetry-collector
             scrape_interval: 30s
             static_configs:
-              - targets:
-                - ${env:MY_POD_IP}:8888
+            - targets:
+              - ${env:MY_POD_IP}:8888
     extensions:
       health_check: {}
       pprof:
@@ -63,7 +63,7 @@ spec:
         logs:
           level: "info"
         metrics:
-          address: ${MY_POD_IP}:8888
+          address: ${env:MY_POD_IP}:8888
       extensions:
         - health_check
         - pprof
