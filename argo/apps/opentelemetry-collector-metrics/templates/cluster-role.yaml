@@ -1,61 +1,40 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: opentelemetry-collector-metrics
+  name: opentelemetry-targetallocator-role
 rules:
-- apiGroups:
-  - ""
+- apiGroups: [""]
   resources:
-  - events
-  - namespaces
-  - namespaces/status
   - nodes
-  - nodes/spec
-  - pods
-  - pods/status
-  - replicationcontrollers
-  - replicationcontrollers/status
-  - resourcequotas
+  - nodes/metrics
   - services
-  verbs:
-  - get
-  - list
-  - watch
-- apiGroups:
-  - apps
+  - endpoints
+  - pods
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
   resources:
-  - daemonsets
-  - deployments
-  - replicasets
-  - statefulsets
-  verbs:
-  - get
-  - list
-  - watch
+  - configmaps
+  verbs: ["get"]
 - apiGroups:
-  - extensions
+  - discovery.k8s.io
   resources:
-  - daemonsets
-  - deployments
-  - replicasets
-  verbs:
-  - get
-  - list
-  - watch
+  - endpointslices
+  verbs: ["get", "list", "watch"]
 - apiGroups:
-  - batch
+  - networking.k8s.io
   resources:
-  - jobs
-  - cronjobs
-  verbs:
-  - get
-  - list
-  - watch
+  - ingresses
+  verbs: ["get", "list", "watch"]
+- nonResourceURLs: ["/metrics"]
+  verbs: ["get"]
 - apiGroups:
-    - autoscaling
+  - monitoring.coreos.com
   resources:
-    - horizontalpodautoscalers
+  - servicemonitors
+  - podmonitors
   verbs:
-    - get
-    - list
-    - watch
+  - '*'
+- apiGroups: [""]
+  resources:
+  - namespaces
+  verbs: ["get", "list", "watch"]
