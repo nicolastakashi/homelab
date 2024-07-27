@@ -34,8 +34,8 @@ spec:
           - job_name: 'opentelemetry-collector-metrics'
             scrape_interval: 30s
             static_configs:
-              targets:
-              - ${env:MY_POD_IP}:8888
+              - targets:
+                - ${env:MY_POD_IP}:8888
     extensions:
       health_check: {}
       pprof:
