@@ -8,10 +8,10 @@ spec:
   resources:
     requests:
       cpu: "100m"
-      memory: "256Mi"
+      memory: "128Mi"
     limits:
-      cpu: "200m"
-      memory: "512Mi"
+      cpu: "100m"
+      memory: "128Mi"
   tolerations:
     - key: "node-role.kubernetes.io/master"
       operator: "Exists"
@@ -45,9 +45,19 @@ spec:
         extra_metadata_labels:
           - container.id
           - k8s.volume.type
+        k8s_api_config:
+           auth_type: serviceAccount
         metric_groups:
           - pod
+          - volume
           - container
+        metrics:
+          k8s.pod.cpu.usage:
+              enabled: true
+          container.cpu.usage:
+              enabled: true
+          k8s.node.cpu.usage:
+              enabled: true
       hostmetrics:
         collection_interval: 30s
         root_path: /hostfs
@@ -119,6 +129,9 @@ spec:
     processors:
       batch: {}
       k8sattributes:
+        filter:
+          node_from_env_var: K8S_NODE_NAME
+        passthrough: false
         extract:
           metadata:
           - k8s.namespace.name
@@ -133,9 +146,6 @@ spec:
           - k8s.cronjob.name
           - k8s.statefulset.name
           - container.image.name
-        filter:
-          node_from_env_var: K8S_NODE_NAME
-        passthrough: false
         pod_association:
           - sources:
             - from: resource_attribute
