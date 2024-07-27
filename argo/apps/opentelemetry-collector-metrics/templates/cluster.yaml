@@ -12,10 +12,10 @@ spec:
   resources:
     requests:
       cpu: "100m"
-      memory: "2Gi"
+      memory: "4Gi"
     limits:
       cpu: "100m"
-      memory: "2Gi"
+      memory: "4Gi"
   env:
     - name: MY_POD_IP
       valueFrom:
