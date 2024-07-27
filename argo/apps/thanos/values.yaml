@@ -4,6 +4,11 @@ thanos:
     config:
       directory: "/srv/thanos"
 
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
   query:
     revisionHistoryLimit: 0
     logFormat: json
