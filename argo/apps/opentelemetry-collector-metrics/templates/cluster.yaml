@@ -11,10 +11,10 @@ spec:
       enabled: true
   resources:
     requests:
-      cpu: "100m"
+      cpu: "500m"
       memory: "4Gi"
     limits:
-      cpu: "100m"
+      cpu: "500m"
       memory: "4Gi"
   env:
     - name: MY_POD_IP
