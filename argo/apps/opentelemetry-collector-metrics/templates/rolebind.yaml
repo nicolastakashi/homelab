@@ -9,5 +9,5 @@ roleRef:
   name: opentelemetry-collector-metrics
 subjects:
 - kind: ServiceAccount
-  name: opentelemetry-collector-metrics-collector-targetallocator
+  name: opentelemetry-collector-metrics-targetallocator
   namespace: {{ .Release.Namespace }}
