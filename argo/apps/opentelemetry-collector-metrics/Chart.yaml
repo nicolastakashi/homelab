@@ -1,0 +1,5 @@
+apiVersion: v2
+name: opentelemetry-collector-metrics
+description: A Helm chart for opentelemetry-collector-metrics, a declarative, GitOps continuous delivery tool for Kubernetes.
+type: application
+version: 0.1.0

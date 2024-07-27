@@ -1,0 +1,78 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: opentelemetry-collector-metrics
+  namespace: {{ .Release.Namespace }}
+spec:
+  mode: statefulset
+  targetAllocator:
+    enabled: true
+    prometheusCR:
+      enabled: true
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "100m"
+      memory: "128Mi"
+  env:
+    - name: MY_POD_IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    - name: K8S_NODE_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
+  config: |
+    receivers:
+      prometheus:
+        config:
+          scrape_configs:
+          - job_name: 'opentelemetry-collector-metrics'
+            scrape_interval: 30s
+            static_configs:
+              - targets: [ '0.0.0.0:8888' ]
+    extensions:
+      health_check: {}
+      pprof:
+        endpoint: localhost:1777
+      zpages:
+        endpoint: localhost:55679
+    processors:
+      batch:
+        send_batch_size: 1000
+        timeout: 1s
+        send_batch_max_size: 1500
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 80
+        spike_limit_percentage: 20
+    exporters:
+      debug:
+        verbosity: detailed
+      prometheusremotewrite:
+        endpoint: "http://thanos-receive.thanos.svc.cluster.local:19291/api/v1/receive"
+        tls:
+          insecure: true
+    service:
+      telemetry:
+        logs:
+          level: "info"
+        metrics:
+          address: ${MY_POD_IP}:8888
+      extensions:
+        - health_check
+        - pprof
+        - zpages
+      pipelines:
+        metrics:
+          receivers:
+            - prometheus
+          processors:
+            - memory_limiter
+            - batch
+          exporters:
+            - prometheusremotewrite

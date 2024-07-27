@@ -12,19 +12,6 @@ spec:
     limits:
       cpu: "100m"
       memory: "128Mi"
-  tolerations:
-    - key: "node-role.kubernetes.io/master"
-      operator: "Exists"
-      effect: "NoSchedule"
-  volumeMounts:
-    - mountPath: /hostfs
-      mountPropagation: HostToContainer
-      name: hostfs
-      readOnly: true
-  volumes:
-    - hostPath:
-        path: /
-      name: hostfs
   env:
     - name: MY_POD_IP
       valueFrom:
@@ -63,7 +50,10 @@ spec:
       zpages:
         endpoint: localhost:55679
     processors:
-      batch: {}
+      batch:
+        send_batch_size: 1000
+        timeout: 1s
+        send_batch_max_size: 1500
       k8sattributes:
         extract:
           metadata:
