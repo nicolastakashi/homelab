@@ -184,7 +184,6 @@ spec:
             statements:
               - set(attributes["container"], resource.attributes["k8s.container.name"])
               - set(attributes["namespace"], resource.attributes["k8s.namespace.name"])
-              - set(attributes["node"], resource.attributes["k8s.node.name"])
               - set(attributes["pod"], resource.attributes["k8s.pod.name"])
     exporters:
       debug:
@@ -206,7 +205,7 @@ spec:
       pipelines:
         metrics:
           receivers:
-            # - hostmetrics
+            - hostmetrics
             - kubeletstats
           processors:
             - memory_limiter
@@ -215,4 +214,4 @@ spec:
             - transform
             - batch
           exporters:
-            - debug
+            - prometheusremotewrite
