@@ -127,7 +127,10 @@ spec:
       zpages:
         endpoint: localhost:55679
     processors:
-      batch: {}
+      batch:
+        send_batch_size: 1000
+        timeout: 1s
+        send_batch_max_size: 1500
       k8sattributes:
         filter:
           node_from_env_var: K8S_NODE_NAME
@@ -209,7 +212,7 @@ spec:
             - memory_limiter
             - k8sattributes
             - resourcedetection/k8s
-            - transform
+            # - transform
             - batch
           exporters:
             - prometheusremotewrite
