@@ -88,6 +88,10 @@ spec:
           level: "info"
         metrics:
           address: 0.0.0.0:8888
+          level: detailed
+        resource:
+        - service.instance.id: null
+        - service.name: null
       extensions:
         - health_check
         - pprof
