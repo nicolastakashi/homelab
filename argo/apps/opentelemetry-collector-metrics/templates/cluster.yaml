@@ -35,7 +35,7 @@ spec:
             scrape_interval: 30s
             static_configs:
             - targets:
-              - ${MY_POD_IP}:8888
+              - $${env:MY_POD_IP}:8888
     extensions:
       health_check: {}
       pprof:
