@@ -86,7 +86,7 @@ spec:
         logs:
           level: "info"
         metrics:
-          address: "${env:MY_POD_IP}:8888"
+          address: ${env:MY_POD_IP}:8888
       extensions:
         - health_check
         - pprof
