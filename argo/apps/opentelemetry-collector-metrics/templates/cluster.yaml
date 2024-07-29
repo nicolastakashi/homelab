@@ -6,7 +6,7 @@ metadata:
 spec:
   mode: statefulset
   targetAllocator:
-    enabled: false
+    enabled: true
     prometheusCR:
       enabled: true
   resources:
