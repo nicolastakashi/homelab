@@ -6,7 +6,7 @@ metadata:
 spec:
   mode: statefulset
   targetAllocator:
-    enabled: true
+    enabled: false
     prometheusCR:
       enabled: true
   resources:
@@ -100,4 +100,4 @@ spec:
             - k8sattributes
             - batch
           exporters:
-            - prometheusremotewrite
+            - debug
