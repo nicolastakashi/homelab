@@ -5,7 +5,7 @@ thanos:
       directory: "/srv/thanos"
 
   metrics:
-    enabled: false
+    enabled: true
     serviceMonitor:
       enabled: true
 
