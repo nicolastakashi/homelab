@@ -24,6 +24,15 @@ spec:
           fieldPath: spec.nodeName
   config: |
     receivers:
+      prometheus:
+        report_extra_scrape_metrics: true
+        config:
+          scrape_configs:
+          - job_name: opentelemetry-collector-cluster
+            scrape_interval: 30s
+            static_configs:
+            - targets:
+              - 0.0.0.0:8888
       k8s_cluster:
         allocatable_types_to_report:
         - cpu
@@ -113,6 +122,7 @@ spec:
       pipelines:
         metrics:
           receivers:
+            - prometheus
             - k8s_cluster
           processors:
             - memory_limiter
