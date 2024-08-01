@@ -18,3 +18,5 @@ rules:
 - apiGroups: [""]
   resources: ["nodes/proxy"]
   verbs: ["get"]
+- nonResourceURLs: ["/metrics"]
+  verbs: ["get"]
