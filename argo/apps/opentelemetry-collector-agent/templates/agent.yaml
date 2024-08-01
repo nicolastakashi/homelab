@@ -45,7 +45,7 @@ spec:
             scrape_interval: 30s
             static_configs:
             - targets:
-              - 0.0.0.0:8888
+              - localhost:8888
       kubeletstats:
         collection_interval: 30s
         auth_type: "serviceAccount"
@@ -206,7 +206,7 @@ spec:
         logs:
           level: "info"
         metrics:
-          address: ${MY_POD_IP}:8888
+          address: localhost:8888
       extensions:
         - health_check
         - pprof
