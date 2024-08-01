@@ -3,3 +3,6 @@ cert-manager:
     # This option decides if the CRDs should be installed
     # as part of the Helm installation.
     enabled: true
+  prometheus:
+    servicemonitor:
+      enabled: true
