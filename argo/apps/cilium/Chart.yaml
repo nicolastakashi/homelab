@@ -4,6 +4,6 @@ description: A Helm chart for Cilium.
 type: application
 version: 0.1.0
 dependencies:
-  - name: cilium/cilium
+  - name: cilium
     version: 1.16.0
     repository: https://helm.cilium.io
