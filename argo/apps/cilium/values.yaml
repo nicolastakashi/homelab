@@ -1,0 +1,14 @@
+cilium:
+  MTU: 1500
+  operator:
+    replicas: 1
+    prometheus:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  dashboards:
+    enabled: true
