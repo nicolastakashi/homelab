@@ -1,11 +1,21 @@
 cilium:
   MTU: 1500
   kubeProxyReplacement: true
+
+  rollOutCiliumPods: true
+
+  k8sClientRateLimit:
+    qps: 50
+    burst: 200
+
   ingressController:
     enabled: true
-    loadbalancerMode: dedicated
+    default: true
+    loadbalancerMode: shared
+
   operator:
     replicas: 1
+    rollOutPods: true
     prometheus:
       enabled: true
       serviceMonitor:
