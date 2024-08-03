@@ -1,5 +1,9 @@
 cilium:
   MTU: 1500
+  kubeProxyReplacement: true
+  ingressController:
+    enabled: true
+    loadbalancerMode: dedicated
   operator:
     replicas: 1
     prometheus:
