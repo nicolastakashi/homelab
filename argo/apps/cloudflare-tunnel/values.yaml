@@ -13,9 +13,9 @@ cloudflare:
   # https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/configuration-file/ingress
   ingress:
     - hostname: grafana.ntakashi.com
-      service: http://ingress-ingress-nginx-controller.ingress.svc.cluster.local:80
+      service: http://cilium-ingress.cilium.svc.cluster.local:80
     - hostname: argocd.ntakashi.com
-      service: http://ingress-ingress-nginx-controller.ingress.svc.cluster.local:80
+      service: http://cilium-ingress.cilium.svc.cluster.local:80
   # The first rule proxies traffic to the httpbin sample service named web-server at port 80
   # - hostname: tunnel.example.com
   #  service: http://web-service:80
