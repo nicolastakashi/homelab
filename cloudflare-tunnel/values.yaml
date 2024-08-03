@@ -8,6 +8,6 @@ tunnel:
   cloudflare:
     ingress:
       - hostname: grafana.ntakashi.com
-        service: http://ingress-ingress-nginx-controller.ingress-system.svc.cluster.local:80
+        service: http://cilium-ingress.cilium.svc.cluster.local:80
       - hostname: argocd.ntakashi.com
-        service: http://ingress-ingress-nginx-controller.ingress-system.svc.cluster.local:80
+        service: http://cilium-ingress.cilium.svc.cluster.local:80
