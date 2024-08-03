@@ -13,7 +13,7 @@ cilium:
   ingressController:
     enabled: true
     default: true
-    loadbalancerMode: dedicated
+    loadbalancerMode: shared
 
   operator:
     replicas: 1
