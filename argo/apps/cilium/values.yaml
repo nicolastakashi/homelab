@@ -37,3 +37,6 @@ cilium:
 
   bpf:
     masquerade: true
+
+  endpointRoutes:
+    enabled: true
