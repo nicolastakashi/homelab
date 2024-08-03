@@ -1,5 +1,6 @@
 cilium:
   MTU: 1500
+  k8sServiceHost: "auto"
   kubeProxyReplacement: "true"
 
   rollOutCiliumPods: true
