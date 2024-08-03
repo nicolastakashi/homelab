@@ -13,6 +13,8 @@ spec:
   template:
     metadata:
       name: "{{path.basename}}"
+      annotations:
+        argocd.argoproj.io/compare-options: ServerSideDiff=true
     spec:
       project: default
       source:

@@ -24,4 +24,9 @@ thanos:
     logFormat: json
     logLevel: warn
     tsdbRetention: 4h
-    mode: "dual-mode"
+
+  receiveDistributor:
+    enabled: false
+    revisionHistoryLimit: 0
+    logFormat: json
+    logLevel: warn
