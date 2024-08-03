@@ -26,8 +26,6 @@ argo-cd:
       enabled: true
       ingressClassName: "cilium"
       hostname: "argocd.ntakashi.com"
-      annotations:
-        ingress.cilium.io/tls-passthrough: "enabled"
 
   configs:
     cm:

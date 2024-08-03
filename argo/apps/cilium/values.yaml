@@ -34,3 +34,6 @@ cilium:
     securityContext:
       capabilities:
         keepCapNetBindService: true
+
+  bpf:
+    masquerade: true
