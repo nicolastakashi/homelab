@@ -1,6 +1,6 @@
 cilium:
   MTU: 1500
-  kubeProxyReplacement: true
+  kubeProxyReplacement: "true"
 
   rollOutCiliumPods: true
 
