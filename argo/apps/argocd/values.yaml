@@ -24,7 +24,7 @@ argo-cd:
 
     ingress:
       enabled: true
-      ingressClassName: "nginx"
+      ingressClassName: "cilium"
       hostname: "argocd.ntakashi.com"
 
   configs:
