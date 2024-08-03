@@ -1,7 +1,7 @@
 grafana:
   ingress:
     enabled: true
-    ingressClassName: "nginx"
+    ingressClassName: "cilium"
     hosts:
       - grafana.ntakashi.com
   persistence:
