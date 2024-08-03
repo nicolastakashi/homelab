@@ -26,5 +26,11 @@ cilium:
     enabled: true
     serviceMonitor:
       enabled: true
+
   dashboards:
     enabled: true
+
+  envoy:
+    securityContext:
+      capabilities:
+        keepCapNetBindService: true
