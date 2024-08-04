@@ -35,8 +35,11 @@ cilium:
       capabilities:
         keepCapNetBindService: true
 
-  
-   hubble:
+  bpf:
+    masquerade: true
+    hostLegacyRouting: true
+
+  hubble:
     relay:
       enabled: true
     ui:
