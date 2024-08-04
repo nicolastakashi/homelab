@@ -35,8 +35,9 @@ cilium:
       capabilities:
         keepCapNetBindService: true
 
-  bpf:
-    masquerade: true
-
-  endpointRoutes:
-    enabled: true
+  
+   hubble:
+    relay:
+      enabled: true
+    ui:
+      enabled: true
