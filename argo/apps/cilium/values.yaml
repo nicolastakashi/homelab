@@ -5,3 +5,6 @@ cilium:
   MTU: 1500
 
   kubeProxyReplacement: "true"
+
+  operator:
+    replicas: 1
