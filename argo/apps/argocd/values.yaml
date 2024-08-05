@@ -9,15 +9,15 @@ argo-cd:
 
   controller:
     metrics:
-      enabled: true
+      enabled: false
       serviceMonitor:
-        enabled: true
+        enabled: false
 
   server:
     metrics:
-      enabled: true
+      enabled: false
       serviceMonitor:
-        enabled: true
+        enabled: false
 
     extraArgs:
       - --insecure

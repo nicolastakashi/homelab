@@ -22,3 +22,7 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "0.1.0"
+dependencies:
+  - name: argo-cd
+    version: 7.3.7
+    repository: https://argoproj.github.io/argo-helm
