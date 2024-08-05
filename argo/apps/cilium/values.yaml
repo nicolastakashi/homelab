@@ -12,7 +12,7 @@ cilium:
     rollOutPods: true
 
   l2announcements:
-  enabled: true
+    enabled: true
 
   externalIPs:
     enabled: true
