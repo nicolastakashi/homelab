@@ -6,9 +6,7 @@ cilium:
   MTU: 1500
 
   kubeProxyReplacement: "true"
-  # bpf:
-  #   masquerade: true
-  #   hostLegacyRouting: true
+
   operator:
     replicas: 1
     rollOutPods: true
