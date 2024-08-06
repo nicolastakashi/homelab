@@ -158,7 +158,7 @@ spec:
             - prometheus
             - hostmetrics
           processors:
-            - memory_limiter, 
+            - memory_limiter
             - resourcedetection/system
             - transform
             - batch
