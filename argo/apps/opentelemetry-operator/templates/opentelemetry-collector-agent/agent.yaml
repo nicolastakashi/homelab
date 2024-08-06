@@ -125,6 +125,16 @@ spec:
         send_batch_size: 1000
         timeout: 1s
         send_batch_max_size: 1500
+      resource:
+        attributes:
+          - action: upsert
+            key: service.namespace
+            value: opentelemetry-operator
+      attributes:
+        actions:
+          - key: service.namespace
+            action: upsert
+            value: opentelemetry-operator
       k8sattributes:
         filter:
           node_from_env_var: K8S_NODE_NAME
@@ -180,9 +190,7 @@ spec:
               - set(attributes["process.owner"], resource.attributes["process.owner"])
               - set(attributes["process.parent_pid"], resource.attributes["process.parent_pid"])
               - set(attributes["process.pid"], resource.attributes["process.pid"])
-              - set(attributes["container"], resource.attributes["k8s.container.name"])
-              - set(attributes["namespace"], resource.attributes["k8s.namespace.name"])
-              - set(attributes["pod"], resource.attributes["k8s.pod.name"])
+              - set(attributes["namespace"], resource.attributes["service.namespace"])
     exporters:
       prometheusremotewrite:
         endpoint: "http://thanos-receive.thanos.svc.cluster.local:19291/api/v1/receive"
