@@ -10,6 +10,15 @@ cilium:
   operator:
     replicas: 1
     rollOutPods: true
+    prometheus:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
 
   l2announcements:
     enabled: true
