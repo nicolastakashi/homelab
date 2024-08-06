@@ -209,6 +209,8 @@ spec:
           processors:
             - memory_limiter
             - resourcedetection/system
+            - resource
+            - attributes
             - transform
             - batch
           exporters: 
