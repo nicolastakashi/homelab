@@ -1,4 +1,5 @@
 thanos:
+  nameOverride: "observability"
   objstoreConfig: |
     type: FILESYSTEM
     config:
