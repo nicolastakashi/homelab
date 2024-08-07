@@ -1,4 +1,4 @@
-node-exporter:
+prometheus-node-exporter:
   nameOverride: "observability"
   revisionHistoryLimit: 0
   extraArgs:
