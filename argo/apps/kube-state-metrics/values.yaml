@@ -1,0 +1,7 @@
+kube-state-metrics:
+  revisionHistoryLimit: 0
+  namespaceOverride: "observability"
+  fullnameOverride: "kube-state-metrics"
+  prometheus:
+    monitor:
+      enabled: true
