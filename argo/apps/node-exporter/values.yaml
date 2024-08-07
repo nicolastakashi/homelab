@@ -1,2 +1,6 @@
 node-exporter:
   nameOverride: "observability"
+  revisionHistoryLimit: 0
+  prometheus:
+    podMonitor:
+      enabled: true
