@@ -4,6 +4,22 @@ prometheus-node-exporter:
   extraArgs:
     - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
     - --collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
+    - --no-collector.bonding
+    - --no-collector.btrfs
+    - --no-collector.conntrack
+    - --no-collector.edac
+    - --no-collector.entropy
+    - --no-collector.filefd
+    - --no-collector.hwmon
+    - --no-collector.infiniband
+    - --no-collector.ipvs
+    - --no-collector.mdadm
+    - --no-collector.netclass
+    - --no-collector.nfs
+    - --no-collector.nfsd
+    - --no-collector.qdisc
+    - --no-collector.sockstat
+    - --no-collector.xfs
   prometheus:
     podMonitor:
       enabled: true
