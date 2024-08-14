@@ -26,6 +26,9 @@ thanos:
     logFormat: json
     logLevel: warn
     tsdbRetention: 4h
+    replicaCount: 3
+    replicationFactor: 2
+    resourcesPreset: small
 
   receiveDistributor:
     enabled: false
