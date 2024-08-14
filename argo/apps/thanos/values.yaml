@@ -27,7 +27,7 @@ thanos:
     logLevel: warn
     tsdbRetention: 4h
     replicaCount: 3
-    replicationFactor: 2
+    replicationFactor: 1
     resourcesPreset: small
 
   receiveDistributor:
