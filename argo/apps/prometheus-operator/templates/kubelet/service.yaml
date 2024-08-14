@@ -8,10 +8,6 @@ metadata:
   namespace: kube-system
 spec:
   internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  - IPv6
-  ipFamilyPolicy: RequireDualStack
   ports:
   - name: https-metrics
     port: 10250
