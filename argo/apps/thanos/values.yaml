@@ -29,6 +29,7 @@ thanos:
     replicaCount: 3
     replicationFactor: 2
     resourcesPreset: small
+    additionalHeadless: true
 
   receiveDistributor:
     enabled: false
