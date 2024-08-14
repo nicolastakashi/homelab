@@ -79,6 +79,8 @@ spec:
         verbosity: detailed
       prometheusremotewrite:
         endpoint: "http://thanos-receive.thanos.svc.cluster.local:19291/api/v1/receive"
+        external_labels:
+          cluster: "pt-north-1"
         tls:
           insecure: true
     service:
