@@ -25,7 +25,7 @@ rules:
   resources:
   - ingresses
   verbs: ["get", "list", "watch"]
-- nonResourceURLs: ["/metrics"]
+- nonResourceURLs: ["/metrics", "/metrics/cadvisor", "/metrics/probes"]
   verbs: ["get"]
 - apiGroups:
   - monitoring.coreos.com
