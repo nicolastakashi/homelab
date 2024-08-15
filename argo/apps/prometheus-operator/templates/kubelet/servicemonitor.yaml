@@ -3,11 +3,7 @@ kind: ServiceMonitor
 metadata:
   name: kubelet
   namespace: {{ .Release.Namespace }}
-  labels:
-    app: kubelet    
 spec:
-  attachMetadata:
-    node: false
   endpoints:
   - port: https-metrics
     scheme: https

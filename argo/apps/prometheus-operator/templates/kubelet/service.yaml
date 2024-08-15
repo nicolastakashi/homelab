@@ -7,6 +7,9 @@ metadata:
   name: kubelet
   namespace: kube-system
 spec:
+  clusterIP: None
+  clusterIPs:
+  - None
   internalTrafficPolicy: Cluster
   ports:
   - name: https-metrics
