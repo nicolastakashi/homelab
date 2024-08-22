@@ -7,15 +7,15 @@ metadata:
     rbac.authorization.k8s.io/aggregate-to-edit: "true"
     rbac.authorization.k8s.io/aggregate-to-view: "true"
 rules:
-  - apiGroups:
-      - ""
-    resources:
-      - pod
-      - pods
-    verbs:
-      - "get"
-      - "watch"
-      - "list"
+- apiGroups:
+    - ""
+  resources:
+    - pod
+    - pods
+  verbs:
+    - "get"
+    - "watch"
+    - "list"
 - apiGroups:
   - ""
   resources:
