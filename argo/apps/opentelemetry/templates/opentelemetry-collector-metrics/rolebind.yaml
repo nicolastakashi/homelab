@@ -11,6 +11,3 @@ subjects:
 - kind: ServiceAccount
   name: opentelemetry-collector-metrics-targetallocator
   namespace: {{ .Release.Namespace }}
-- kind: ServiceAccount
-  name: opentelemetry-collector-metrics-collector
-  namespace: {{ .Release.Namespace }}
