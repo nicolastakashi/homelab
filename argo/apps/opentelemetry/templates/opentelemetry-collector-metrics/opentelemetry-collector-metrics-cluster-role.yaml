@@ -16,3 +16,13 @@ rules:
       - "get"
       - "watch"
       - "list"
+- apiGroups:
+  - ""
+  resources:
+  - nodes/metrics
+  verbs:
+  - get
+- nonResourceURLs:
+  - /metrics
+  verbs:
+  - get
