@@ -27,14 +27,4 @@ rules:
   verbs: ["get", "list", "watch"]
 - nonResourceURLs: ["/metrics"]
   verbs: ["get"]
-- apiGroups:
-  - monitoring.coreos.com
-  resources:
-  - servicemonitors
-  - podmonitors
-  verbs:
-  - '*'
-- apiGroups: [""]
-  resources:
-  - namespaces
-  verbs: ["get", "list", "watch"]
+  
