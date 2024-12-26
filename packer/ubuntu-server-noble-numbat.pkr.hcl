@@ -26,12 +26,12 @@ source "proxmox-iso" "ubuntu-server-noble-numbat" {
     token = "${var.proxmox_api_token_secret}"
     insecure_skip_tls_verify = true
 
-    node = "pve"
+    node = "cortex"
     vm_id = "902"
     vm_name = "ubuntu-server-noble-numbat"
     template_description = "Ubuntu Server Noble Numbat Image"
 
-    iso_url = "https://releases.ubuntu.com/24.04/ubuntu-24.04.1-desktop-amd64.iso"
+    iso_url = "https://releases.ubuntu.com/24.04/ubuntu-24.04.1-live-server-amd64.iso"
     iso_checksum = "e240e4b801f7bb68c20d1356b60968ad0c33a41d00d828e74ceb3364a0317be9"
     iso_storage_pool = "local"
     unmount_iso = true
