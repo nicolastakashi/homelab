@@ -31,4 +31,4 @@ autoinstall:
         # passwd: your-password
         # - or -
         ssh_authorized_keys:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOhZWEYTL85VGvMrofyZ8BZtSw3YHnK3kPyfwGsnmBUuH/Q1luM7CLt9c15al5c/bPFP2YsB8aQX6SAh3LBCBY3uHKyB1/nj8vm6TB35AdqafrDTScxv/8STvB7+FZUdNqNzNPTOB5I2Qiot1jzPExfufraTlSccgpJAVsJmh7OAcn4bCp0CrndNC2+IFwt11WXNGhNXgN1tc5WLVHFbM09Hqj8SwyTNmkNa75NGgn8Zpypy0r/iwZ12veK/YmctBX6GCma0olTc1o354rGJRRTvbdV2LxSAGm4rcpPg6Pui3rIX5t7AkXOli2DLKK6cY6KTYNO14QyOW+61rzfDud root@pve
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtTsSxt5wiZa3bvWrbfYEIFYhuQhxoo3h3fM6/EGJ6MXcc1mxTZha0VYoh6kjaLTXXabZSNXpY5SHLsYZrnnA0CjDpAA2UXfNSA3P26/BNTlCsIaFsk5cMoDe+ZZtu1cW49VCNvjVvCZQQsqIRi7OqyxWPr8BHPHIElqiJ3BKyIurF4hJL3T0SRDWFW54uWh3sWSrKVCZflPzUOZyMWgDbIM1zdADSgFa/osZoOmrVBn4xCz1dsixmSphUFCoWw79xtfrbN8wwSkEJjS87lk2Rcyk+TDN2+RnA7NJplCkOEu6vdm+UH9trPBZaeiO07nV5QXn2D3Bq4TZr2BaHwcfz11TpuZAzaFVm6OX/ll1gNdV556bEZIbmevN5pqqQ3QzisYoYRCaz2uK3ECQBZjRq8+jrWvgEylf8aju1zfvHr/eTsw5FfCT4vtorjtJWPv/PjI7ASehoCqxlJTDdVL9DfzAoShCaQ+oqvcOuXG+G5UtaiA9lqLRnV6NC0fpVYWU= automation@ntakashi.com

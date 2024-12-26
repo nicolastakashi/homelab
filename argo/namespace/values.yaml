@@ -1,7 +1,0 @@
-waves:
-  namespace: 300
-
-namespace:
-  name: default-namespace
-  labels: {}
-  annotations: {}
