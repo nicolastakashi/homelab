@@ -32,7 +32,7 @@ source "proxmox-iso" "ubuntu-server-noble-numbat" {
     template_description = "Ubuntu Server Noble Numbat Image"
 
     iso_url = "https://releases.ubuntu.com/24.04/ubuntu-24.04.1-desktop-amd64.iso"
-    iso_checksum = "8762f7e74e4d64d72fceb5f70682e6b069932deedb4949c6975d0f0fe0a91be3"
+    iso_checksum = "e240e4b801f7bb68c20d1356b60968ad0c33a41d00d828e74ceb3364a0317be9"
     iso_storage_pool = "local"
     unmount_iso = true
 
