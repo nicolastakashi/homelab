@@ -1,8 +1,8 @@
 init:
-	@packer init -upgrade ubuntu-server-focal.pkr.hcl
+	@packer init -upgrade ubuntu-server-noble-numbat.pkr.hcl
  
 validate:
-	@packer validate -var-file=credentials.pkr.hcl ubuntu-server-focal.pkr.hcl
+	@packer validate -var-file=credentials.pkr.hcl ubuntu-server-noble-numbat.pkr.hcl
 
 build:
-	@packer build -var-file=credentials.pkr.hcl ubuntu-server-focal.pkr.hcl
+	@packer build -var-file=credentials.pkr.hcl ubuntu-server-noble-numbat.pkr.hcl
