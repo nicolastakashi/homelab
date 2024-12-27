@@ -2,7 +2,8 @@
 
 This repository contains my homelab configuration files, scripts, and some documentation on how to set up and configure the services I use.
 
-**Disclaimer:** This is a very opinionated setup and might not be suitable for everyone, but I hope it’s useful for someone looking for inspiration.
+> [!WARNING]  
+> This is a very opinionated setup and might not be suitable for everyone, but I hope it’s useful for someone looking for inspiration.
 
 ## Hardware
 
@@ -15,4 +16,13 @@ This repository contains my homelab configuration files, scripts, and some docum
 - **Hypervisor:** Proxmox  
 - **Orchestration:** Kubernetes (using k3s)  
 
-## Requirements
+## Why I Have a Homelab
+
+I’m a curious person who loves learning new things. A homelab gives me the freedom to experiment with different technologies and services without the fear of breaking anything critical.
+
+I mainly use my homelab for:  
+- Hosting observability tools  
+- Running Kubernetes experiments  
+- Hosting personal projects  
+
+It’s a playground where I can explore, build, and learn at my own pace.
