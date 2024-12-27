@@ -27,5 +27,21 @@ I mainly use my homelab for:
 
 It’s a playground where I can explore, build, and learn at my own pace.
 
+## Requirements
+
+This setup is highly opinionated and may not fit everyone’s needs. That said, if you’re interested in trying it out, here’s what you’ll need:
+
+- A Kubernetes cluster (I'm using k3s)
+- [Cilium](https://cilium.io/) for networking
+- [ArgoCD](https://argo-cd.readthedocs.io/) for GitOps
+
+## Setup
+
+After getting your Kubernetes cluster up and running, you can initialize the basic setup with the following command:
+
+```bash
+make setup
+```
+
 ## References
 - [Bootstrapping K3s with Cilium](https://docs.cilium.io/en/v1.10/gettingstarted/k3s/#bootstrapping-k3s-with-cilium) by [@vehagn](https://github.com/vehagn)
