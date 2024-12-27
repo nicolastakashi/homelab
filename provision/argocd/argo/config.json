@@ -1,0 +1,5 @@
+{
+    "name": "argo",
+    "namespace": "argocd",
+    "dir": "apps/argocd"
+}

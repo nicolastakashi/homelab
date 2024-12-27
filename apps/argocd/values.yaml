@@ -1,0 +1,38 @@
+argo-cd:
+  global:
+    revisionHistoryLimit: 0
+    logging:
+      format: json
+      level: warn
+  dex:
+    enabled: false
+
+  controller:
+    metrics:
+      enabled: false
+      serviceMonitor:
+        enabled: false
+
+  server:
+    metrics:
+      enabled: false
+      serviceMonitor:
+        enabled: false
+
+    extraArgs:
+      - --insecure
+
+    ingress:
+      enabled: true
+      ingressClassName: "cilium"
+      hostname: "argocd.ntakashi.com"
+
+  configs:
+    cm:
+      resource.exclusions: |
+        - apiGroups:
+          - cilium.io
+          kinds:
+          - CiliumIdentity
+          clusters:
+          - "*"
