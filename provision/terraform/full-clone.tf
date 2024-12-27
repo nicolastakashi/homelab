@@ -5,19 +5,20 @@ locals {
 resource "proxmox_vm_qemu" "vm_provision" {
   for_each = local.vm_configs
 
+  name        = each.key
+  desc        = each.value.description
+  agent       = 1
   target_node = each.value.target_node
-  vmid = each.value.vmid
-  name = each.key
-  desc = each.value.description
-  onboot = true
-  clone = each.value.clone
-  agent = 1
-  cores = each.value.resources.cpu
-  memory = each.value.resources.memory
+  tags        = each.value.tags
+
+  vmid      = each.value.vmid
+  onboot    = true
+  clone     = each.value.clone
+  cores     = each.value.resources.cpu
+  memory    = each.value.resources.memory
   ipconfig0 = each.value.ipconfig0
-  os_type = "ubuntu"
-  scsihw = "virtio-scsi-pci"
-  tags = each.value.tags
+  os_type   = "ubuntu"
+  scsihw    = "virtio-scsi-pci"
 
   network {
     bridge = "vmbr0"
@@ -25,13 +26,13 @@ resource "proxmox_vm_qemu" "vm_provision" {
   }
 
   disk {
-    type = "scsi"
+    type    = "scsi"
     storage = "local-lvm"
     file    = "vm-${each.value.vmid}-disk-0"
-    size = each.value.resources.disk
+    size    = each.value.resources.disk
     volume  = "local-lvm:vm-${each.value.vmid}-disk-0"
     discard = "on"
-    ssd = 1
+    ssd     = 1
   }
 
   lifecycle {

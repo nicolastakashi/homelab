@@ -1,6 +1,6 @@
 k3s-control-plane:
   description: "kubernetes control-plane"
-  target_node: pve
+  target_node: cortex
   vmid: 201
   clone: "ubuntu-server-noble-numbat"
   tags: "k8s,k8s-control-plane"
@@ -11,7 +11,7 @@ k3s-control-plane:
     disk: 20G
 k3s-worker-node-01:
   description: "kubernetes worker-node-01"
-  target_node: pve
+  target_node: cortex
   vmid: 202
   clone: "ubuntu-server-noble-numbat"
   tags: "k8s,k8s-worker-node"
@@ -22,7 +22,7 @@ k3s-worker-node-01:
     disk: 20G
 k3s-worker-node-02:
   description: "kubernetes worker-node-02"
-  target_node: pve
+  target_node: cortex
   vmid: 203
   clone: "ubuntu-server-noble-numbat"
   tags: "k8s,k8s-worker-node"
