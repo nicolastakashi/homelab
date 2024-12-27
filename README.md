@@ -28,4 +28,4 @@ I mainly use my homelab for:
 It’s a playground where I can explore, build, and learn at my own pace.
 
 ## References
-- [Bootstrapping K3s with Cilium](https://docs.cilium.io/en/v1.10/gettingstarted/k3s/#bootstrapping-k3s-with-cilium) by @vehagn
+- [Bootstrapping K3s with Cilium](https://docs.cilium.io/en/v1.10/gettingstarted/k3s/#bootstrapping-k3s-with-cilium) by [@vehagn](https://github.com/vehagn)
