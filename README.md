@@ -16,7 +16,7 @@ This repository contains my homelab configuration files, scripts, and some docum
 - **Hypervisor:** Proxmox  
 - **Orchestration:** Kubernetes (using k3s)  
 
-## Why I Have a Homelab
+## Why Do I Have a Homelab?
 
 I’m a curious person who loves learning new things. A homelab gives me the freedom to experiment with different technologies and services without the fear of breaking anything critical.
 
