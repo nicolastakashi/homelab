@@ -1,5 +1,5 @@
 {
-    "name": "cillium",
-    "namespace": "cillium",
-    "dir": "apps/cillium"
+    "name": "cilium",
+    "namespace": "cilium",
+    "dir": "apps/cilium"
 }
