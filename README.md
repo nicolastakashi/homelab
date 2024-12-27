@@ -37,7 +37,16 @@ This setup is highly opinionated and may not fit everyone’s needs. That said, 
 
 ## Setup
 
-After getting your Kubernetes cluster up and running, you can initialize the basic setup with the following command:
+After getting your Kubernetes cluster up and running, you can initialize the basic setup with the following steps:
+
+1. Expose `API_SERVER_IP` and `API_SERVER_PORT` environment variables in your shell, like so:
+
+```bash
+export API_SERVER_IP=123.456.78.910
+export API_SERVER_PORT=6443
+```
+
+2. Run the following command to set up the cluster:
 
 ```bash
 make setup
