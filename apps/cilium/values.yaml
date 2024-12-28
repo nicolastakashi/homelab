@@ -11,13 +11,13 @@ cilium:
     replicas: 1
     rollOutPods: true
     prometheus:
-      enabled: true
+      enabled: false
       serviceMonitor:
-        enabled: true
+        enabled: false
   prometheus:
-    enabled: true
+    enabled: false
     serviceMonitor:
-      enabled: true
+      enabled: false
   l2announcements:
     enabled: true
   externalIPs:
