@@ -1,0 +1,6 @@
+{
+    "name": "thanos",
+    "namespace": "observability",
+    "dir": "apps/thanos",
+    "wave": 2
+}

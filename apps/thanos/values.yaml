@@ -1,0 +1,38 @@
+thanos:
+  fullnameOverride: "thanos"
+  objstoreConfig: |
+    type: FILESYSTEM
+    config:
+      directory: "/srv/thanos"
+
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
+  query:
+    revisionHistoryLimit: 0
+    logFormat: json
+    logLevel: warn
+
+  queryFrontend:
+    revisionHistoryLimit: 0
+    logFormat: json
+    logLevel: warn
+
+  receive:
+    enabled: true
+    logFormat: json
+    logLevel: warn
+    tsdbRetention: 4h
+    replicaCount: 3
+    replicationFactor: 2
+    resourcesPreset: small
+    service:
+      additionalHeadless: true
+
+  receiveDistributor:
+    enabled: false
+    revisionHistoryLimit: 0
+    logFormat: json
+    logLevel: warn
