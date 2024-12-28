@@ -32,7 +32,7 @@ thanos:
       additionalHeadless: true
 
   receiveDistributor:
-    enabled: false
+    enabled: true
     revisionHistoryLimit: 0
     logFormat: json
     logLevel: warn
