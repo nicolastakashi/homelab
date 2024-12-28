@@ -27,7 +27,7 @@ volumeMounts: []
 volumes: []
 
 serviceMonitor:
-  enabled: false
+  enabled: true
   extraLabels: {}
 
 pdb:
