@@ -1,0 +1,6 @@
+{
+    "name": "prometheus-operator",
+    "namespace": "observability",
+    "dir": "apps/prometheus-operator",
+    "wave": 0
+}
