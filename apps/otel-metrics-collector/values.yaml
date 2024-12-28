@@ -9,11 +9,21 @@ opentelemetry-collector:
     # When digest is set to a non-empty value, images will be pulled by digest (regardless of tag value).
     digest: ""
 
+  extraEnvsFrom:
+    - name: MY_POD_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
+
   config:
     receivers:
       jaeger: null
       zipkin: null
       prometheus:
+        target_allocator:
+          endpoint: http://opentelemetry-target-allocator.observed.svc.cluster.local:80
+          interval: 30s
+          collector_id: ${env:MY_POD_NAME}
         config:
           scrape_configs:
             - job_name: opentelemetry-collector

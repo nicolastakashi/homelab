@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "opentelemetry-collector.fullname" . }}-targetallocator
+  name: {{ include "opentelemetry-collector.fullname" . }}
   namespace: {{ template "opentelemetry-collector.namespace" . }}
   labels:
     {{- include "opentelemetry-collector.labels" . | nindent 4 }}
@@ -47,7 +47,7 @@ spec:
         {{- toYaml .Values.tolerations | nindent 8 }}
       {{- end }}
       containers:
-        - name: {{ include "opentelemetry-collector.fullname" . }}-targetallocator
+        - name: {{ include "opentelemetry-collector.fullname" . }}
           {{- if .Values.image.tag }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           {{- else if .Values.image.digest}}
@@ -103,11 +103,11 @@ spec:
           items:
           - key: targetallocator.yaml
             path: targetallocator.yaml
-          name: {{ include "opentelemetry-collector.fullname" . }}-targetallocator
+          name: {{ include "opentelemetry-collector.fullname" . }}
         name: ta-internal
       {{- if .Values.serviceAccount.name }}
       serviceAccountName: {{ .Values.serviceAccount.name | quote }}
       {{- else }}
-      serviceAccountName: {{ include "opentelemetry-collector.serviceAccountName" . }}-targetallocator
+      serviceAccountName: {{ include "opentelemetry-collector.serviceAccountName" . }}
       {{- end }}
 {{- end }}
