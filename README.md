@@ -31,9 +31,8 @@ It’s a playground where I can explore, build, and learn at my own pace.
 
 This setup is highly opinionated and may not fit everyone’s needs. That said, if you’re interested in trying it out, here’s what you’ll need:
 
-- [A Kubernetes cluster](https://k3s.io/) - I'm using k3s
-- [Cilium](https://cilium.io/) for networking
-- [ArgoCD](https://argo-cd.readthedocs.io/) for GitOps
+- [Kubernetes](https://k3s.io/) - I'm using k3s
+- [Helm](https://helm.sh/) - for managing Kubernetes applications
 - [yq](https://github.com/mikefarah/yq) for YAML processing
 
 ## Setup
