@@ -30,5 +30,9 @@ update-cilium-values:
 	yq eval '.lbIPPool.start = env(LB_IP_RANGE_START) | .lbIPPool.stop = env(LB_IP_RANGE_END)' -i $(CILIUM_VALUES_FILE)
 	@echo "Updated lbIPPool.start with $(LB_IP_RANGE_START) and lbIPPool.stop with $(LB_IP_RANGE_END) in $(CILIUM_VALUES_FILE)."
 
+	@echo "Updating ingressController.service.annotations.io.cilium/lb-ipam-ips with $(LB_IP_RANGE_START) in $(CILIUM_VALUES_FILE)"
+	yq eval '.cilium.ingressController.service.annotations."io.cilium/lb-ipam-ips" = env(LB_IP_RANGE_START)' -i $(CILIUM_VALUES_FILE)
+	@echo "Updated ingressController.service.annotations.io.cilium/lb-ipam-ips successfully."
+
 .PHONY: setup
 setup: install-cilium update-cilium-values
