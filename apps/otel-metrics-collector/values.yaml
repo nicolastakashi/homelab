@@ -16,6 +16,14 @@ opentelemetry-collector:
           fieldPath: metadata.name
 
   config:
+    exporters:
+      prometheusremotewrite:
+        endpoint: "http://thanos-receive.observability.svc.cluster.local:19291/api/v1/receive"
+        external_labels:
+          cluster: "pt-north-1"
+        tls:
+          insecure: true
+
     receivers:
       jaeger: null
       zipkin: null
@@ -36,7 +44,7 @@ opentelemetry-collector:
         logs: null
         metrics:
           exporters:
-            - debug
+            - prometheusremotewrite
           processors:
             - memory_limiter
             - batch
