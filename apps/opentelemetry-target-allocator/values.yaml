@@ -15,9 +15,9 @@ allocationStrategy: "consistent-hashing"
 # the operator (this should correspond to operator's version).
 # Set appropriate values to override.
 image:
-  repository: ""
+  repository: "otel/target-allocator"
   pullPolicy: IfNotPresent
-  tag: ""
+  tag: "v0.116.0"
   digest: ""
 # Name of the service account to be used by the target allocator.
 # If set, no service account or cluster role for target allocator
