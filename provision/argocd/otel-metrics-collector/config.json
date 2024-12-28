@@ -1,0 +1,6 @@
+{
+    "name": "opentelemetry-metrics-collector",
+    "namespace": "observability",
+    "dir": "apps/otel-metrics-collector",
+    "wave": 3
+}
