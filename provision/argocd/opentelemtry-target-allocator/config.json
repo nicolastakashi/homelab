@@ -1,0 +1,6 @@
+{
+    "name": "opentelemetry-target-allocator",
+    "namespace": "observability",
+    "dir": "apps/opentelemetry-target-allocator",
+    "wave": 3
+}

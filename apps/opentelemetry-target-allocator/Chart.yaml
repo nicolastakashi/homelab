@@ -1,0 +1,5 @@
+apiVersion: v2
+name: opentelemetry-target-allocator
+description: A Helm chart for opentelemetry-target-allocator, a declarative, GitOps continuous delivery tool for Kubernetes.
+type: application
+version: 0.1.0

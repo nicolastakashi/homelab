@@ -1,0 +1,49 @@
+{{- if .Values.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "opentelemetry-collector.fullname" . }}-targetallocator
+  namespace: {{ template "opentelemetry-collector.namespace" . }}
+  labels:
+    {{- include "opentelemetry-target-allocator.labels" . | nindent 4 }}
+data:
+  targetallocator.yaml: |
+    allocation_strategy: {{ .Values.allocationStrategy }}
+    filter_strategy: relabel-config
+    collector_selector:
+      matchlabels:
+        app.kubernetes.io/name: {{ include "opentelemetry-collector.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    {{- if .Values.prometheusCR.enabled }}
+    prometheus_cr:
+      scrape_interval: {{ .Values.prometheusCR.scrapeInterval | default "30s" }}
+      {{- if .Values.prometheusCR.podMonitorSelector }}
+      pod_monitor_selector:
+        {{- include "opentelemetry-target-allocator.podMonitorSelector" . | nindent 8 }}
+      {{- else }}
+      pod_monitor_selector: {}
+      {{- end }}
+      {{- if .Values.prometheusCR.serviceMonitorSelector }}
+      service_monitor_selector:
+        {{- include "opentelemetry-target-allocator.serviceMonitorSelector" . | nindent 8 }}
+      {{- else }}
+      service_monitor_selector: {}
+      {{- end }}
+      {{- if .Values.prometheusCR.serviceMonitorNamespaceSelector }}
+      service_monitor_namespace_selector:
+        {{- include "opentelemetry-target-allocator.serviceMonitorNamespaceSelector" . | nindent 8 }}
+      {{- else }}
+      service_monitor_namespace_selector: {}
+      {{- end }}
+      {{- if .Values.prometheusCR.podMonitorNamespaceSelector }}
+      pod_monitor_namespace_selector:
+        {{- include "opentelemetry-target-allocator.podMonitorNamespaceSelector" . | nindent 8 }}
+      {{- else }}
+      pod_monitor_namespace_selector: {}
+      {{- end }}
+    {{- end }}
+    {{- if .Values.scrapeConfigs }}
+    config:
+      scrape_configs: {{ tpl (.Values.scrapeConfigs | toYaml) . | nindent 8 }}
+    {{- end }}
+{{- end }}

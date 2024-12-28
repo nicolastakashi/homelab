@@ -1,0 +1,88 @@
+enabled: true
+replicas: 1
+tolerations: []
+affinity: {}
+scrapeConfigs: []
+prometheusCR:
+  serviceMonitorNamespaceSelector: {}
+  podMonitorNamespaceSelector: {}
+  enabled: false
+  podMonitorSelector: {}
+  serviceMonitorSelector: {}
+  scrapeInterval: "30s"
+allocationStrategy: ""
+# Target allocator image defaults to repository and tag set by
+# the operator (this should correspond to operator's version).
+# Set appropriate values to override.
+image:
+  repository: ""
+  pullPolicy: IfNotPresent
+  tag: ""
+  digest: ""
+# Name of the service account to be used by the target allocator.
+# If set, no service account or cluster role for target allocator
+# will be created.
+resources: {}
+volumeMounts: []
+volumes: []
+
+serviceMonitor:
+  enabled: false
+  extraLabels: {}
+
+pdb:
+  create: false
+  maxUnavailable: 25%
+
+livenessProbe:
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+minReadySeconds: 60
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+service:
+  # Enable the creation of a Service.
+  # By default, it's enabled on mode != daemonset.
+  # However, to enable it on mode = daemonset, its creation must be explicitly enabled
+  # enabled: true
+
+  type: ClusterIP
+  # type: LoadBalancer
+  # loadBalancerIP: 1.2.3.4
+  # loadBalancerSourceRanges: []
+
+  # By default, Service of type 'LoadBalancer' will be created setting 'externalTrafficPolicy: Cluster'
+  # unless other value is explicitly set.
+  # Possible values are Cluster or Local (https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip)
+  # externalTrafficPolicy: Cluster
+
+  annotations: {}
+
+  # By default, Service will be created setting 'internalTrafficPolicy: Local' on mode = daemonset
+  # unless other value is explicitly set.
+  # Setting 'internalTrafficPolicy: Cluster' on a daemonset is not recommended
+  # internalTrafficPolicy: Cluster
+
+rollout:
+  rollingUpdate: {}
+  # When 'mode: daemonset', maxSurge cannot be used when hostPort is set for any of the ports
+  # maxSurge: 25%
+  # maxUnavailable: 0
+  strategy: RollingUpdate
