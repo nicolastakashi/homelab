@@ -6,7 +6,7 @@ scrapeConfigs: []
 prometheusCR:
   serviceMonitorNamespaceSelector: {}
   podMonitorNamespaceSelector: {}
-  enabled: false
+  enabled: true
   podMonitorSelector: {}
   serviceMonitorSelector: {}
   scrapeInterval: "30s"
