@@ -120,3 +120,5 @@ clusterRole:
     # If not set a name is generated using the fullname template
     # Can be used in combination with presets that create a cluster role binding.
     name: ""
+
+annotations: {}
