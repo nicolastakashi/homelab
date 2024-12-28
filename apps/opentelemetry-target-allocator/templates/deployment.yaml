@@ -105,8 +105,8 @@ spec:
             path: targetallocator.yaml
           name: {{ include "opentelemetry-collector.fullname" . }}-targetallocator
         name: ta-internal
-      {{- if .Values.serviceAccount }}
-      serviceAccountName: {{ .Values.serviceAccount | quote }}
+      {{- if .Values.serviceAccount.name }}
+      serviceAccountName: {{ .Values.serviceAccount.name | quote }}
       {{- else }}
       serviceAccountName: {{ include "opentelemetry-collector.serviceAccountName" . }}-targetallocator
       {{- end }}
