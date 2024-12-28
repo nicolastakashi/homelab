@@ -46,11 +46,18 @@ export API_SERVER_IP=123.456.78.910
 export API_SERVER_PORT=6443
 ```
 
-2. Run the following command to set up the cluster:
+2. To enable Load Balancer IP Address Management, you need to define a range of IPs that Cilium can use to allocate for LoadBalancer services. This range should consist of IPs that are not in use on your network. For example:
+
+```bash
+export LB_IP_RANGE_START=123.456.78.940
+export LB_IP_RANGE_END=123.456.78.949
+```
+
+3. Run the following command to set up the cluster:
 
 ```bash
 make setup
 ```
 
 ## References
-- [Bootstrapping K3s with Cilium](https://docs.cilium.io/en/v1.10/gettingstarted/k3s/#bootstrapping-k3s-with-cilium) by [@vehagn](https://github.com/vehagn)
+- [Bootstrapping K3s with Cilium](https://blog.stonegarden.dev/articles/2024/02/bootstrapping-k3s-with-cilium/) by [@vehagn](https://github.com/vehagn)
