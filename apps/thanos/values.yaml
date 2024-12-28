@@ -23,6 +23,7 @@ thanos:
   receive:
     enabled: true
     logFormat: json
+    mode: dual-mode
     logLevel: warn
     tsdbRetention: 4h
     replicaCount: 3
