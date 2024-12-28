@@ -1,12 +1,12 @@
+lbIPPool:
+  start: "192.168.50.240"
+  stop: "192.168.50.249"
 cilium:
   rollOutCiliumPods: true
-  k8sServiceHost: 192.168.50.219
-  k8sServicePort: 6443
-
+  k8sServiceHost: "192.168.50.219"
+  k8sServicePort: "6443"
   MTU: 1500
-
   kubeProxyReplacement: "true"
-
   operator:
     replicas: 1
     rollOutPods: true
@@ -14,22 +14,17 @@ cilium:
       enabled: false
       serviceMonitor:
         enabled: false
-
   prometheus:
     enabled: false
     serviceMonitor:
       enabled: false
-
   l2announcements:
     enabled: true
-
   externalIPs:
     enabled: true
-
   k8sClientRateLimit:
     qps: 50
     burst: 200
-
   ingressController:
     enabled: true
     default: true

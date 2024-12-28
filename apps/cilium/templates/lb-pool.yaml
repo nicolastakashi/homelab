@@ -4,5 +4,5 @@ metadata:
   name: "first-pool"
 spec:
   blocks:
-    - start: "192.168.50.240"
-      stop: "192.168.50.249"
+    - start:  {{ .Values.lbIPPool.start }} ##"192.168.50.240"
+      stop: {{ .Values.lbIPPool.stop }} ## "192.168.50.249"
