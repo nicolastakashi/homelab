@@ -12,8 +12,8 @@ data:
     filter_strategy: relabel-config
     collector_selector:
       matchlabels:
-        app.kubernetes.io/name: {{ include "opentelemetry-collector.name" . }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/instance: opentelemetry-metrics-collector
+        app.kubernetes.io/name: opentelemetry-collector
     {{- if .Values.prometheusCR.enabled }}
     prometheus_cr:
       scrape_interval: {{ .Values.prometheusCR.scrapeInterval | default "30s" }}
