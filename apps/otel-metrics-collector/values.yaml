@@ -1,5 +1,14 @@
 opentelemetry-collector:
   mode: "deployment"
+  image:
+    # If you want to use the core image `otel/opentelemetry-collector`, you also need to change `command.name` value to `otelcol`.
+    repository: "otel/opentelemetry-collector-contrib"
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
+    # When digest is set to a non-empty value, images will be pulled by digest (regardless of tag value).
+    digest: ""
+
   config:
     receivers:
       jaeger: null
