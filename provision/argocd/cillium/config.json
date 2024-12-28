@@ -1,5 +1,6 @@
 {
     "name": "cilium",
     "namespace": "cilium",
-    "dir": "apps/cilium"
+    "dir": "apps/cilium",
+    "wave": 1
 }

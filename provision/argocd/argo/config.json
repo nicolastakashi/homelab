@@ -1,5 +1,6 @@
 {
     "name": "argo",
     "namespace": "argocd",
-    "dir": "apps/argocd"
+    "dir": "apps/argocd",
+    "wave": 2
 }
