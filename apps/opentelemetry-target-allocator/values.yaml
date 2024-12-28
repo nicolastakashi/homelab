@@ -10,7 +10,7 @@ prometheusCR:
   podMonitorSelector: {}
   serviceMonitorSelector: {}
   scrapeInterval: "30s"
-allocationStrategy: ""
+allocationStrategy: "consistent-hashing"
 # Target allocator image defaults to repository and tag set by
 # the operator (this should correspond to operator's version).
 # Set appropriate values to override.
