@@ -35,7 +35,7 @@ opentelemetry-collector:
           - context: datapoint
             statements:
               - set(attributes["k8s.container.name"], resource.attributes["k8s.container.name"])
-              - set(attributes["k8s.namespace.name""], resource.attributes["k8s.namespace.name"])
+              - set(attributes["k8s.namespace.name"], resource.attributes["k8s.namespace.name"])
               - set(attributes["k8s.pod.name"], resource.attributes["k8s.pod.name"])
     receivers:
       jaeger: null
