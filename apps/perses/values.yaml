@@ -1,9 +1,4 @@
 perses:
-  config:
-    frontend:
-      explore:
-        enabled: true
-
   ingress:
     enabled: true
 
