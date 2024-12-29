@@ -1,0 +1,21 @@
+perses:
+  datasources:
+    - kind: GlobalDatasource
+      metadata:
+        name: Metrics
+      spec:
+        default: true
+        plugin:
+          kind: PrometheusDatasource
+          spec:
+            directUrl: https://thanos-query-frontend.observability.svc.cluster.local:9090
+  ingress:
+    enabled: true
+
+    hosts:
+      - host: perses.ntakashi.com
+        paths:
+          - path: /
+            pathType: Prefix
+
+    ingressClassName: "cilium"
