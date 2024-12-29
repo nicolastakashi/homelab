@@ -26,10 +26,17 @@ opentelemetry-collector:
           insecure: true
 
     processors:
-      resourcedetection/env:
+      resourcedetection:
         detectors: [env, system, k8snode]
         timeout: 2s
         override: false
+      transform:
+        metric_statements:
+          - context: datapoint
+            statements:
+              - set(attributes["k8s.container.name"], resource.attributes["k8s.container.name"])
+              - set(attributes["k8s.namespace.name""], resource.attributes["k8s.namespace.name"])
+              - set(attributes["k8s.pod.name"], resource.attributes["k8s.pod.name"])
     receivers:
       jaeger: null
       zipkin: null
@@ -48,7 +55,8 @@ opentelemetry-collector:
           exporters:
             - prometheusremotewrite
           processors:
-            - resourcedetection/env
+            - resourcedetection
+            - transform
             - memory_limiter
             - batch
           receivers:
