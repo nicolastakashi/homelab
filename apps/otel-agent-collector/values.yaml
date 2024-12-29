@@ -11,7 +11,13 @@ opentelemetry-collector:
       enabled: true
 
   config:
-    exporters: {}
+    exporters:
+      prometheusremotewrite:
+        endpoint: "http://thanos-receive.observability.svc.cluster.local:19291/api/v1/receive"
+        external_labels:
+          cluster: "pt-north-1"
+        tls:
+          insecure: true
 
     receivers:
       jaeger: null
