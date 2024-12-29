@@ -19,6 +19,11 @@ opentelemetry-collector:
         tls:
           insecure: true
 
+    processors:
+      resourcedetection/env:
+        detectors: [env]
+        timeout: 2s
+        override: false
     receivers:
       jaeger: null
       zipkin: null
@@ -37,6 +42,7 @@ opentelemetry-collector:
           exporters:
             - prometheusremotewrite
           processors:
+            - resourcedetection/env
             - memory_limiter
             - batch
           receivers:
