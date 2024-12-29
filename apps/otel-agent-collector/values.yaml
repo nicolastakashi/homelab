@@ -4,6 +4,12 @@ opentelemetry-collector:
     repository: "otel/opentelemetry-collector-contrib"
     pullPolicy: IfNotPresent
 
+  clusterRole:
+    rules:
+      - apiGroups: [""]
+        resources: ["nodes"]
+        verbs: ["get", "list"]
+
   presets:
     hostMetrics:
       enabled: true
@@ -21,7 +27,7 @@ opentelemetry-collector:
 
     processors:
       resourcedetection/env:
-        detectors: [env]
+        detectors: [env, system, k8snode]
         timeout: 2s
         override: false
     receivers:
