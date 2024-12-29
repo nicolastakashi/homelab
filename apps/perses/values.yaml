@@ -19,3 +19,6 @@ perses:
             pathType: Prefix
 
     ingressClassName: "cilium"
+
+  sidecar:
+    enabled: true
