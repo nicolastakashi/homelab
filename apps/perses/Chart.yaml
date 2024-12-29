@@ -5,5 +5,5 @@ type: application
 version: 0.1.0
 dependencies:
   - name: perses
-    version: 0.74.4
+    version: 0.7.4
     repository: https://perses.github.io/helm-charts
