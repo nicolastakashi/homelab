@@ -1,0 +1,6 @@
+{
+    "name": "opentelemetry-agent-collector",
+    "namespace": "observability",
+    "dir": "apps/otel-agent-collector",
+    "wave": 3
+}
