@@ -18,6 +18,8 @@ opentelemetry-collector:
 
   config:
     exporters:
+      debug:
+        verbosity: detailed
       prometheusremotewrite:
         endpoint: "http://thanos-receive.observability.svc.cluster.local:19291/api/v1/receive"
         external_labels:
@@ -37,28 +39,6 @@ opentelemetry-collector:
               - set(attributes["k8s.container.name"], resource.attributes["k8s.container.name"])
               - set(attributes["k8s.namespace.name"], resource.attributes["k8s.namespace.name"])
               - set(attributes["k8s.pod.name"], resource.attributes["k8s.pod.name"])
-      k8sattributes:
-        pod_association:
-          - sources:
-              - from: resource_attribute
-                name: k8s.pod.uid
-          - sources:
-              - from: resource_attribute
-                name: k8s.pod.name
-              - from: resource_attribute
-                name: k8s.namespace.name
-              - from: resource_attribute
-                name: k8s.node.name
-          - sources:
-              - from: resource_attribute
-                name: k8s.pod.ip
-          - sources:
-              - from: resource_attribute
-                name: k8s.pod.name
-              - from: resource_attribute
-                name: k8s.namespace.name
-          - sources:
-              - from: connection
     receivers:
       jaeger: null
       zipkin: null
@@ -75,7 +55,7 @@ opentelemetry-collector:
         logs: null
         metrics:
           exporters:
-            - prometheusremotewrite
+            - debug
           processors:
             - resourcedetection
             - transform
