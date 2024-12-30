@@ -21,7 +21,7 @@ opentelemetry-collector:
       prometheusremotewrite:
         endpoint: "http://thanos-receive.observability.svc.cluster.local:19291/api/v1/receive"
         external_labels:
-          cluster: "pt-north-1"
+          k8s_cluster_name: "pt-north-1"
         tls:
           insecure: true
 
