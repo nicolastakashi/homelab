@@ -18,8 +18,6 @@ opentelemetry-collector:
 
   config:
     exporters:
-      debug:
-        verbosity: detailed
       prometheusremotewrite:
         endpoint: "http://thanos-receive.observability.svc.cluster.local:19291/api/v1/receive"
         external_labels:
@@ -56,7 +54,7 @@ opentelemetry-collector:
         logs: null
         metrics:
           exporters:
-            - debug
+            - prometheusremotewrite
           processors:
             - resourcedetection
             - transform
