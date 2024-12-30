@@ -1,0 +1,23 @@
+grafana:
+  ingress:
+    enabled: true
+    ingressClassName: "cilium"
+    hosts:
+      - grafana.ntakashi.com
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: Prometheus
+          type: prometheus
+          url: http://thanos-query-frontend.observability.svc.cluster.local:9090
+          access: proxy
+          isDefault: true
+          jsonData:
+            timeout: 60s
+            timeInterval: 15s
+            thanosVersion: 0.31.0
+            prometheusVersion: 0.31.0
+            prometheusType: Thanos
+            queryTimeout: 120s
+            defaultEditor: "code"

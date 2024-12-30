@@ -1,0 +1,6 @@
+{
+    "name": "grafana",
+    "namespace": "observability",
+    "dir": "apps/grafana",
+    "wave": 3
+}
