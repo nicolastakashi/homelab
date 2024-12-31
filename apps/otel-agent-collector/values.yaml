@@ -58,17 +58,11 @@ opentelemetry-collector:
             metrics:
               system.memory.utilization:
                 enabled: true
-              system.memory.limit:
-                enabled: true
           filesystem:
             metrics:
               system.filesystem.utilization:
                 enabled: true
               system.filesystem.usage:
-                enabled: true
-          paging:
-            metrics:
-              system.paging.usage:
                 enabled: true
       prometheus:
         config:
