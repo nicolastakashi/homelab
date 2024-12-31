@@ -14,14 +14,15 @@ thanos:
     revisionHistoryLimit: 0
     logFormat: json
     logLevel: warn
-    serviceMonitor:
-      relabelings:
-        - sourceLabels: [pod]
-          targetLabel: k8s_pod_name
-      metricRelabelings:
-        - sourceLabels: [pod]
-          action: labeldrop
-          regex: ".+"
+    metrics:
+      serviceMonitor:
+        relabelings:
+          - sourceLabels: [pod]
+            targetLabel: k8s_pod_name
+        metricRelabelings:
+          - sourceLabels: [pod]
+            action: labeldrop
+            regex: ".+"
 
   queryFrontend:
     revisionHistoryLimit: 0
