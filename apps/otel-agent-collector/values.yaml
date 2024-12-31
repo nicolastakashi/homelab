@@ -48,6 +48,22 @@ opentelemetry-collector:
     receivers:
       jaeger: null
       zipkin: null
+      hostmetrics:
+        scrapers:
+          cpu:
+            metrics:
+              system.cpu.logical.count:
+                enabled: true
+          memory:
+            metrics:
+              system.memory.utilization:
+                enabled: true
+              system.memory.limit:
+                enabled: true
+          filesystem:
+            metrics:
+              system.filesystem.utilization:
+                enabled: true
       prometheus:
         config:
           scrape_configs:
