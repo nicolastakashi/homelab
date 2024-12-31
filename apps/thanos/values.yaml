@@ -12,7 +12,6 @@ thanos:
       relabelings:
         - sourceLabels: [__meta_kubernetes_pod_name]
           targetLabel: k8s_pod_name
-      metricRelabelings:
         - action: labeldrop
           regex: "pod"
 
