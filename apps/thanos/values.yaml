@@ -14,6 +14,20 @@ thanos:
           targetLabel: k8s_pod_name
         - action: labeldrop
           regex: "pod"
+        - sourceLabels: [__meta_kubernetes_namespace]
+          targetLabel: k8s_namespace_name
+        - action: labeldrop
+          regex: "namespace"
+        - sourceLabels: [__meta_kubernetes_service_name]
+          targetLabel: k8s_service_name
+        - action: labeldrop
+          regex: "service"
+        - sourceLabels: [__meta_kubernetes_pod_container_name]
+          targetLabel: k8s_container_name
+        - action: labeldrop
+          regex: "container"
+        - sourceLabels: [job]
+          targetLabel: service_name
 
   query:
     revisionHistoryLimit: 0
