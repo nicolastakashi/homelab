@@ -9,13 +9,13 @@ thanos:
     enabled: true
     serviceMonitor:
       enabled: true
-      relabelings:
-        - sourceLabels: [pod]
-          targetLabel: k8s_pod_name
-      metricRelabelings:
-        - sourceLabels: [pod]
-          action: labeldrop
-          regex: ".+"
+      # relabelings:
+      #   - sourceLabels: [pod]
+      #     targetLabel: k8s_pod_name
+      # metricRelabelings:
+      #   - sourceLabels: [pod]
+      #     action: labeldrop
+      #     regex: ".+"
 
   query:
     revisionHistoryLimit: 0
