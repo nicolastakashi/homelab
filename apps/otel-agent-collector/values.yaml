@@ -64,6 +64,10 @@ opentelemetry-collector:
             metrics:
               system.filesystem.utilization:
                 enabled: true
+          paging:
+            metrics:
+              system.paging.usage:
+                enabled: true
       prometheus:
         config:
           scrape_configs:
