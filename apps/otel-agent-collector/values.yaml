@@ -64,6 +64,8 @@ opentelemetry-collector:
             metrics:
               system.filesystem.utilization:
                 enabled: true
+              system.filesystem.usage:
+                enabled: true
           paging:
             metrics:
               system.paging.usage:
