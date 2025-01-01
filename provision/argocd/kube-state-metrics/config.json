@@ -1,0 +1,6 @@
+{
+    "name": "kube-state-metrics",
+    "namespace": "observability",
+    "dir": "apps/kube-state-metrics",
+    "wave": 3
+}
