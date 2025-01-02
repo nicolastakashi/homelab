@@ -1,4 +1,5 @@
 kube-prometheus-stack:
+  fullnameOverride: "prometheus-operator"
   crds:
     enabled: false
 
