@@ -19,7 +19,7 @@ kube-prometheus-stack:
     enabled: false
 
   prometheusOperator:
-    kubeletEndpointsEnabled: false
+    kubeletEndpointsEnabled: true
     kubeletEndpointSliceEnabled: true
 
   prometheus:
