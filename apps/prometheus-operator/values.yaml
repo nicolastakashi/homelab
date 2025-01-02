@@ -1,0 +1,25 @@
+kube-prometheus-stack:
+  crds:
+    enabled: false
+
+  defaultRules:
+    create: false
+
+  alertmanager:
+    enabled: false
+
+  grafana:
+    enabled: false
+
+  kubeStateMetrics:
+    enabled: false
+
+  nodeExporter:
+    enabled: false
+
+  prometheusOperator:
+    kubeletEndpointsEnabled: false
+    kubeletEndpointSliceEnabled: true
+
+  prometheus:
+    enabled: false
