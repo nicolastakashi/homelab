@@ -1,0 +1,1271 @@
+{
+    "kind": "Dashboard",
+    "metadata": {
+        "name": "kubelet",
+        "version": 1,
+        "project": "default"
+    },
+    "spec": {
+        "display": {
+            "name": "Kubelet"
+        },
+        "panels": {
+            "Memory": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Memory"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "bytes"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "process_resident_memory_bytes{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}",
+                                        "seriesNameFormat": "{{instance}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Memory-1": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "CPU"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "seconds"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "rate(process_cpu_seconds_total{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}[5m])",
+                                        "seriesNameFormat": "{{instance}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Memory-2": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Go Routines"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "decimalPlaces": 0,
+                                    "unit": "decimal"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "go_goroutines{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}",
+                                        "seriesNameFormat": "{{instance}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "OperationRate": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Operation Rate"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "display": "line",
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "ops/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(kubelet_runtime_operations_total{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}[5m])) by (operation_type, instance)",
+                                        "seriesNameFormat": "{{instance}} {{operation_type}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "OperationRate-1": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Operation Error Rate"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "display": "line",
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "ops/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(kubelet_runtime_operations_errors_total{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}[5m])) by (instance, operation_type)",
+                                        "seriesNameFormat": "{{instance}} {{operation_type}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "OperationRate-2": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Cgroup manager operation rate"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "display": "line",
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "ops/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(kubelet_cgroup_manager_duration_seconds_count{job=\"kubelet\", metrics_path=\"/metrics\", instance=~\"$instance\"}[5m])) by (instance, operation_type)",
+                                        "seriesNameFormat": "{{ instance }} - {{operation_type}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "OperationRate-3": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Cgroup manager operation rate"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "display": "line",
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "seconds"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(kubelet_cgroup_manager_duration_seconds_bucket{job=\"kubelet\", metrics_path=\"/metrics\", instance=~\"$instance\"}[5m])) by (instance, operation_type, le))",
+                                        "seriesNameFormat": "{{ instance }} - {{operation_type}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "OperationRate-4": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "PLEG relist interval"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "display": "line",
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "seconds"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(kubelet_pleg_relist_interval_seconds_bucket{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}[5m])) by (instance, le))",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "OperationRate-5": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "PLEG relist rate",
+                        "description": "Pod lifecycle event generator"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "display": "line",
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "ops/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(kubelet_pleg_relist_duration_seconds_count{job=\"kubelet\", metrics_path=\"/metrics\", instance=~\"$instance\"}[5m])) by (instance)",
+                                        "seriesNameFormat": "{{instance}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "OperationRate-6": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "PLEG relist duration"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "display": "line",
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "seconds"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(kubelet_pleg_relist_duration_seconds_bucket{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}[5m])) by (instance, le))",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "OperationRate-7": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "RPC Rate"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "display": "line",
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "ops/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(rest_client_requests_total{job=\"kubelet\", metrics_path=\"/metrics\", instance=~\"$instance\"}[5m])) by (instance, code)",
+                                        "seriesNameFormat": "{{ instance }}  - {{ code }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "OperationRate-8": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "RPC Rate"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "display": "line",
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "seconds"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(rest_client_request_latency_seconds_bucket{job=\"kubelet\", metrics_path=\"/metrics\", instance=~\"$instance\"}[5m])) by (instance, verb, url, le))",
+                                        "seriesNameFormat": "{{instance}} {{verb}} {{url}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Operationduration99thquantile": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Operation duration 99th quantile"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "seconds"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(kubelet_runtime_operations_duration_seconds_bucket{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}[5m])) by (instance, operation_type, le))",
+                                        "seriesNameFormat": "{{instance}} {{operation_type}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Operationduration99thquantile-1": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Operation duration 99th quantile"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "seconds"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(storage_operation_duration_seconds_bucket{job=\"kubelet\", metrics_path=\"/metrics\", instance=~\"$instance\"}[5m])) by (instance, operation_name, volume_plugin, le))",
+                                        "seriesNameFormat": "{{instance}} {{operation_name}} {{volume_plugin}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "PodStartRate": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Pod Start Rate"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "ops/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(kubelet_pod_start_duration_seconds_count{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}[5m])) by (instance)",
+                                        "seriesNameFormat": "{{instance}} pod"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(kubelet_pod_worker_duration_seconds_count{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}[5m])) by (instance)",
+                                        "seriesNameFormat": "{{instance}} worker"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "PodStartRate-1": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Pod Start Duration"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "seconds"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(kubelet_pod_start_duration_seconds_count{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}[5m])) by (instance, le))",
+                                        "seriesNameFormat": "{{instance}} pod"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(kubelet_pod_worker_duration_seconds_bucket{job=\"kubelet\", metrics_path=\"/metrics\",instance=~\"$instance\"}[5m])) by (instance, le))",
+                                        "seriesNameFormat": "{{instance}} worker"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Up": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Up"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": false,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "defaultColor": "#cccccc"
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(up{job=\"kubelet\", metrics_path=\"/metrics\"})"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Up-1": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Running Pods"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": false,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "defaultColor": "#cccccc"
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(kubelet_running_pods{job=\"kubelet\", metrics_path=\"/metrics\", instance=~\"$instance\"})"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Up-2": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Running Containers"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": false,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "defaultColor": "#cccccc"
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(kubelet_running_containers{job=\"kubelet\", metrics_path=\"/metrics\", instance=~\"$instance\"})"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Up-3": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Actual Volume Count"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": false,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "defaultColor": "#cccccc"
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(volume_manager_total_volumes{job=\"kubelet\", metrics_path=\"/metrics\", instance=~\"$instance\", state=\"actual_state_of_world\"})"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Up-4": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Desired Volume Count"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": false,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "defaultColor": "#cccccc"
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(volume_manager_total_volumes{job=\"kubelet\", metrics_path=\"/metrics\", instance=~\"$instance\",state=\"desired_state_of_world\"})"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Up-5": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Config Error Count"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": false,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "defaultColor": "#cccccc"
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(kubelet_node_config_error{job=\"kubelet\", metrics_path=\"/metrics\", instance=~\"$instance\"}[5m]))"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "layouts": [
+            {
+                "kind": "Grid",
+                "spec": {
+                    "display": {
+                        "title": "Quick",
+                        "collapse": {
+                            "open": true
+                        }
+                    },
+                    "items": [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 4,
+                            "height": 5,
+                            "content": {
+                                "$ref": "#/spec/panels/Up"
+                            }
+                        },
+                        {
+                            "x": 4,
+                            "y": 0,
+                            "width": 4,
+                            "height": 5,
+                            "content": {
+                                "$ref": "#/spec/panels/Up-1"
+                            }
+                        },
+                        {
+                            "x": 8,
+                            "y": 0,
+                            "width": 4,
+                            "height": 5,
+                            "content": {
+                                "$ref": "#/spec/panels/Up-2"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 0,
+                            "width": 4,
+                            "height": 5,
+                            "content": {
+                                "$ref": "#/spec/panels/Up-3"
+                            }
+                        },
+                        {
+                            "x": 16,
+                            "y": 0,
+                            "width": 4,
+                            "height": 5,
+                            "content": {
+                                "$ref": "#/spec/panels/Up-4"
+                            }
+                        },
+                        {
+                            "x": 20,
+                            "y": 0,
+                            "width": 4,
+                            "height": 5,
+                            "content": {
+                                "$ref": "#/spec/panels/Up-5"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "Grid",
+                "spec": {
+                    "display": {
+                        "title": "Operations",
+                        "collapse": {
+                            "open": false
+                        }
+                    },
+                    "items": [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/OperationRate"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 0,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/OperationRate-1"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 8,
+                            "width": 24,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/Operationduration99thquantile"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 24,
+                            "width": 24,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/Operationduration99thquantile-1"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 16,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/PodStartRate"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 16,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/PodStartRate-1"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 32,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/OperationRate-2"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 32,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/OperationRate-3"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 40,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/OperationRate-5"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 40,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/OperationRate-4"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 48,
+                            "width": 24,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/OperationRate-6"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 56,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/OperationRate-7"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 56,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/OperationRate-8"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "Grid",
+                "spec": {
+                    "display": {
+                        "title": "Computing",
+                        "collapse": {
+                            "open": false
+                        }
+                    },
+                    "items": [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 8,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/Memory"
+                            }
+                        },
+                        {
+                            "x": 8,
+                            "y": 0,
+                            "width": 8,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/Memory-1"
+                            }
+                        },
+                        {
+                            "x": 16,
+                            "y": 0,
+                            "width": 8,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/Memory-2"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "variables": [
+            {
+                "kind": "ListVariable",
+                "spec": {
+                    "defaultValue": "$__all",
+                    "allowAllValue": true,
+                    "allowMultiple": true,
+                    "plugin": {
+                        "kind": "PrometheusPromQLVariable",
+                        "spec": {
+                            "expr": "kubelet_runtime_operations_total{job=\"kubelet\", metrics_path=\"/metrics\"}",
+                            "labelName": "instance"
+                        }
+                    },
+                    "name": "instance"
+                }
+            }
+        ],
+        "duration": "1h",
+        "refreshInterval": "0s"
+    }
+}
