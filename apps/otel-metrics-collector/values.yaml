@@ -62,7 +62,7 @@ opentelemetry-collector:
     service:
       telemetry:
         logs:
-          level: debug
+          level: warn
       pipelines:
         logs: null
         metrics:
