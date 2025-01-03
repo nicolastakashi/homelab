@@ -1,0 +1,735 @@
+{
+    "kind": "Dashboard",
+    "metadata": {
+        "name": "api_server",
+        "version": 1,
+        "project": "default"
+    },
+    "spec": {
+        "display": {
+            "name": "API Server"
+        },
+        "panels": {
+            "APIServer-CPUUsagebyinstance": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "API Server - CPU Usage by instance"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "percent-decimal"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "rate(process_cpu_seconds_total{job=~\"kubernetes-apiservers|apiserver\"}[$__rate_interval])",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "APIServer-CPUUsagebyinstance-1": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "API Server - CPU Usage by instance"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "bytes"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "process_resident_memory_bytes{job=~\"kubernetes-apiservers|apiserver\"}",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "APIServer-HTTPRequestsbycode": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "API Server - HTTP Requests by code"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum by (code) (rate(apiserver_request_total{}[$__rate_interval]))",
+                                        "seriesNameFormat": "{{ code }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "APIServer-HTTPRequestsbycode-1": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "API Server - HTTP Requests by verb"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum by (verb) (rate(apiserver_request_total{}[$__rate_interval]))",
+                                        "seriesNameFormat": "{{ verb }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "APIServer-HTTPRequestsbycode-2": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "API Server - HTTP Requests Latency by instance"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "milliseconds"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(apiserver_request_duration_seconds_sum{job=~\"kubernetes-apiservers|apiserver\"}[$__rate_interval])) by (instance)\n/\nsum(rate(apiserver_request_duration_seconds_count{job=~\"kubernetes-apiservers|apiserver\"}[$__rate_interval])) by (instance)",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "APIServer-HTTPRequestsbycode-3": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "API Server - HTTP Requests Latency by verb"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "milliseconds"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(apiserver_request_duration_seconds_sum{job=~\"kubernetes-apiservers|apiserver\"}[$__rate_interval])) by (verb)\n/\nsum(rate(apiserver_request_duration_seconds_count{job=~\"kubernetes-apiservers|apiserver\"}[$__rate_interval])) by (verb)",
+                                        "seriesNameFormat": "{{ verb }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "APIServer-HTTPRequestsbycode-4": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "API Server - Errors by Instance"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum by(instance) (rate(apiserver_request_total{code=~\"5..\", job=~\"kubernetes-apiservers|apiserver\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{job=~\"kubernetes-apiservers|apiserver\"}[$__rate_interval]))",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "APIServer-HTTPRequestsbycode-5": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "API Server - Errors by Instance"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum by(verb) (rate(apiserver_request_total{code=~\"5..\",job=~\"kubernetes-apiservers|apiserver\"}[$__rate_interval]))\n / sum by(verb) (rate(apiserver_request_total{job=~\"kubernetes-apiservers|apiserver\"}[$__rate_interval]))",
+                                        "seriesNameFormat": "{{ verb }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "APIServer-HTTPRequestsbycode-6": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "API Server - Stacked HTTP Requests by instance"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.3,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75,
+                                "stack": "all"
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(apiserver_request_total{}[$__rate_interval])) by (instance)",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "APIServer-HTTPRequestsbycode-7": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "API Server - Stacked HTTP Requests by instance"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.3,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(workqueue_depth{job=~\"kubernetes-apiservers|apiserver\"}[$__rate_interval])) by (instance)",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "APIServer-HealthStatus": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "API Server - Health Status"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": true,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "defaultColor": "#EE6C6C",
+                                "steps": [
+                                    {
+                                        "color": "#59CC8D",
+                                        "value": 0
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "up{job=~\"kubernetes-apiservers|apiserver\"}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "DeprecatedKubernetesResources": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Deprecated Kubernetes Resources"
+                    },
+                    "plugin": {
+                        "kind": "Table",
+                        "spec": {
+                            "cellSettings": [],
+                            "columnSettings": [
+                                {
+                                    "hide": true,
+                                    "name": "value"
+                                },
+                                {
+                                    "hide": true,
+                                    "name": "timestamp"
+                                }
+                            ],
+                            "density": "standard",
+                            "transforms": []
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "group(apiserver_requested_deprecated_apis) by (group, version, resource)"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "layouts": [
+            {
+                "kind": "Grid",
+                "spec": {
+                    "display": {
+                        "title": "Quick",
+                        "collapse": {
+                            "open": true
+                        }
+                    },
+                    "items": [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 5,
+                            "height": 6,
+                            "content": {
+                                "$ref": "#/spec/panels/APIServer-HealthStatus"
+                            }
+                        },
+                        {
+                            "x": 5,
+                            "y": 0,
+                            "width": 19,
+                            "height": 6,
+                            "content": {
+                                "$ref": "#/spec/panels/DeprecatedKubernetesResources"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "Grid",
+                "spec": {
+                    "display": {
+                        "title": "HTTP",
+                        "collapse": {
+                            "open": true
+                        }
+                    },
+                    "items": [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/APIServer-HTTPRequestsbycode"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 0,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/APIServer-HTTPRequestsbycode-1"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 8,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/APIServer-HTTPRequestsbycode-2"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 8,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/APIServer-HTTPRequestsbycode-3"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 16,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/APIServer-HTTPRequestsbycode-4"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 16,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/APIServer-HTTPRequestsbycode-5"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 24,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/APIServer-HTTPRequestsbycode-6"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 24,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/APIServer-HTTPRequestsbycode-7"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "Grid",
+                "spec": {
+                    "display": {
+                        "title": "Computing",
+                        "collapse": {
+                            "open": true
+                        }
+                    },
+                    "items": [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/APIServer-CPUUsagebyinstance"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 0,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/APIServer-CPUUsagebyinstance-1"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "variables": [],
+        "duration": "1h",
+        "refreshInterval": "0s"
+    }
+}
