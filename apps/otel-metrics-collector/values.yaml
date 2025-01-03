@@ -1,5 +1,25 @@
 opentelemetry-collector:
   mode: "deployment"
+  clusterRole:
+    create: true
+    rules:
+      - apiGroups: [""]
+        resources:
+          - nodes
+          - nodes/proxy
+          - nodes/metrics
+          - services
+          - endpoints
+          - pods
+        verbs: ["get", "list", "watch"]
+      - apiGroups:
+          - extensions
+        resources:
+          - ingresses
+        verbs: ["get", "list", "watch"]
+      - nonResourceURLs: ["/metrics", "/metrics/cadvisor", "/metrics/probes"]
+        verbs: ["get"]
+
   image:
     # If you want to use the core image `otel/opentelemetry-collector`, you also need to change `command.name` value to `otelcol`.
     repository: "otel/opentelemetry-collector-contrib"
