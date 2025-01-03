@@ -40,6 +40,9 @@ opentelemetry-collector:
                 - targets:
                     - ${env:MY_POD_IP}:8888
     service:
+      telemetry:
+        logs:
+          verbosity: detailed
       pipelines:
         logs: null
         metrics:
