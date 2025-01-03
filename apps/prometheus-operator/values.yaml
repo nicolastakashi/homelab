@@ -40,12 +40,12 @@ kube-prometheus-stack:
           targetLabel: k8s_service_name
         - action: labeldrop
           regex: "service"
-        - sourceLabels: [__meta_kubernetes_pod_container_name]
-          targetLabel: k8s_container_name
-        - action: labeldrop
-          regex: "container"
         - sourceLabels: [job]
           targetLabel: service_name
+        - sourceLabels: [node]
+          targetLabel: k8s_node_name
+        - action: labeldrop
+          regex: "node"
 
       cAdvisorRelabelings:
         - action: replace
@@ -63,12 +63,12 @@ kube-prometheus-stack:
           targetLabel: k8s_service_name
         - action: labeldrop
           regex: "service"
-        - sourceLabels: [__meta_kubernetes_pod_container_name]
-          targetLabel: k8s_container_name
-        - action: labeldrop
-          regex: "container"
         - sourceLabels: [job]
           targetLabel: service_name
+        - sourceLabels: [node]
+          targetLabel: k8s_node_name
+        - action: labeldrop
+          regex: "node"
 
       probesRelabelings:
         - action: replace
@@ -86,12 +86,12 @@ kube-prometheus-stack:
           targetLabel: k8s_service_name
         - action: labeldrop
           regex: "service"
-        - sourceLabels: [__meta_kubernetes_pod_container_name]
-          targetLabel: k8s_container_name
-        - action: labeldrop
-          regex: "container"
         - sourceLabels: [job]
           targetLabel: service_name
+        - sourceLabels: [node]
+          targetLabel: k8s_node_name
+        - action: labeldrop
+          regex: "node"
 
       resourceRelabelings:
         - action: replace
@@ -109,12 +109,12 @@ kube-prometheus-stack:
           targetLabel: k8s_service_name
         - action: labeldrop
           regex: "service"
-        - sourceLabels: [__meta_kubernetes_pod_container_name]
-          targetLabel: k8s_container_name
-        - action: labeldrop
-          regex: "container"
         - sourceLabels: [job]
           targetLabel: service_name
+        - sourceLabels: [node]
+          targetLabel: k8s_node_name
+        - action: labeldrop
+          regex: "node"
 
   prometheus:
     enabled: false
