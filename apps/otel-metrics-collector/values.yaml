@@ -42,7 +42,7 @@ opentelemetry-collector:
     service:
       telemetry:
         logs:
-          verbosity: detailed
+          level: debug
       pipelines:
         logs: null
         metrics:
