@@ -1,0 +1,1446 @@
+{
+    "kind": "Dashboard",
+    "metadata": {
+        "name": "coredns",
+        "version": 1,
+        "project": "default"
+    },
+    "spec": {
+        "display": {
+            "name": "CoreDNS"
+        },
+        "panels": {
+            "LatencyInternetZone": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Latency Internet Zone"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "seconds"
+                                },
+                                "label": "",
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(coredns_dns_request_duration_seconds_bucket{instance=~\"$instance\", zone=\".\"}[5m])) by (le))",
+                                        "seriesNameFormat": "99%"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.90, sum(rate(coredns_dns_request_duration_seconds_bucket{instance=~\"$instance\", zone=\".\"}[5m])) by (le))",
+                                        "seriesNameFormat": "90%"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.50, sum(rate(coredns_dns_request_duration_seconds_bucket{instance=~\"$instance\", zone=\".\"}[5m])) by (le))",
+                                        "seriesNameFormat": "50%"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "LatencyInternetZone-1": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Request Size Internet Zone"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "bytes"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(coredns_dns_request_size_bytes_bucket{instance=~\"$instance\", zone=\".\"}[5m])) by (le))",
+                                        "seriesNameFormat": "99%"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.90, sum(rate(coredns_dns_request_size_bytes_bucket{instance=~\"$instance\", zone=\".\"}[5m])) by (le))",
+                                        "seriesNameFormat": "90%"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.50, sum(rate(coredns_dns_request_size_bytes_bucket{instance=~\"$instance\", zone=\".\"}[5m])) by (le))",
+                                        "seriesNameFormat": "50%"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "LatencyInternetZone-2": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Response Internet Zone"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "bytes"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(coredns_dns_response_size_bytes_bucket{instance=~\"$instance\", zone=\".\"}[5m])) by (le))",
+                                        "seriesNameFormat": "99%"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.90, sum(rate(coredns_dns_response_size_bytes_bucket{instance=~\"$instance\", zone=\".\"}[5m])) by (le))",
+                                        "seriesNameFormat": "90%"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.50, sum(rate(coredns_dns_response_size_bytes_bucket{instance=~\"$instance\", zone=\".\"}[5m])) by (le))",
+                                        "seriesNameFormat": "50%"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Requests": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Requests"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "decimalPlaces": 0,
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_dns_requests_total[5m])) by (instance)",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "RequestsTotal": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Requests Total"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "decimalPlaces": 0,
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\"}[5m])) by (server)",
+                                        "seriesNameFormat": "{{ server }}"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_cache_requests_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "cache"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "RequestsTotal-1": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Requests by zone"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "decimalPlaces": 0,
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\"}[5m])) by (zone)",
+                                        "seriesNameFormat": "{{ zone }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "RequestsTotal-2": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Requests by type"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "decimalPlaces": 0,
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\"}[5m])) by (type)",
+                                        "seriesNameFormat": "{{ type }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "RequestsTotal-3": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Cache Hit Rate"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "unit": "percent-decimal"
+                                },
+                                "label": "",
+                                "max": 1,
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_cache_hits_total{instance=~\"$instance\", type=\"success\"}[5m])) / sum(rate(coredns_cache_requests_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "hits: success"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_cache_hits_total{instance=~\"$instance\", type=\"denial\"}[5m])) / sum(rate(coredns_cache_requests_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "hits: denial"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "(sum(rate(coredns_cache_requests_total{instance=~\"$instance\"}[5m])) - sum(rate(coredns_cache_hits_total{instance=~\"$instance\", type=\"success\"}[5m]))) / sum(rate(coredns_cache_requests_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "misses"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_dnssec_cache_hits_total{instance=~\"$instance\"}[5m])) / sum(rate(coredns_cache_requests_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "hits: DNSSEC"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "(sum(rate(coredns_cache_requests_total{instance=~\"$instance\"}[5m])) - sum(rate(coredns_dnssec_cache_hits_total{instance=~\"$instance\"}[5m]))) / sum(rate(coredns_cache_requests_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "misses: DNSSEC"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "RequestsTotal-4": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Requests DNSSEC by zone"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "decimalPlaces": 0,
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_dns_do_requests_total{instance=~\"$instance\"}[5m])) by (zone)",
+                                        "seriesNameFormat": "{{ zone }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "RequestsTotal-5": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Requests total"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "decimalPlaces": 0,
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_forward_requests_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "upstream"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "RequestsTotal-6": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Cache hit rate"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "decimalPlaces": 0,
+                                    "unit": "events/sec"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_forward_conn_cache_hits_total{instance=~\"$instance\"}[5m])) / sum(rate(coredns_forward_requests_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "hits"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "(sum(rate(coredns_forward_requests_total{instance=~\"$instance\"}[5m])) - sum(rate(coredns_forward_conn_cache_hits_total{instance=~\"$instance\"}[5m]))) / sum(rate(coredns_forward_requests_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "misses"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "RequestsTotal-7": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Responses latency"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "decimalPlaces": 2,
+                                    "unit": "seconds"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.99, sum(rate(coredns_forward_request_duration_seconds_bucket{instance=~\"$instance\"}[5m])) by (le))",
+                                        "seriesNameFormat": "99%"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.90, sum(rate(coredns_forward_request_duration_seconds_bucket{instance=~\"$instance\"}[5m])) by (le))",
+                                        "seriesNameFormat": "90%"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "histogram_quantile(0.50, sum(rate(coredns_forward_request_duration_seconds_bucket{instance=~\"$instance\"}[5m])) by (le))",
+                                        "seriesNameFormat": "50%"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "RequestsTotal-8": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Requests by upstream"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "decimalPlaces": 0,
+                                    "unit": "requests/sec"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_forward_requests_total{instance=~\"$instance\"}[5m])) by (to)",
+                                        "seriesNameFormat": "{{ to }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "RequestsTotal-9": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Responses by code"
+                    },
+                    "plugin": {
+                        "kind": "TimeSeriesChart",
+                        "spec": {
+                            "legend": {
+                                "mode": "table",
+                                "position": "bottom",
+                                "size": "small",
+                                "values": [
+                                    "min",
+                                    "max",
+                                    "mean"
+                                ]
+                            },
+                            "visual": {
+                                "areaOpacity": 0.05,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            },
+                            "yAxis": {
+                                "format": {
+                                    "decimalPlaces": 0,
+                                    "unit": "events/sec"
+                                },
+                                "label": "",
+                                "min": 0,
+                                "show": true
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_forward_responses_total{instance=~\"$instance\"}[5m])) by (rcode)",
+                                        "seriesNameFormat": "{{ rcode }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Responsesbycode": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Responses by code"
+                    },
+                    "plugin": {
+                        "kind": "PieChart",
+                        "spec": {
+                            "calculation": "last",
+                            "format": {
+                                "decimalPlaces": 2,
+                                "shortValues": true,
+                                "unit": "decimal"
+                            },
+                            "legend": {
+                                "position": "bottom"
+                            },
+                            "mode": "percentage",
+                            "radius": 50,
+                            "sort": "desc",
+                            "visual": {
+                                "areaOpacity": 0,
+                                "connectNulls": false,
+                                "lineWidth": 1.25,
+                                "pointRadius": 2.75
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_dns_responses_total{instance=~\"$instance\"}[5m])) by (rcode)",
+                                        "seriesNameFormat": "{{rcode}}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "Responsesbycode-1": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Cache Size"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "unit": "decimal"
+                            },
+                            "sparkline": {}
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(coredns_cache_entries{instance=~\"$instance\"}) by (type)",
+                                        "seriesNameFormat": "{{type}}"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(coredns_dnssec_cache_entries{instance=~\"$instance\"})",
+                                        "seriesNameFormat": "DNSSEC"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "UpstreamHealthCheckFails": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Upstream Health Check Fails"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": true,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "steps": [
+                                    {
+                                        "color": "#EE6C6C",
+                                        "value": 8
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_forward_healthcheck_broken_total{instance=~\"$instance\"}[5m]))"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "UpstreamHealthCheckFails-1": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Upstream Rejected Queries"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": true,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "steps": [
+                                    {
+                                        "color": "#EE6C6C",
+                                        "value": 8
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_forward_max_concurrent_rejects_total{instance=~\"$instance\"}[5m])) by (instance)",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "UpstreamHealthCheckFails-2": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Panics"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": true,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "steps": [
+                                    {
+                                        "color": "#EE6C6C",
+                                        "value": 8
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_panics_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "UpstreamHealthCheckFails-3": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Failed Reloads"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": true,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "steps": [
+                                    {
+                                        "color": "#EE6C6C",
+                                        "value": 8
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_reload_failed_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "UpstreamHealthCheckFails-4": {
+                "kind": "Panel",
+                "spec": {
+                    "display": {
+                        "name": "Failed Reloads"
+                    },
+                    "plugin": {
+                        "kind": "StatChart",
+                        "spec": {
+                            "calculation": "last-number",
+                            "format": {
+                                "shortValues": true,
+                                "unit": "decimal"
+                            },
+                            "thresholds": {
+                                "steps": [
+                                    {
+                                        "color": "#EE6C6C",
+                                        "value": 8
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "queries": [
+                        {
+                            "kind": "TimeSeriesQuery",
+                            "spec": {
+                                "plugin": {
+                                    "kind": "PrometheusTimeSeriesQuery",
+                                    "spec": {
+                                        "query": "sum(rate(coredns_reload_failed_total{instance=~\"$instance\"}[5m]))",
+                                        "seriesNameFormat": "{{ instance }}"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "layouts": [
+            {
+                "kind": "Grid",
+                "spec": {
+                    "display": {
+                        "title": "Quick",
+                        "collapse": {
+                            "open": true
+                        }
+                    },
+                    "items": [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 9,
+                            "height": 7,
+                            "content": {
+                                "$ref": "#/spec/panels/Requests"
+                            }
+                        },
+                        {
+                            "x": 9,
+                            "y": 0,
+                            "width": 3,
+                            "height": 7,
+                            "content": {
+                                "$ref": "#/spec/panels/UpstreamHealthCheckFails"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 0,
+                            "width": 3,
+                            "height": 7,
+                            "content": {
+                                "$ref": "#/spec/panels/UpstreamHealthCheckFails-1"
+                            }
+                        },
+                        {
+                            "x": 15,
+                            "y": 0,
+                            "width": 3,
+                            "height": 7,
+                            "content": {
+                                "$ref": "#/spec/panels/UpstreamHealthCheckFails-2"
+                            }
+                        },
+                        {
+                            "x": 18,
+                            "y": 0,
+                            "width": 3,
+                            "height": 7,
+                            "content": {
+                                "$ref": "#/spec/panels/UpstreamHealthCheckFails-3"
+                            }
+                        },
+                        {
+                            "x": 21,
+                            "y": 0,
+                            "width": 3,
+                            "height": 7,
+                            "content": {
+                                "$ref": "#/spec/panels/UpstreamHealthCheckFails-4"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "Grid",
+                "spec": {
+                    "display": {
+                        "title": "Local",
+                        "collapse": {
+                            "open": true
+                        }
+                    },
+                    "items": [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/RequestsTotal"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 0,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/RequestsTotal-1"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 8,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/LatencyInternetZone"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 8,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/RequestsTotal-2"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 16,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/RequestsTotal-3"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 16,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/RequestsTotal-4"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 24,
+                            "width": 8,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/Responsesbycode"
+                            }
+                        },
+                        {
+                            "x": 8,
+                            "y": 24,
+                            "width": 8,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/LatencyInternetZone-1"
+                            }
+                        },
+                        {
+                            "x": 16,
+                            "y": 24,
+                            "width": 8,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/LatencyInternetZone-2"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 32,
+                            "width": 24,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/Responsesbycode-1"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "Grid",
+                "spec": {
+                    "display": {
+                        "title": "Upstream",
+                        "collapse": {
+                            "open": true
+                        }
+                    },
+                    "items": [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/RequestsTotal-5"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 0,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/RequestsTotal-6"
+                            }
+                        },
+                        {
+                            "x": 0,
+                            "y": 8,
+                            "width": 12,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/RequestsTotal-7"
+                            }
+                        },
+                        {
+                            "x": 12,
+                            "y": 8,
+                            "width": 6,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/RequestsTotal-8"
+                            }
+                        },
+                        {
+                            "x": 18,
+                            "y": 8,
+                            "width": 6,
+                            "height": 8,
+                            "content": {
+                                "$ref": "#/spec/panels/RequestsTotal-9"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "variables": [
+            {
+                "kind": "ListVariable",
+                "spec": {
+                    "defaultValue": "$__all",
+                    "allowAllValue": true,
+                    "allowMultiple": true,
+                    "sort": "numerical-asc",
+                    "plugin": {
+                        "kind": "PrometheusPromQLVariable",
+                        "spec": {
+                            "expr": "group(up{job=\"coredns\"}) by (instance)",
+                            "labelName": "instance"
+                        }
+                    },
+                    "name": "instance"
+                }
+            }
+        ],
+        "duration": "1h",
+        "refreshInterval": "0s"
+    }
+}
