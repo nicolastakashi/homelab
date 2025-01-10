@@ -38,7 +38,6 @@ thanos:
       - --grpc-compression=snappy
       - --query.default-step=15s
       - --query.metadata.default-time-range=5m
-      # - --query.mode=distributed
       - --query.promql-engine=thanos
       - --query.timeout=30s
       - --store.limits.request-samples=100000
@@ -50,6 +49,15 @@ thanos:
     revisionHistoryLimit: 0
     logFormat: json
     logLevel: warn
+    extraFlags:
+      - --enable-auto-gomemlimit
+      - --labels.default-time-range=5m
+      - --labels.max-retries-per-request=3
+      - --query-frontend.compress-responses
+      - --query-range.align-range-with-step
+      - --query-range.max-retries-per-request=3
+      - --query-range.max-split-interval=6h
+      - --query-range.min-split-interval=1h
 
   receive:
     enabled: true
