@@ -72,6 +72,7 @@ thanos:
       - --enable-auto-gomemlimit
       - --hash-func=SHA256
       - --tsdb.out-of-order.time-window=5m
+      - --tsdb.too-far-in-future.time-window=5m
 
   receiveDistributor:
     enabled: true
