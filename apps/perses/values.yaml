@@ -16,3 +16,8 @@ perses:
   persistence:
     enabled: true
     size: 4Gi
+
+  config:
+    frontend:
+      explorer:
+        enabled: true
