@@ -71,6 +71,7 @@ thanos:
     extraFlags:
       - --enable-auto-gomemlimit
       - --hash-func=SHA256
+      - --tsdb.out-of-order.time-window=5m
 
   receiveDistributor:
     enabled: true
