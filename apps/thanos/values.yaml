@@ -56,8 +56,6 @@ thanos:
       - --query-frontend.compress-responses
       - --query-range.align-range-with-step
       - --query-range.max-retries-per-request=3
-      - --query-range.max-split-interval=6h
-      - --query-range.min-split-interval=1h
 
   receive:
     enabled: true
