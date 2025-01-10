@@ -70,6 +70,9 @@ thanos:
     resourcesPreset: small
     service:
       additionalHeadless: true
+    extraFlags:
+      - --enable-auto-gomemlimit
+      - --hash-func=SHA256
 
   receiveDistributor:
     enabled: true
