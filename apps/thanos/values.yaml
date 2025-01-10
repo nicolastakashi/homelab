@@ -38,7 +38,7 @@ thanos:
       - --grpc-compression=snappy
       - --query.default-step=15s
       - --query.metadata.default-time-range=5m
-      - --query.mode=distributed
+      # - --query.mode=distributed
       - --query.promql-engine=thanos
       - --query.timeout=30s
       - --store.limits.request-samples=100000
