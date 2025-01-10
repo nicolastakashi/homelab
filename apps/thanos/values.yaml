@@ -33,6 +33,17 @@ thanos:
     revisionHistoryLimit: 0
     logFormat: json
     logLevel: warn
+    extraFlags:
+      - --enable-auto-gomemlimit
+      - --grpc-compression=snappy
+      - --query.default-step=15s
+      - --query.metadata.default-time-range=5m
+      - --query.mode=distributed
+      - --query.promql-engine=thanos
+      - --query.timeout=30s
+      - --store.limits.request-samples=100000
+      - --store.limits.request-series=5000
+      - --store.response-timeout=30s
 
   queryFrontend:
     revisionHistoryLimit: 0
