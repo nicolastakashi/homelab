@@ -42,8 +42,9 @@ thanos:
       - --query.promql-engine=thanos
       - --query.timeout=30s
       - --store.limits.request-samples=100000
-      - --store.limits.request-series=5000
+      - --store.limits.request-series=2000
       - --store.response-timeout=30s
+      - --query.max-concurrent=10
 
   queryFrontend:
     revisionHistoryLimit: 0
