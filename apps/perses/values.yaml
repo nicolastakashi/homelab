@@ -20,4 +20,4 @@ perses:
   config:
     frontend:
       explorer:
-        enabled: true
+        enable: true
