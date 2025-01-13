@@ -41,6 +41,7 @@ opentelemetry-collector:
         endpoint: "http://thanos-receive.observability.svc.cluster.local:19291/api/v1/receive"
         external_labels:
           k8s_cluster_name: "pt-north-1"
+        send_metadata: true
         tls:
           insecure: true
 
