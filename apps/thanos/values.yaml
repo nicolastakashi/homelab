@@ -40,8 +40,8 @@ thanos:
       - --query.metadata.default-time-range=5m
       - --query.promql-engine=thanos
       - --query.timeout=30s
-      - --store.limits.request-samples=500000
-      - --store.limits.request-series=2000
+      - --store.limits.request-samples=1000000
+      - --store.limits.request-series=1000000
       - --store.response-timeout=30s
       - --query.max-concurrent=10
 
