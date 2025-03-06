@@ -5,5 +5,5 @@ type: application
 version: 0.1.0
 dependencies:
   - name: thanos
-    version: 15.13.1
+    version: 15.13.2
     repository: https://charts.bitnami.com/bitnami
