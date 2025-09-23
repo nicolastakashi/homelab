@@ -3,7 +3,7 @@ opentelemetry-collector:
   image:
     repository: "otel/opentelemetry-collector-contrib"
     pullPolicy: IfNotPresent
-    tag: "0.135.0"
+    tag: "0.136.0"
 
   clusterRole:
     rules:
