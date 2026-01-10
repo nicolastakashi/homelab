@@ -17,7 +17,7 @@ allocationStrategy: "consistent-hashing"
 image:
   repository: "otel/target-allocator"
   pullPolicy: IfNotPresent
-  tag: "v0.141.0"
+  tag: "v0.142.0"
   digest: ""
 # Name of the service account to be used by the target allocator.
 # If set, no service account or cluster role for target allocator
